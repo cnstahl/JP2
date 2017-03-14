@@ -1,0 +1,23 @@
+\contentsline {title}{Supersymmetric SYK models}{1}{section*.2}
+\contentsline {abstract}{Abstract}{1}{section*.1}
+\tocdepth@munge 
+\contentsline {section}{\numberline {}Contents}{2}{section*.3}
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Introduction}{2}{section*.4}
+\contentsline {section}{\numberline {II}Definition of the model and the large $N$ effective action}{5}{section*.5}
+\contentsline {subsection}{\numberline {A}Supersymmetry constraints }{8}{section*.6}
+\contentsline {subsection}{\numberline {B}Simple generalization }{8}{section*.7}
+\contentsline {subsection}{\numberline {C}The large $\mathaccentV {hat}05Eq $ limit }{10}{section*.8}
+\contentsline {section}{\numberline {III}Exact diagonalization}{12}{section*.9}
+\contentsline {subsection}{\numberline {A}Supersymmetry}{12}{section*.10}
+\contentsline {subsection}{\numberline {B}Scaling}{13}{section*.11}
+\contentsline {section}{\numberline {IV}Superspace and super-reparameterization}{14}{section*.12}
+\contentsline {subsection}{\numberline {A}Superspace}{15}{section*.13}
+\contentsline {subsection}{\numberline {B}Super-reparameterization}{17}{section*.14}
+\contentsline {subsection}{\numberline {C}Super-Schwarzian}{20}{section*.15}
+\contentsline {section}{\numberline {V}$\mathcal {N}=2$ supersymmetry}{22}{section*.16}
+\contentsline {subsection}{\numberline {A}Superspace and super-reparameterization}{24}{section*.17}
+\contentsline {section}{\numberline {VI}Four point function and the spectrum of operators }{30}{section*.18}
+\contentsline {section}{\numberline {VII}Conclusions}{33}{section*.19}
+\contentsline {subsection}{\numberline {}Acknowledgements}{34}{section*.20}
+\contentsline {section}{\numberline {}References}{35}{section*.21}
