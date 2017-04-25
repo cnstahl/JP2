@@ -1,0 +1,57 @@
+—In eg. 5 dim, why do the 5 psi matrices obey a different algebra than eg. the first 5 psi matrices of 8 dim?
+
+Can be useful in fixed N
+
+—Deriving Hamiltoniain in N=1 SUSY
+  Does antisymmetrization include normalizing?
+
+abs val
+
+—How does the Majorana algebra make sense? {\psi^i,\psi^i}=1?
+
+
+
+—What is the definition of b^i at 2.1 in Fu?
+
+
+
+—How to cite from Arxiv, books
+
+
+
+—Is the ground state 0 energy?
+
+yes, in SUSY
+
+—Are energy eigenstates necessarily fermionic or bosonic?
+
+yes 
+
+—Last two expressions in equation 5.5.
+
+i in denominator, free theory
+
+—For N=2 SUSY, in what sense is \overbar conjugation? 
+  Simply complex conjugation?
+  For C vs for \psi?
+  if so, how can C\bar{C} be less than 0?
+
+
+
+—Second reader
+
+
+
+—For future 
+
+anticommutation relations
+introduce supersymmetry 
+  with supersymmetric harmonic oscillator 
+maybe put dirac equation in introduction 
+fix title
+fourier decomposition of field?
+
+
+
+
+

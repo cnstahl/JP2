@@ -6,3 +6,8 @@
 *.synctex.gz
 *.bbl
 *.out
+*.xml
+Papers/*
+LaTeX/majorana.pdf
+python/__pycache__/
+.ipynb_checkpoints/
