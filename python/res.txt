@@ -1,4 +1,3 @@
-slurmstepd: error: Job 208609 exceeded memory limit (33460 > 2048), being killed
-slurmstepd: error: Exceeded job memory limit
-slurmstepd: error: *** JOB 208609 ON node116 CANCELLED AT 2017-04-28T02:43:21 ***
-slurmstepd: error: Exceeded step memory limit at some point.
+Hamiltonian built
+(512, ' total states')
+(168, ' ground states')
