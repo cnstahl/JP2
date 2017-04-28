@@ -1,3 +1,4 @@
+import sys 
 import numpy as np
 import random
 from cmath import rect
@@ -150,8 +151,9 @@ def entropy(M):
         if (i != 0): rho += i*np.log(i)
     return rho
 
-
-H = hamiltonian(9,1)
+N = int(sys.argv[1])
+print(N)
+H = hamiltonian(N,1)
 print("Hamiltonian built")
 w,v = eigen(H)
 print(len(w), " total states")
