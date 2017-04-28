@@ -1,0 +1,12 @@
+N=  0 has    1 ground states
+N=  1 has    2 ground states
+N=  2 has    4 ground states
+N=  3 has    6 ground states
+N=  4 has   12 ground states
+N=  5 has   20 ground states
+N=  6 has   36 ground states
+N=  7 has   54 ground states
+N=  8 has  108 ground states
+N=  9 has  168 ground states
+N= 10 has  322 ground states
+N= 11 has  387 ground states

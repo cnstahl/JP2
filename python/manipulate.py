@@ -17,7 +17,7 @@ def partial_trace(M, psi):
 
 def eigen(H):
     w, v = np.linalg.eigh(H)
-    w = set_zeros(w)
+    #w = set_zeros(w)
     #v = set_zeros(v)
     return w, v
     p = w.argsort()
