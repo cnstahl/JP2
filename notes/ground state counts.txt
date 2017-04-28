@@ -9,4 +9,4 @@ N=  7 has   54 ground states
 N=  8 has  108 ground states
 N=  9 has  168 ground states
 N= 10 has  322 ground states
-N= 11 has  387 ground states
+N= 11 has  486 ground states
