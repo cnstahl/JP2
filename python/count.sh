@@ -10,11 +10,11 @@
 #SBATCH --output=res.txt
 #SBATCH --ntasks-per-node=1
 #SBATCH --nodes=1 
-#SBATCH  --mem=2000
+#SBATCH  --mem=4000
 #SBATCH --time=01:00:00
 
-for N in 1 2 3 4 
+for N in 11 12 13 14 15
 do 
     printf "\nComputing N = " $N
-    python count_ground_states.py $N
+    python count_ground_states.py $N > ../data/ground\ state\ counts$N.txt
 done

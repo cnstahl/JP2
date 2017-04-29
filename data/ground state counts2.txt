@@ -1,0 +1,4 @@
+2
+Hamiltonian built
+(4, ' total states')
+(4, ' ground states')

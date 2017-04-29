@@ -1,3 +1,3 @@
-Hamiltonian built
-(512, ' total states')
-(168, ' ground states')
+
+Computing N = 
+Computing N = slurmstepd: error: *** JOB 208756 ON node111 CANCELLED AT 2017-04-28T15:46:39 DUE TO TIME LIMIT ***
