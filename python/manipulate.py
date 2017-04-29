@@ -1,19 +1,28 @@
 import numpy as np
 
 def set_zeros(w):
-    tol = 1e-14
+    tol = 1e-10
     w.real[abs(w.real) < tol] = 0.0
     if np.iscomplexobj(w): w.imag[abs(w.imag) < tol] = 0.0
     if np.all(w.imag == 0): return w.real
     return w
 
-def partial_trace(M, psi):
-    N = len(psi)-M
-    rho = np.zeros((M,M))
-    for i in range(M):
-        for j in range(M):
-            rho[i,j] = sum(psi[i:i+N+1]*psi[j:j+N+1].conjugate())
-    return rho/M
+def single_trace(rho):
+    N = len(rho)
+    assert N%2 == 0, "\psi has to have even length: %s" % N
+    M = int(N/2)
+    r = np.zeros((M,M))
+    for idx in range(M):
+        for jdx in range(M):
+            r[idx, jdx] = rho[idx, jdx] + rho[idx + N/2, jdx + N/2]
+    return r
+
+def partial_trace(rho, traces=1):
+    N = len(rho)
+    assert N >= 2**traces, "Too many particles to trace over"
+    for i in range(traces):
+        rho = single_trace(rho)
+    return rho
 
 def eigen(H):
     w, v = np.linalg.eigh(H)
@@ -28,7 +37,10 @@ def reconstruct(w,v):
 
 def entropy(M):
     w, v = np.linalg.eig(M)
-    rho = 0
+    S = 0
     for i in w:
-        if (i != 0): rho += i*np.log(i)
-    return rho
+        if (i != 0): S += i*np.log(i)
+    return -S
+
+def density_mat(psi):
+    return np.outer(psi, psi.conj())
