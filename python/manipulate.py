@@ -11,7 +11,7 @@ def single_trace(rho):
     N = len(rho)
     assert N%2 == 0, "\psi has to have even length: %s" % N
     M = int(N/2)
-    r = np.zeros((M,M))
+    r = np.zeros((M,M), dtype='complex')
     for idx in range(M):
         for jdx in range(M):
             r[idx, jdx] = rho[idx, jdx] + rho[idx + N/2, jdx + N/2]
@@ -38,7 +38,9 @@ def reconstruct(w,v):
 def entropy(M):
     w, v = np.linalg.eig(M)
     S = 0
-    for i in w:
+    set_zeros(w)
+    assert np.all(np.imag(w) == 0)
+    for i in np.real(w):
         if (i != 0): S += i*np.log(i)
     return -S
 

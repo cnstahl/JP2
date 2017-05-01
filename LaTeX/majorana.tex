@@ -4,7 +4,7 @@
 \usepackage[margin=1in]{geometry}                                              
 \usepackage{amsmath,amsthm,amssymb}                                            
 \usepackage{graphicx}                                                          
-\graphicspath{}
+\graphicspath{{../data/}}
 \usepackage{titlesec}                                                   
 \usepackage{bm}
 \usepackage{cprotect}
@@ -64,113 +64,113 @@
 \author{Charles Stahl}
 
 \maketitle
-
-\section{Introduction} 
-
-To discuss Majorana fermions, it is helpful to discuss Dirac fermions, the first realization of relativistic fermions.
-
-\subsection{Dirac Equation}\footnote{How relevant is this? Should I cut some of it out?} \emph{}
-
-The Dirac equation can be derived by trying to mirror the nonrelativistic Shr\"odinger equation while obeying relativity. This derivation follows reference~\cite{gottfried03}. A problem with the nonrelativistic Shr\"odinger equation is that it does not treat time and space equally, in that it is first order in time and second order in space
-\begin{align}
-i\pdop{r}\psi(\bm r, t) &= \left[\frac{-1}{2m}\grad^2 +V(\bm r,t)\right]
-	\psi(\bm r, t). \label{eqn:shro}
-\end{align}
-Using the replacements
-\begin{align}
-\bm p \leftrightarrow \th{i}\grad, \quad E \leftrightarrow \th{i}\pdop{t}, 
-	\label{eqn:repl}
-\end{align}
-equation~\ref{eqn:shro} becomes $E = p^2/2m +V$, which is true in classical mechanics. In relativistic mechanics, the energy-momentum relationship becomes $E^2 = m^2 +p^2$, which reduces to the classical equation in the limit $p<<m$. Using the replacements from equation~\ref{eqn:repl}, this is
-\begin{align}
-\frac{\partial^2}{\partial t^2}\psi(\bm r,t)=\left(\grad^2-m^2\right)\psi
-	(\bm r,t),\label{eqn:klein}
-\end{align}
-the Klein Gordon equation. There are two problems with this equation as it is. It is second order in time, and does not admit of a probability interpretation.
-
-The form suggests we might want to find an operator that we could call 
-\begin{align}
-\sqrt{\grad^2-m^2}
-\end{align}
-using the Taylor series of $\sqrt{\cdot}$ which, when applied twice to $\psi$, would produce
-\begin{align}
-(\grad^2-m^2)\psi.
-\end{align}
-This attempt does not end up working because the square root includes terms of arbitrarily high order~\cite{sakurai11}.
-
-However, using the partial derivative on Minkowski space 
-\begin{align}
-\partial_\mu = (\partial_t,\grad),\quad\partial^\mu = \eta^{\mu\nu}\partial_
-	\nu = (\partial_t, -\grad),\label{eqn:partial}
-\end{align}
-we can rewrite equation~\ref{eqn:klein} as 
-\begin{align}
-\left(\partial_\mu\partial^\mu + m^2\right)\psi &= \left(\eta^{\mu\nu}\partial_
-	\mu\partial_\nu + m^2\right)\psi.
-\end{align}
-Evidently, we want a solution of the form
-\begin{align}
-(i\gamma^\mu\partial_\mu - m)\psi = 0,
-\end{align}
-so that, by operating with the complex conjugate,
-\begin{align}
-(-i\gamma^\mu\partial_\mu - m)(i\gamma^\nu\partial_\nu - m)\psi =(\gamma^\mu
-	\gamma^\nu\partial_\mu\partial_\nu + m^2) = 0. \footnote{Is this satisfying?}
-\end{align}
-Note that partial derivatives with different indices commute
-
-Since the partial derivative commutes, $\partial_\mu\partial_\nu$ is symmetric, so we can require that the $\gamma$ term above is symmetric as well.
-\begin{align}
-\gamma^\mu\gamma^\nu = \half\left(\gamma^\mu\gamma^\nu + \gamma^\nu\gamma^\mu
-	\right) = \{\gamma^\mu,\gamma^\nu\} = \eta^{\mu\nu}
-\end{align}
-This antisymmetry requirement is central to the Dirac equation.\footnote{This derivation is a mix of Gottfried and Sakurai. I think Gottfried has a better derivation in a different place, but I haven't been able to understand it. I plan to read it again this weekend and have a better writeup for this section.}
-
-\subsection{Antiparticles}
-
-\subsection{Fermion Second Quantization}\emph{}
-
-Before fermionic second quantization it is convenient to consider the bosonic case. Bosonic fields such as the electromagnetic field can be decomposed into modes $\bm p$ with raising and lowering operators $a^\dagger_{\bm{p}}$ and $a_{\bm{p}}$. Since the number of particles is not fixed, the Hilbert space spans subspaces of different $N'$. This is called the Fock Space $\mathfrak{F}$,
-\begin{align}
-\mathfrak{F} = \mathfrak{H}_0 \oplus \mathfrak{H}_1 \oplus \mathfrak{H}_2 
-	\oplus \cdots
-\end{align}
-where $\mathfrak{H}_N'$ is the subspace with $N'$ particles. 
-
-The vacuum state is written as $\ket{0}$. A state with one particle in mode $\bm p_1$ is $a^\dagger_{\bm p_1}\ket{0} = \ket{\bm p_1}$. Since bosonic states must be symmetric, the state $\ket{\bm p_1\bm p_2} = a^\dag_{\bm p_1} a^\dag_{\bm p_2}\ket{0}$ must equal to $\ket{\bm p_2\bm p_1} = a^\dag_{\bm p_2} a^\dag_{\bm p_1}\ket{0}$. From this we derive the boson commutation relations
-\begin{align}
-[a^\dag_{\bm p}, a^\dag_{\bm p'}] = [a_{\bm p}, a_{\bm p'}]=0.
-\end{align}
-The only nonzero commutation is 
-\begin{align}
-[a_{\bm p},a^\dag_{\bm p'}] = \d_{\bm{p,p}'}
-\end{align}
-
-Since these operators create and annihilate particles, they can define a number operator $N_{\bm p} = a^\dagger_{\bm p}a_{\bm p}$ with eigenvalues $N'_{\bm p}$ which count the particles in mode $\bm p$. The total number of particles is $N' = \sum_{\bm p}N'_{\bm p}$.\footnote{Is it correct to introduce the number operator as a result of the commutation relations (are the commutation relations the fundamental part)?}
-
-Second quantization for fermions must be fundamentally different. Only one fermion can exist in any mode. A fermionic state is then a series of bits; 1 if a particle exists in the corresponding mode and 0 if the mode is unoccupied. Furthermore, the state must be antisymmetric. Therefore the state
-\begin{align}
-\ket{\alpha_{\nu_1}\alpha_{\nu_2}\alpha_{\nu_3}\cdots\alpha_{\nu_N}}
-\end{align}
-is shorthand for 
-\begin{align}
-\ket{\alpha_{\nu_1}\alpha_{\nu_2}\alpha_{\nu_3}\cdots\alpha_{\nu_N}}_A = 
-	\epsilon^{ijk\cdots n}\ket{\alpha_{\nu_i}\alpha_{\nu_j}\alpha_{\nu_k}\cdots
-	\alpha_{\nu_n}}.
-\end{align}
-Here, the $\nu_i$ are some quantum numbers (not necessarily momentum modes). $\epsilon$ is the totally antisymmetric tensor with $N$ indices, where $n$ is the $N$th index.
-
-%  Anticommutation relations??
-
-This means that, when defining operators in terms of $\psi$ operators, it is convenient to define them with the operators in canonical order, for example
-\begin{align}
-\cal A = \sum_{i<j<k}A^{ijk}a_ia_ja_k.
-\end{align}
-If $A$ is defined to be antisymmetric, 
-\begin{align}
-\cal A = \th{N!}\sum_{ijk}A^{ijk}a_ia_ja_k,
-\end{align}
-where $N$ is the number of operators. 
+%
+%\section{Introduction} 
+%
+%To discuss Majorana fermions, it is helpful to discuss Dirac fermions, the first realization of relativistic fermions.
+%
+%\subsection{Dirac Equation}\footnote{How relevant is this? Should I cut some of it out?} \emph{}
+%
+%The Dirac equation can be derived by trying to mirror the nonrelativistic Shr\"odinger equation while obeying relativity. This derivation follows reference~\cite{gottfried03}. A problem with the nonrelativistic Shr\"odinger equation is that it does not treat time and space equally, in that it is first order in time and second order in space
+%\begin{align}
+%i\pdop{r}\psi(\bm r, t) &= \left[\frac{-1}{2m}\grad^2 +V(\bm r,t)\right]
+%	\psi(\bm r, t). \label{eqn:shro}
+%\end{align}
+%Using the replacements
+%\begin{align}
+%\bm p \leftrightarrow \th{i}\grad, \quad E \leftrightarrow \th{i}\pdop{t}, 
+%	\label{eqn:repl}
+%\end{align}
+%equation~\ref{eqn:shro} becomes $E = p^2/2m +V$, which is true in classical mechanics. In relativistic mechanics, the energy-momentum relationship becomes $E^2 = m^2 +p^2$, which reduces to the classical equation in the limit $p<<m$. Using the replacements from equation~\ref{eqn:repl}, this is
+%\begin{align}
+%\frac{\partial^2}{\partial t^2}\psi(\bm r,t)=\left(\grad^2-m^2\right)\psi
+%	(\bm r,t),\label{eqn:klein}
+%\end{align}
+%the Klein Gordon equation. There are two problems with this equation as it is. It is second order in time, and does not admit of a probability interpretation.
+%
+%The form suggests we might want to find an operator that we could call 
+%\begin{align}
+%\sqrt{\grad^2-m^2}
+%\end{align}
+%using the Taylor series of $\sqrt{\cdot}$ which, when applied twice to $\psi$, would produce
+%\begin{align}
+%(\grad^2-m^2)\psi.
+%\end{align}
+%This attempt does not end up working because the square root includes terms of arbitrarily high order~\cite{sakurai11}.
+%
+%However, using the partial derivative on Minkowski space 
+%\begin{align}
+%\partial_\mu = (\partial_t,\grad),\quad\partial^\mu = \eta^{\mu\nu}\partial_
+%	\nu = (\partial_t, -\grad),\label{eqn:partial}
+%\end{align}
+%we can rewrite equation~\ref{eqn:klein} as 
+%\begin{align}
+%\left(\partial_\mu\partial^\mu + m^2\right)\psi &= \left(\eta^{\mu\nu}\partial_
+%	\mu\partial_\nu + m^2\right)\psi.
+%\end{align}
+%Evidently, we want a solution of the form
+%\begin{align}
+%(i\gamma^\mu\partial_\mu - m)\psi = 0,
+%\end{align}
+%so that, by operating with the complex conjugate,
+%\begin{align}
+%(-i\gamma^\mu\partial_\mu - m)(i\gamma^\nu\partial_\nu - m)\psi =(\gamma^\mu
+%	\gamma^\nu\partial_\mu\partial_\nu + m^2) = 0. \footnote{Is this satisfying?}
+%\end{align}
+%Note that partial derivatives with different indices commute
+%
+%Since the partial derivative commutes, $\partial_\mu\partial_\nu$ is symmetric, so we can require that the $\gamma$ term above is symmetric as well.
+%\begin{align}
+%\gamma^\mu\gamma^\nu = \half\left(\gamma^\mu\gamma^\nu + \gamma^\nu\gamma^\mu
+%	\right) = \{\gamma^\mu,\gamma^\nu\} = \eta^{\mu\nu}
+%\end{align}
+%This antisymmetry requirement is central to the Dirac equation.\footnote{This derivation is a mix of Gottfried and Sakurai. I think Gottfried has a better derivation in a different place, but I haven't been able to understand it. I plan to read it again this weekend and have a better writeup for this section.}
+%
+%\subsection{Antiparticles}
+%
+%\subsection{Fermion Second Quantization}\emph{}
+%
+%Before fermionic second quantization it is convenient to consider the bosonic case. Bosonic fields such as the electromagnetic field can be decomposed into modes $\bm p$ with raising and lowering operators $a^\dagger_{\bm{p}}$ and $a_{\bm{p}}$. Since the number of particles is not fixed, the Hilbert space spans subspaces of different $N'$. This is called the Fock Space $\mathfrak{F}$,
+%\begin{align}
+%\mathfrak{F} = \mathfrak{H}_0 \oplus \mathfrak{H}_1 \oplus \mathfrak{H}_2 
+%	\oplus \cdots
+%\end{align}
+%where $\mathfrak{H}_N'$ is the subspace with $N'$ particles. 
+%
+%The vacuum state is written as $\ket{0}$. A state with one particle in mode $\bm p_1$ is $a^\dagger_{\bm p_1}\ket{0} = \ket{\bm p_1}$. Since bosonic states must be symmetric, the state $\ket{\bm p_1\bm p_2} = a^\dag_{\bm p_1} a^\dag_{\bm p_2}\ket{0}$ must equal to $\ket{\bm p_2\bm p_1} = a^\dag_{\bm p_2} a^\dag_{\bm p_1}\ket{0}$. From this we derive the boson commutation relations
+%\begin{align}
+%[a^\dag_{\bm p}, a^\dag_{\bm p'}] = [a_{\bm p}, a_{\bm p'}]=0.
+%\end{align}
+%The only nonzero commutation is 
+%\begin{align}
+%[a_{\bm p},a^\dag_{\bm p'}] = \d_{\bm{p,p}'}
+%\end{align}
+%
+%Since these operators create and annihilate particles, they can define a number operator $N_{\bm p} = a^\dagger_{\bm p}a_{\bm p}$ with eigenvalues $N'_{\bm p}$ which count the particles in mode $\bm p$. The total number of particles is $N' = \sum_{\bm p}N'_{\bm p}$.\footnote{Is it correct to introduce the number operator as a result of the commutation relations (are the commutation relations the fundamental part)?}
+%
+%Second quantization for fermions must be fundamentally different. Only one fermion can exist in any mode. A fermionic state is then a series of bits; 1 if a particle exists in the corresponding mode and 0 if the mode is unoccupied. Furthermore, the state must be antisymmetric. Therefore the state
+%\begin{align}
+%\ket{\alpha_{\nu_1}\alpha_{\nu_2}\alpha_{\nu_3}\cdots\alpha_{\nu_N}}
+%\end{align}
+%is shorthand for 
+%\begin{align}
+%\ket{\alpha_{\nu_1}\alpha_{\nu_2}\alpha_{\nu_3}\cdots\alpha_{\nu_N}}_A = 
+%	\epsilon^{ijk\cdots n}\ket{\alpha_{\nu_i}\alpha_{\nu_j}\alpha_{\nu_k}\cdots
+%	\alpha_{\nu_n}}.
+%\end{align}
+%Here, the $\nu_i$ are some quantum numbers (not necessarily momentum modes). $\epsilon$ is the totally antisymmetric tensor with $N$ indices, where $n$ is the $N$th index.
+%
+%%  Anticommutation relations??
+%
+%This means that, when defining operators in terms of $\psi$ operators, it is convenient to define them with the operators in canonical order, for example
+%\begin{align}
+%\cal A = \sum_{i<j<k}A^{ijk}a_ia_ja_k.
+%\end{align}
+%If $A$ is defined to be antisymmetric, 
+%\begin{align}
+%\cal A = \th{N!}\sum_{ijk}A^{ijk}a_ia_ja_k,
+%\end{align}
+%where $N$ is the number of operators. 
 
 
 
@@ -448,9 +448,30 @@ with equation~\ref{eqn:base} again supplying the base case.
 
 Although there are various representations of the group, the previous two constructions lead to the same representation. 
 
-\subsection{Ground States}
+\subsection{Ground States} \emph{}
 
-Counting ground states was implemented by counting the zero eigenvalues of a randomly-generated Hamiltonian. 
+Counting ground states was implemented by counting the zero eigenvalues of a randomly-generated Hamiltonian. The number of ground states stayed above the bound, although the bound was not tight in some places. See figure~\ref{fig:gserr} for the ground states above the bound.\footnote{Would this graph be better as actual/predicted?}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{gserr}
+	\caption{\textbf{Looseness of bound on number of ground states.} 0 represents the bound being tight while 1 would mean twice as many ground states as the bound. Since the number of ground states is an integer, these values were calculated as $\text{ceil}(\sqrt{3}^N)$.}
+	\label{fig:gserr}
+\end{figure}
+
+It is particularly interesting to note that the number of ground states is particularly high for even $N$. Even with randomly generated Hamiltonians, the relative number of ground states above the bound stays relatively constant near 0.33. 
+
+\subsection{Ground State Entanglement Entropy}
+
+Once the number of ground states were calculated for a single Hamiltonian, the entropy of a subsystem\footnote{Terminology?} of the ground state could be calculated from the reduced density matrix of the subsystem. Starting with a ground state $\ket{\phi}$, the density matrix $\rho = \ket{\phi}\bra{\phi}$ can be calculated. The entropy $S = \Tr\rho\log\rho$ can be calculated as 
+\begin{align}
+S = \sum \lambda\log\lambda,
+\end{align}
+where $\lambda$ are the eigenvalues. 
+
+As predicted, the entropy rises and drops linearly as more particles are traces over. Since the entropy does not depend on the coupling, a single computation of the entropy should be sufficient.\footnote{Right?} However, due to small numerical errors, it is helpful to perform multiple calculations and average the entropies. 
+
+
 
 \printbibliography
 
