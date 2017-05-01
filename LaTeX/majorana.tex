@@ -7,6 +7,7 @@
 \graphicspath{}
 \usepackage{titlesec}                                                   
 \usepackage{bm}
+\usepackage{cprotect}
 \usepackage{ bbold }
 \usepackage{abstract}
 \usepackage{biblatex}
@@ -49,6 +50,8 @@
 \newcommand{\bra}[1]{\left\langle#1\right|}
 \newcommand{\braket}[2]{\left\langle#1\middle|#2\right\rangle}
 \newcommand{\brakett}[3]{\left\langle#1\middle|#2\middle|#3\right\rangle}
+\newcommand{\comm}[2]{\left[#1,#2\right]}
+\newcommand{\acom}[2]{\left\{#1,#2\right\}}
 \newcommand{\nn}{\nonumber\\}
 
 \DeclareMathOperator{\Tr}{Tr}
@@ -171,11 +174,79 @@ where $N$ is the number of operators.
 
 
 
-\section{Majorana Fermions}
+\section{Supersymmetry in Oscillators}
 
-\subsection{Real Evolution}
+\subsection{Bosonic and Fermionic Oscillators} \emph{}
 
-\subsection{Interpretations}
+One starting point for discussing supersymmetry is through the formalism of harmonic oscillators.\footnote{I spent a lot of time debating how to start talking about creation and annihilation. How should I?} First consider a single harmonic oscillator 
+\begin{align}
+H = p^2 +\om^2 x^2,\quad \comm{x}{p} = \frac{i}{2}. \label{eqn:harmosc}
+\end{align}
+The raising and lowering operators 
+\begin{align}
+a = \sqrt{\om}x+\frac{i}{\sqrt{\om}}p,\quad a^\dag = \sqrt{\om}x+\frac{i}{
+	\sqrt{\om}}p,\quad \comm{a}{a^\dag } = 1.
+\end{align}
+The Hamiltonian can then be written as 
+\begin{align}
+H = \om a^\dag a + \th{2} \equiv \om N + \th{2}.
+\end{align}
+After introducing a ground state $\ket{0}$ such that $a\ket{0} = 0$, the number operator $N$ counts the number of times the raising operator has been applied to a state. This shows that the raising and lowering operators add and remove energy from the system, respectively. 
+
+The Hamiltonian for electromagnetism can be written as
+\begin{align}
+H = \sum_p \left(P_p^2 + \om_p^2x_p^2\right)
+\end{align}
+with the proper choice of $x$ and $P$. Given a collection of modes $p$ with frequencies $\om_p$ and creation and annihilation operators $a_p^\dag$ and $a_p$, the commutation relations become 
+\begin{align}
+[a_p, a_{p'}] = 0,\quad [a^\dag_p, a^\dag_{p'}]=0, \quad[a_p,a^\dag_{p'}] = 
+	\delta_{p,p'},
+\end{align}
+and the Hamiltonian becomes
+\begin{align}
+H = \sum_p\left(\om_pN_p+\th{2}\right),
+\end{align}
+meaning that acting with $a_p^\dag$ adds $\om_p$ to the energy of the state.
+
+The interpretation is that each raising operator $a_p$ adds a photon with energy $\om_p$, for which it is called the creation operator. Likewise, $a_p^\dag$ is called the annihilation operator. Then, $N_p$ counts the number of photons with energy $\om$. Since particle number is not conserved, the state space is now a  Fock Space $\mathfrak{F}$,
+\begin{align}
+\mathfrak{F} = \mathfrak{H}_0 \oplus \mathfrak{H}_1 \oplus \mathfrak{H}_2 
+\oplus \cdots
+\end{align}
+where $\mathfrak{H}_N$ is the subspace with $N$ particles. Actually, it a product of Fock spaces, one for each value of $p$.\footnote{Is this true?}
+
+States with definite values of $N_p$ are stationary states, and can be specified by the number of particles in each mode $\{n_p\}$. Since the space is a product over $p$ of spaces for each mode, these states can be written as
+\begin{align}
+\ket{\{n_p\}} = \prod_pa_p^\dag\ket{0}.
+\end{align}
+Since operators for different modes commute, we have
+\begin{align}
+\ket{p_1p_2} = a^\dag_{p_1}a^\dag_{p_2}\ket{0} = a^\dag_{p_2} a^\dag_{p_1} \ket{0} = \ket{p_1p_2},
+\end{align}
+which is to say that the states are symmetric.
+
+Fermionic operators obey the anticommutation relations
+\begin{align}
+\{b_p, b_{p'}\} = 0,\quad \{b^\dag_p, b^\dag_{p'}\} = 0,\quad \{b_p, b^\dag_{p'}\} = \delta_{p,p'}.
+\end{align}
+The analysis of the Fock space matches that for bosonic operators, except the states are are antisymmetric because
+\begin{align}
+\ket{p_1p_2} = b^\dag_{p_1}...
+\end{align}
+
+Unlike in the case of bosons, there cannot be an arbitrary number of fermions in a mode, but rather at most one. This can be seen by trying to raise a non-empty state: $b_p^\dag b^\dag_p\ket{0} = 0$. The operators maintain their interpretation as creation and annihilation operators, though.
+
+\subsection{Majorana Fermions} \emph{}
+
+The algebra of Majorana fermions is closely related to that of normal (Dirac) fermions, with the difference being a lack of annihilation operator
+\begin{align}
+\{\psi_p,\psi_{p'}\} = \delta_{p,p'}.
+\end{align}
+This leads to antisymmetric states, like the Dirac Fermion, but allows for no antiparticles.\footnote{I still don't understand this. How do I not understand this?}
+
+\subsection{Supersymmetry} \emph{}
+
+
 
 \section{SYK Model}
 
@@ -324,11 +395,11 @@ while the dimension of the whole space is
 2^N.
 \end{align}
 
-\section{Computation Work}
+\section{Numerical Results}
 
 \subsection{Building Matrices}\emph{}
 
-The simplest way to compute large-N functions on a computer is to use a matrix representation for the group. This can be done by viewing the $\bar \psi$ and $\psi$ operators as raising and lowering operators, respectively. Consider the case of $N$ fermions. Write the state as an $N$-dimensional binary vector
+The simplest way to compute large-N functions on a computer is to use a matrix representation for the group. This can be done by viewing the $\bar \psi$ and $\psi$ operators as raising and lowering operators, respectively. Consider the case of $N$ fermions. Write the state as an $N$-dimensional binary vector \footnote{I want to include this because I spent a lot of time on it. Is that ok?}
 \begin{align}
 \ket{m} = \ket{m_1m_2\dots m_i\dots m_{N-1}m_N}, \quad\sum_nm_n2^{n-1} =
 	m.\label{eqn:2Nstate}
@@ -344,16 +415,20 @@ The matrix representations of $\psi^i, \bar \psi_i$ are then calculated componen
 \bar\psi_i &= \sum_{a,b}\ket{a}\bar\psi_{i,ab}\bra{b}\nn
 \bar\psi_{i,ab} &= \brakett{a}{\bar\psi_i}{b}.\label{eqn:comps}
 \end{align}
-These components may be calculated effectively using
-\begin{lstlisting}[language=python]
-def psi_bar(N,i):
-    psi_bar = np.zeros((2^N,2^N))
-    for (n,m) in psi_bar:
+These components may be calculated effectively using the pseudocode in figure~\ref{code:psibar}.\footnote{Should I explain the code more?}
+
+\begin{figure}
+	\begin{lstlisting}[language=python][gobble=2]
+    def psi_bar(N,i):
+      psi_bar = np.zeros((2^N,2^N))
+      for (n,m) in psi_bar:
         if (m-n == 2^j) and (n & 2^j == 0): 
-            psi[m,n] = (-1)^Fermi(n,j),
+          psi[m,n] = (-1)^Fermi(n,j),
     return psi_bar
-\end{lstlisting}
-where \verb|^| represents exponentiation, \verb|&| represents bitwise and. \verb|Fermi(n,j)|, the reduced Fermi number, is the number of nonzero components in \verb|n| before the \verb|j|'th component. This handles anticommutation requirements. A similar structure can be used for building the $\psi$ matrices.
+		\end{lstlisting}
+	\cprotect\caption{\textbf{Code for generating $\bar \psi$ matrices,} where \verb|^| represents exponentiation, \verb|&| represents bitwise and \verb|Fermi(n,j)|, the reduced Fermi number, is the number of nonzero components in \verb|n| before the \verb|j|'th component. This handles anticommutation requirements. A similar structure can be used for building the $\psi$ matrices.}
+	\label{code:psibar}
+\end{figure}
 
 It is also possible to create the matrices recursively. The base case is $N=1$, for which the matrices are the raising and lowering matrices,
 \begin{align}
@@ -373,9 +448,9 @@ with equation~\ref{eqn:base} again supplying the base case.
 
 Although there are various representations of the group, the previous two constructions lead to the same representation. 
 
-\subsection{Formulating Calculations}
-
 \subsection{Ground States}
+
+Counting ground states was implemented by counting the zero eigenvalues of a randomly-generated Hamiltonian. 
 
 \printbibliography
 

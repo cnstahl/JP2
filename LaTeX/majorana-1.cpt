@@ -1,0 +1,1 @@
+\textbf{Code for generating $\bar \psi$ matrices,} where \verb|^| represents exponentiation, \verb|&| represents bitwise and \verb|Fermi(n,j)|, the reduced Fermi number, is the number of nonzero components in \verb|n| before the \verb|j|'th component. This handles anticommutation requirements. A similar structure can be used for building the $\psi$ matrices.^^E^^L 
