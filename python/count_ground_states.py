@@ -115,8 +115,6 @@ def damiltonian(N, J):
                 Qbar += product(psi_bar[i], psi_bar[j], psi_bar[k])
     return anti_com(Q, Qbar)
 
-check_psis(5)
-
 
 def set_zeros(w):
     tol = 1e-14
