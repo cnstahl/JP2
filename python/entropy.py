@@ -116,23 +116,30 @@ def damiltonian(N, J):
                 Qbar += product(psi_bar[i], psi_bar[j], psi_bar[k])
     return anti_com(Q, Qbar)
 
-check_psis(5)
-
 
 def set_zeros(w):
-    tol = 1e-14
+    tol = 1e-10
     w.real[abs(w.real) < tol] = 0.0
     if np.iscomplexobj(w): w.imag[abs(w.imag) < tol] = 0.0
     if np.all(w.imag == 0): return w.real
     return w
 
-def partial_trace(M, psi):
-    N = len(psi)-M
-    rho = np.zeros((M,M))
-    for i in range(M):
-        for j in range(M):
-            rho[i,j] = sum(psi[i:i+N+1]*psi[j:j+N+1].conjugate())
-    return rho/M
+def single_trace(rho):
+    N = len(rho)
+    assert N%2 == 0, "\psi has to have even length: %s" % N
+    M = int(N/2)
+    r = np.zeros((M,M), dtype='complex')
+    for idx in range(M):
+        for jdx in range(M):
+            r[idx, jdx] = rho[idx, jdx] + rho[idx + N/2, jdx + N/2]
+    return r
+
+def partial_trace(rho, traces=1):
+    N = len(rho)
+    assert N >= 2**traces, "Too many particles to trace over"
+    for i in range(traces):
+        rho = single_trace(rho)
+    return rho
 
 def eigen(H):
     w, v = np.linalg.eigh(H)
@@ -145,12 +152,18 @@ def eigen(H):
 def reconstruct(w,v):
     return np.dot(np.dot(v, np.diag(w)), v.conj().T)
 
-def entropy(M):
+def fentropy(M):
     w, v = np.linalg.eig(M)
-    rho = 0
-    for i in w:
-        if (i != 0): rho += i*np.log(i)
-    return rho
+    S = 0
+    set_zeros(w)
+    assert np.all(np.imag(w) == 0)
+    for i in np.real(w):
+        if (i != 0): S += i*np.log(i)
+    return -S
+
+def density_mat(psi):
+    return np.outer(psi, psi.conj())
+
 
 N = 10
 entropy = np.zeros(N+1)
@@ -170,7 +183,7 @@ for i in range(I):
     rhoi = np.copy(rho)
     for idx, val in enumerate(entropies):
         if idx != 0: rhoi = single_trace(rhoi)
-        entropies[idx] = entropy(rhoi)
+        entropies[idx] = fentropy(rhoi)
     entropy = entropy + entropies
     print(i, "end")
 np.savetxt("../data/N%savg_entropy.txt" % N, np.transpose(entropy/I))

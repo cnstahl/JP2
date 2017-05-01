@@ -1,0 +1,4 @@
+12
+Hamiltonian built
+(4096, ' total states')
+(972, ' ground states')
