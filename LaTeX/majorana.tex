@@ -176,9 +176,11 @@
 
 \section{Supersymmetry in Oscillators}
 
+One starting point for discussing supersymmetry is through the formalism of harmonic oscillators for bosons and fermions. This also allows for the introduction of the commutation and anticommutation relations for bosons and fermions.\footnote{I spent a lot of time debating how to start talking about creation and annihilation. How should I?}
+
 \subsection{Bosonic and Fermionic Oscillators} \emph{}
 
-One starting point for discussing supersymmetry is through the formalism of harmonic oscillators.\footnote{I spent a lot of time debating how to start talking about creation and annihilation. How should I?} First consider a single harmonic oscillator 
+Consider a single harmonic oscillator 
 \begin{align}
 H = p^2 +\om^2 x^2,\quad \comm{x}{p} = \frac{i}{2}. \label{eqn:harmosc}
 \end{align}
@@ -471,7 +473,14 @@ where $\lambda$ are the eigenvalues.
 
 As predicted, the entropy rises and drops linearly as more particles are traces over. Since the entropy does not depend on the coupling, a single computation of the entropy should be sufficient.\footnote{Right?} However, due to small numerical errors, it is helpful to perform multiple calculations and average the entropies. 
 
+To see the symmetric linear dependence of the entropy, see figure~\ref{fig:N11pred_ent}.
 
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{N11pred_ent}
+	\caption{\textbf{Entropy for $N=11$.} The $x$ axis is $M$, the number of particles traced out. The solid line shows the value of entropy calculated from $S=\frac{2}{3}m$, where $m = \min(M,N-M)$ is the number of particles in the smaller subspace. }
+	\label{fig:N11pred_ent}
+\end{figure}
 
 \printbibliography
 
