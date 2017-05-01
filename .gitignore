@@ -8,6 +8,7 @@
 *.bbl
 *.out
 *.xml
+*.toc
 Papers/*
 LaTeX/majorana.pdf
 python/__pycache__/
