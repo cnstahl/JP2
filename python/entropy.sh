@@ -13,4 +13,4 @@
 #SBATCH  --mem=5000
 #SBATCH --time=24:00:00
 
-python entropy.py
+srun python entropy.py
