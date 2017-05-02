@@ -424,7 +424,7 @@ The operators $Q^2$ and $\bar Q^2$ are both 0. That implies that both $Q$ and $\
 \end{align}
 This also means they preserve energy. This last fact suggests a convenient way of counting ground states. \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-\section{$\cal{N}$ = 2 Ground States and Entropy}
+\section{$\cal{N}$ = 2 Ground States and Entropy\protect\footnote{Mention cohomology?}}
 
 The $\cal N = 2$ supersymmetric model has ``UNBROKEN SYMMETRY (or \_\_\_\_\_\_\_\_)", which leads to nonzero entropy in subsystems of ground states, even at 0\footnote{numerals vs words?} temperature. The high number of ground states and long-range correlation are intimately tied to this entropy.
 
@@ -517,7 +517,17 @@ Compare this to the total number of states $2^N$. It is clear that the number of
 
 \subsection{Ground State Entanglement Entropy} \emph{}
 
-The large number of ground states has an interesting effect on the entanglement entropy of a subsystem of a ground state.
+The large number of ground states has an interesting effect on the entanglement entropy of a subsystem of a ground state. Classically, entropy measures uncertainty about an event or state. The nearest quantum mechanical analogue is Von Neumann entropy
+\begin{align}
+S = -\Tr(\rho\log\rho).\label{eqn:vnent}
+\end{align}
+Written in the eigenbasis of $\rho$, this becomes 
+\begin{align}
+S = -\sum_ip_i\log p_i,\quad \rho = \sum_i p_i\ket{i}\bra{i},
+\end{align}
+which mimics the classical form.
+
+The entropy of a pure state is always 0. However, subsystems of a pure state are mixed, and therefore have non-zero entropy. This entropy does not represent uncertainty, for the state of the whole system is know~\cite{janzing09}.
 
 \section{Numerical Results}
 
@@ -541,7 +551,7 @@ The matrix representations of $\psi^i, \bar \psi_i$ are then calculated componen
 \end{align}
 These components may be calculated effectively using the pseudocode in figure~\ref{code:psibar}.\footnote{Should I explain the code more?}
 
-\begin{figure}
+\begin{figure}[ht]
 	\begin{lstlisting}[language=python][gobble=2]
     def psi_bar(N,i):
       psi_bar = np.zeros((2^N,2^N))
