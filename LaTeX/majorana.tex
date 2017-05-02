@@ -505,16 +505,19 @@ W_r = \Tr\left((-1)^FR^\frac{2\pi ir}{\hat q}\right) \equiv Z^{(N)},
 \end{align}
 where $Z^{(M)}$ is the $M$-particle partition function. Since $W$ is independent of the coupling, it can be turned off, in which case the partition function is the product of one particle partition functions $\left(Z^{(1)}\right)^N$ so that 
 \begin{align}
-W = \left(1-\e^{\frac{2\pi ip}{3}}\right)^N
+W = \left(1-\e^{\frac{2\pi ip}{3}}\right)^N = e^{i\pi N\left(\frac{r}{\hat q} - \th{2}\right)}\left(2\sin\frac{\pi r}{\hat q}\right)^N
 \end{align}
-and the dimension of ground states is 
+and the number of ground states is 
 \begin{align}
-\abs{W} = \sqrt{3}^N,
+D_\text{GS} \ge \abs{W} = \left(2\sin\frac{\pi r}{\hat q}\right)^N.
 \end{align}
-while the dimension of the whole space is 
-\begin{align}
-2^N.
-\end{align}
+To provide the tightest bound on $D_\text{GS}$, choose $r = (\hat q+1)/2$, so that $D_\text{GS} \ge \sqrt{3}^N$, where the substitution $\hat q = 3$ has been made.\footnote{Why?}
+
+Compare this to the total number of states $2^N$. It is clear that the number of ground states is extensive, as the number of degrees of freedom, the log of $D_\text{GS}$, scales linearly with $N$.
+
+\subsection{Ground State Entanglement Entropy} \emph{}
+
+The large number of ground states has an interesting effect on the entanglement entropy of a subsystem of a ground state.
 
 \section{Numerical Results}
 
