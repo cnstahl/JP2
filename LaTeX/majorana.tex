@@ -203,11 +203,11 @@ H = \sum_{ijkl}\psi_i\psi_j\psi_k\psi_l
 \end{align}
 in~\cite{kitaev15}. For more discussion of the model see~\cite{mald16}.
 
-The model is built of Majorana fermions, which are fermions which are their own antiparticles~\cite{elliott14}. Solutions to the Dirac equation
+The model is built of Majorana fermions, which are fermions which are their own antiparticles~\cite{elliott14}. Dirac fermions are solutions to the Dirac equation
 \begin{align}
-(\gamma^\mu\partial_\mu - m)\Phi = 0
+(\gamma^\mu\partial_\mu - m)\Phi = 0,
 \end{align}
-are 4-component spinors. Two degrees of freedom are due to the choice of helicity, while the other two differentiate fermions from antifermions. The Majorana basis allows the equation to be separated into two independent coupled systems. Each of these is then a Majorana fermion. 
+which are 4-component spinors. Two degrees of freedom are due to the choice of helicity, while the other two differentiate fermions from antifermions. The Majorana basis allows the equation to be separated into two independent coupled systems. Each of these is then a Majorana fermion. 
 
 Although no Majorana particles are known to exist, the Majorana algebra can describe emergent quasiparticles in solid-state physics. Since the electron is a Dirac fermion, it is equivalently two interacting Majorana fermions. If these can be separated, the resultant quasiparticles are Majorana fermions. One way of doing this is on a one dimensional quantum ``wire." Majorana fermion pairs are separated and paired with fermions from adjacent electrons. See figure~\ref{fig:pairs} for a graphical description. This process is described in detail in~\cite{kitaev00}.
 \begin{figure}[ht]
@@ -265,7 +265,7 @@ Although no Majorana particles are known to exist, the Majorana algebra can desc
 
 
 
-\section{Supersymmetry in Oscillators}
+\section{Supersymmetry and Oscillators}
 
 One starting point for discussing supersymmetry is through the formalism of harmonic oscillators for bosons and fermions. This also allows for the introduction of the commutation and anticommutation relations for bosons and fermions.\footnote{I spent a lot of time debating how to start talking about creation and annihilation. How should I?}
 
@@ -299,7 +299,7 @@ and the Hamiltonian becomes
 \begin{align}
 H = \sum_p\left(\om_pN_p+\th{2}\right),
 \end{align}
-meaning that acting with $a_p^\dag$ adds $\om_p$ to the energy of the state.
+meaning that acting with $a_p^\dag$ adds $\om_p$ to the energy of the state. Since there is no longer a single oscillator, the $a$ and $a^\dag$ operators are bosons. 
 
 The interpretation is that each raising operator $a_p$ adds a photon with energy $\om_p$, for which it is called the creation operator. Likewise, $a_p^\dag$ is called the annihilation operator. Then, $N_p$ counts the number of photons with energy $\om$. Since particle number is not conserved, the state space is now a  Fock Space $\mathfrak{F}$,
 \begin{align}
@@ -331,17 +331,52 @@ Unlike in the case of bosons, there cannot be an arbitrary number of fermions in
 
 \subsection{Majorana Fermions} \emph{}
 
-The algebra of Majorana fermions is closely related to that of normal (Dirac) fermions, with the difference being a lack of annihilation operator
+The algebra of Majorana fermions is closely related to that of normal (Dirac) fermions. Consider a single Dirac fermion with creation and annihilation operators $b^\dag$ and $b$. One can define new operators
 \begin{align}
-\{\psi_p,\psi_{p'}\} = \delta_{p,p'}.
+\psi_1 = \th{\sqrt{2}}(b+b^\dag ),\quad \psi_2 = \frac{i}{\sqrt{2}}(b-b^\dag)
 \end{align}
-This leads to antisymmetric states, like the Dirac Fermion, but allows for no antiparticles.\footnote{I still don't understand this. How do I not understand this?}
+satisfying
+\begin{align}
+\acom{\psi_i}{\psi_j} = \delta_{ij},\quad \psi^\dag=\psi.
+\end{align}
+This leads to antisymmetric states, like the Dirac fermion, but allows for no antiparticles, since the creation and annihilation operators are the same.\footnote{I still don't understand this. How do I not understand this?}
 
-\subsection{Supersymmetry} \emph{}
+\subsection{Supersymmetry} \emph{} \label{sub:susy}
 
+Consider a Hamiltonian with a bosonic and fermionic oscillators
+\begin{align}
+H = \left(p^2+\frac{x^2}{4}\right) + \th{2}\left[\psi, \psi^\dag\right],
+\end{align}
+where the $\psi$ and $\psi^\dag$ are fermionic operators. Defining bosonic operators and number operators
+\begin{align}
+a = \frac{x}{2}+ip,\quad N_b = a^\dag a,\quad N_f = \frac{1-\comm{\psi}{ \psi^\dag}}{2},
+\end{align}
+the Hamiltonian becomes
+\begin{align}
+H = N_b + N_f,
+\end{align}
+where $N_b = 0,1,2,3...$ and $N_f = 0,1$. $N_f$ is also called $F$, the fermion number. States can then be specified as $\ket{n_b,n_f}$. States with even $n_f$ are bosonic, while states with odd $n_f$ are fermionic.
+ 
+By introducing a supercharge 
+\begin{align}
+Q = a\psi^\dag = \psi^\dag a,\quad Q^\dag = a^\dag\psi,
+\end{align}
+the Hamiltonian can be written as 
+\begin{align}
+H = \acom{Q}{Q^\dag}.
+\end{align}
+The affect of $Q$ is to replace one boson with one fermion, and vice versa.\footnote{Use $Q-Q^\dag$ to do this?} Since the Hamiltonian is just the sum of the number operators, the supercharges do not affect the energy, i.e. $\comm{H}{Q} = 0$.
 
+The supercharges also replace fermion operators with boson operators,\footnote{Do they? Commutator?}
+\begin{align}
+Q^\dag\psi^\dag Q = a^\dag a \psi\psi^\dag \psi =\_\_\_\_\_
+\end{align}
 
-\section{SYK Model}
+Since both supercharges involve some annihilation operator, they both must annihilate the vacuum. Therefore the energy of the ground state must be 0. All other energy eigenstates $\ket{\alpha_E}$ exist in pairs of bosonic an fermionic states. For an explanation of this see subsection~\ref{sub:N2}.
+
+The Witten index $W = \Tr(-1)^F$ measures the difference in the number of bosonic and fermionic states. However, since all states except those with $E=0$ are paired, $W$ counts the number of unpaired ground states with $E=0$, and is therefore a lower limit on the number of ground states. If $W\ne0$, the supersymmetry is unbroken.
+
+\section{SYK Model} \label{sec:syk}
 
 All sums of operators are defined such that the operators are in canonical order.
 
@@ -394,7 +429,7 @@ This shows that $E_0$ is positive, with expectation (over the values of $C_{ijk}
 \end{align}
 In the large $N$ limit this becomes $E_0 = NJ/3$.\footnote{This contradicts the Fu paper's assertion that $E_0\to 0$ for large $N$. What am I missing?}
 
-\subsection{$\cal{N}=2$ Supersymmetry, Ground States}\emph{}
+\subsection{$\cal{N}=2$ Supersymmetry, Ground States}\emph{} \label{sub:N2}
 
 In $\cal N=2$ supersymmetry, two supercharges are necessary. To create these, define a new set of fermions that consists of $\psi^i$ and their conjugates $\bar{\psi_i}$. These obey the relations 
 \begin{align}
@@ -422,11 +457,11 @@ The operators $Q^2$ and $\bar Q^2$ are both 0. That implies that both $Q$ and $\
 \begin{align}
 [H,Q] = Q\bar QQ + \bar QQQ - QQ\bar Q + Q\bar QQ = 0.
 \end{align}
-This also means they preserve energy. This last fact suggests a convenient way of counting ground states. \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+This also means they preserve energy. This allows the methods of subsection~\ref{sub:susy} to be used to count ground states.
 
 \section{$\cal{N}$ = 2 Ground States and Entropy\protect\footnote{Mention cohomology?}}
 
-The $\cal N = 2$ supersymmetric model has ``UNBROKEN SYMMETRY (or \_\_\_\_\_\_\_\_)", which leads to nonzero entropy in subsystems of ground states, even at 0\footnote{numerals vs words?} temperature. The high number of ground states and long-range correlation are intimately tied to this entropy.
+The $\cal N = 2$ supersymmetric model has ``UNBROKEN SYMMETRY (or \_\_\_\_\_\_\_\_)", which leads to nonzero entropy in subsystems of ground states, even at zero temperature. The high number of ground states and long-range correlation are intimately tied to this entropy.
 
 \subsection{Counting Ground States} \emph{}
 
@@ -550,6 +585,8 @@ A general ground state in the $\cal N=2$ SYK model can be written as
 
 \section{Numerical Results}
 
+Computations on the $\cal N=2$ model were completed in Python using Numpy~\cite{vander11}.
+
 \subsection{Building Matrices}\emph{}
 
 The simplest way to compute large-N functions on a computer is to use a matrix representation for the group. This can be done by viewing the $\bar \psi$ and $\psi$ operators as raising and lowering operators, respectively. Consider the case of $N$ fermions. Write the state as an $N$-dimensional binary vector \footnote{I want to include this because I spent a lot of time on it. Is that ok?}
@@ -624,14 +661,36 @@ where $\lambda$ are the eigenvalues.
 
 As predicted, the entropy rises and drops linearly as more particles are traces over. Since the entropy does not depend on the coupling, a single computation of the entropy should be sufficient.\footnote{Right?} However, due to small numerical errors, it is helpful to perform multiple calculations and average the entropies. 
 
-To see the symmetric linear dependence of the entropy, see figure~\ref{fig:N11pred_ent}.
+To see the symmetric linear dependence of the entropy on size of subspace, see figure~\ref{fig:N11pred_ent}. The solid line shows the entropy of a thermal state.\footnote{Correct term?} Figure~\ref{fig:allentropy} shows entropy of the reduced density matrices for $N = 1,2,3...11$. When one partition is smaller than the other, the $M\log2$\footnote{$M$ or $m$?} bound is close to tight. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{N11pred_ent}
-	\caption{\textbf{Entropy for $N=11$.} The $x$ axis is $M$, the number of particles traced out. The solid line shows the value of entropy calculated from $S=\frac{2}{3}m$, where $m = \min(M,N-M)$ is the number of particles in the smaller subspace. }
+	\caption{\textbf{Entropy for $N=11$.} The $x$ axis is $M$, the number of particles traced out. The solid line shows the value of entropy calculated from $S=m\log2$, where $m = \min(M,N-M)$ is the number of particles in the smaller subspace. }
 	\label{fig:N11pred_ent}
 \end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{allentropy}
+	\caption{\textbf{Entanglement Entropy.} Each curve shows the entropy for a given $N$ at various $M$. The straight line bounds the entropy as $m\log2$.}
+	\label{fig:allentropy}
+\end{figure}
+
+Close to equipartition, the entropy is smaller. Figure~\ref{fig:maxentropy} shows the maximum entropy as a function of $N$.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{maxentropy}
+	\caption{\textbf{Maximum Entropy.} }
+	\label{fig:maxentropy}
+\end{figure}
+
+\section{Conclusion}
+
+Interesting future work for this project could include running similar calculations for the $\cal N=1$ model and running calculations for higher $N$. The $\cal N=1$ calculations would not be very different to set up, but would have different results because of the difference in the theories, especially due to the broken supersymmetry at small $N$. Calculations for larger $N$ could be made efficient by exploring alternative ways to create the $\psi$ matrices, or writing code in a different language.
+
+Another aspect to explore is the holographic dual of these results.
 
 \printbibliography
 
