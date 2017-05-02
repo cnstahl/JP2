@@ -527,7 +527,26 @@ S = -\sum_ip_i\log p_i,\quad \rho = \sum_i p_i\ket{i}\bra{i},
 \end{align}
 which mimics the classical form.
 
-The entropy of a pure state is always 0. However, subsystems of a pure state are mixed, and therefore have non-zero entropy. This entropy does not represent uncertainty, for the state of the whole system is know~\cite{janzing09}.
+The entropy of a pure state is always 0. However, subsystems of a pure state are mixed, and therefore have non-zero entropy. This entropy does not represent uncertainty, since the state of the whole system is known~\cite{janzing09}. Rather, it represents the \_\_classical information between subsystems\_\_.
+
+Consider state $\ket{\phi}_\cal{A}$ on a system $\cal A$ that can be decomposed into subsystems $A$ an $B$.\footnote{system or space?} The state can in general be written as 
+\begin{align}
+\ket{\phi}_\cal{A} = \sum_jc_j\ket{\phi_j}_A\ket{\phi_j}_B,
+\end{align}
+where the $\ket{\phi_j}$ are orthogonal in each subsystem. Since the reduced density matrices\footnote{Should I introduce reduced density matrices? This i a general question.} are
+\begin{align}
+\rho_A = \sum_jp_j\ket{\phi_j}_A\bra{\phi_j}_A, \quad \rho_B = \sum_jp_j\ket{\phi_j}_B\bra{\phi_j}_B; \quad p_j = |c_j|^2,
+\end{align}
+It is clear that the entropies of entanglement are equal for each subsystem. In fact, they satisfy 
+\begin{align}
+S(\rho) = S(\rho_B) = \cal{H}(p_j),
+\end{align}
+where $\cal H$ is the classical Shannon entropy with $p_j$ interpreted as classical probabilities. 
+
+A general ground state in the $\cal N=2$ SYK model can be written as 
+\begin{align}
+\ket{\phi_0} = \sum_ic_i\ket{i_A}\ket{i_B}\footnote{notation?}
+\end{align}
 
 \section{Numerical Results}
 
