@@ -13,4 +13,4 @@
 #SBATCH  --mem=40
 #SBATCH --time=0:01:00
 
-python test.py
+srun python test.py
