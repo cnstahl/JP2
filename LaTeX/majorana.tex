@@ -12,6 +12,20 @@
 \usepackage{abstract}
 \usepackage{biblatex}
 \bibliography{bib.bib}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,trees} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Taken from Kitaev Unpaired fermions...
+\newenvironment{subfig}[1]%
+{\def\subfigLabel{#1}\begin{tabular}[b]{@{}c@{}}}%
+	{\\[10pt]\subfigLabel\end{tabular}}
+
+\newsavebox{\TempBox}
+\newlength{\TempLength}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
        
 \usepackage{listings}
 \lstset{basicstyle=\ttfamily,breaklines=true}
@@ -64,6 +78,15 @@
 \author{Charles Stahl}
 
 \maketitle
+
+\begin{abstract}
+	This paper explores the ground states of a supersymmetric generalization of the Sachdev-Ye-Kitaev model, with $N$ interacting Majorana Fermions. The model consists of $N$ Majorana fermions interacting through a Hamiltonian that connects fermions in groups of 4. The supersymmetric model defines a supercharge that connects 3 fermions, with the Hamiltonian being the square of the supercharge. The number of ground states is large in this model, leading to extensive entropy. Numerical simulations of the number of ground states and entropy confirm the calculations for small $N$. 
+\end{abstract}
+
+\tableofcontents\footnote{Include or not?}
+\newpage
+
+
 %
 %\section{Introduction} 
 %
@@ -172,6 +195,73 @@
 %\end{align}
 %where $N$ is the number of operators. 
 
+\section{Introduction}
+
+The Sachdev-Ye-Kitaev (SYK) model is a model of random uncorrelated interactions between $N$ fermions. Sachdev and Ye introduced a model in 1993 with pairwise interactions in~\cite{sachdev93}. The holographic connection of this model was discussed by Sachdev in 2010~\cite{sachdev10}. Kitaev generalized the model to interactions between 4 fermions, with Hamiltonian
+\begin{align}
+H = \sum_{ijkl}\psi_i\psi_j\psi_k\psi_l
+\end{align}
+in~\cite{kitaev15}. For more discussion of the model see~\cite{mald16}.
+
+The model is built of Majorana fermions, which are fermions which are their own antiparticles~\cite{elliott14}. Solutions to the Dirac equation
+\begin{align}
+(\gamma^\mu\partial_\mu - m)\Phi = 0
+\end{align}
+are 4-component spinors. Two degrees of freedom are due to the choice of helicity, while the other two differentiate fermions from antifermions. The Majorana basis allows the equation to be separated into two independent coupled systems. Each of these is then a Majorana fermion. 
+
+Although no Majorana particles are known to exist, the Majorana algebra can describe emergent quasiparticles in solid-state physics. Since the electron is a Dirac fermion, it is equivalently two interacting Majorana fermions. If these can be separated, the resultant quasiparticles are Majorana fermions. One way of doing this is on a one dimensional quantum ``wire." Majorana fermion pairs are separated and paired with fermions from adjacent electrons. See figure~\ref{fig:pairs} for a graphical description. This process is described in detail in~\cite{kitaev00}.
+\begin{figure}[ht]
+	
+\sbox{\TempBox}{
+\begin{picture}(0,0)
+\put(0,0){\oval(32,16)}
+\put(-10,0){\circle*{4}}
+\put(10,0){\circle*{4}}
+\end{picture}}
+	
+\newcommand\fsite[2]{%
+\begin{picture}(0,0)
+\put(0,0){\usebox{\TempBox}}
+\put(-16,12){\footnotesize #1}
+\put(10,12){\footnotesize #2}
+\end{picture}}
+	
+\hbox to \textwidth {
+		
+\begin{subfig}{a)}
+\begin{picture}(170,30)(0,-8)
+\put(18,0){\fsite{$c_1$}{$c_2$}}
+	\put(8,0){\thicklines\line(1,0){20}}
+\put(75,0){\fsite{$c_3$}{$c_4$}}
+\put(65,0){\thicklines\line(1,0){20}}
+\put(104,0){\ldots}
+\put(146,0){\fsite{$c_{2L-1}$}{$c_{2L}$}}
+\put(136,0){\thicklines\line(1,0){20}}
+\end{picture}
+\end{subfig}
+		
+\hfill
+		
+\begin{subfig}{b)}
+\begin{picture}(170,50)(0,-8)
+\put(18,0){\fsite{$c_1$}{$c_2$}}
+\put(28,0){\thicklines\line(1,0){37}}
+\put(75,0){\fsite{$c_3$}{$c_4$}}
+\put(85,0){\thicklines\line(1,0){18}}
+\put(104,0){\ldots}
+\put(146,0){\fsite{$c_{2L-1}$}{$c_{2L}$}}
+\put(136,0){\thicklines\line(-1,0){18}}
+\end{picture}
+\end{subfig}		
+}
+	
+\caption{\textbf{Separating Dirac fermions into Majorana fermions.}  The ovals show the physical particles, while the lines show pairings. In a) there are no unpaired Majorana fermions, but in b) both $c_1$ and $c_{2L}$ are unpaired. Image from~\cite{kitaev00}.\protect\footnotemark}
+\label{fig:pairs}
+\end{figure}
+\footnotetext{Is this ok to use?}
+
+
+
 
 
 \section{Supersymmetry in Oscillators}
@@ -182,9 +272,9 @@ One starting point for discussing supersymmetry is through the formalism of harm
 
 Consider a single harmonic oscillator 
 \begin{align}
-H = p^2 +\om^2 x^2,\quad \comm{x}{p} = \frac{i}{2}. \label{eqn:harmosc}
+H = p^2 +\om^2 x^2,\quad \comm{x}{p} = \frac{i}{2} \label{eqn:harmosc}
 \end{align}
-The raising and lowering operators 
+with raising and lowering operators
 \begin{align}
 a = \sqrt{\om}x+\frac{i}{\sqrt{\om}}p,\quad a^\dag = \sqrt{\om}x+\frac{i}{
 	\sqrt{\om}}p,\quad \comm{a}{a^\dag } = 1.
@@ -236,7 +326,7 @@ The analysis of the Fock space matches that for bosonic operators, except the st
 \ket{p_1p_2} = b^\dag_{p_1}...
 \end{align}
 
-Unlike in the case of bosons, there cannot be an arbitrary number of fermions in a mode, but rather at most one. This can be seen by trying to raise a non-empty state: $b_p^\dag b^\dag_p\ket{0} = 0$. The operators maintain their interpretation as creation and annihilation operators, though.
+Unlike in the case of bosons, there cannot be an arbitrary number of fermions in a mode, but rather at most one. This can be seen by trying to raise a non-empty state: $b_p^\dag b^\dag_p\ket{0} = 0$. The operators maintain their interpretation as creation and annihilation operators, though.\footnote{What is the connection between anti-commutation and antiparticles?}
 
 \subsection{Majorana Fermions} \emph{}
 
@@ -358,9 +448,33 @@ $\ket{\xi_E}$ must exist for $\ket{q_E}$ and $\ket{\bar q_e}$ to be distinct.
 The previous analysis divides the space into tuplets of energy eigenstates with at most 4 members. See figure~\ref{fig:tuplets}. All tuplets contain an even number of states, except for some of the ground state tuplets. All even tuplets contain an equal number of fermionic and bosonic states.
 \begin{figure}
 	\centering 
-	\caption{\textbf{Illustration of the possible configuration of energy eigenstate tuplets.} This illustration does not exist yet.}
+	\begin{tikzpicture}[scale=.9, transform shape]
+	\tikzstyle{every node} = [circle]
+	\node (phi)  at (1,0) {$\ket{\phi_E}$};
+	\node (q)    at (0, 2) {$Q\ket{\phi_E}$};
+	\node (qbar) at (2, 2) {$\bar Q\ket{\phi_E}$};
+	\draw [->]   (phi) -- (q);
+	\draw [->]   (phi) -- (qbar);
+	\fill (3.5,.5) circle (1pt);
+	\fill (3.5,1.5) circle (1pt);
+	\node (phi)  at (6,0) {$\ket{\phi_a}$};
+	\node (q)    at (5, 2) {0};
+	\node (qbar) at (7, 2) {0};
+	\draw [->]   (phi) -- (q);
+	\draw [->]   (phi) -- (qbar);
+	\node (,)    at (8.5,.5){,};
+	\node (phi)  at (11,0) {$\ket{\phi_b}$};
+	\node (q)    at (10, 2) {0};
+	\node (qbar) at (12, 2) {$\ket{\bar q_b}$};
+	\node (E)    at (11, 4) {$E\ket{\phi_b}$};
+	\draw [->]   (phi) -- (q);
+	\draw [->]   (phi) -- (qbar);
+	\draw [->]   (qbar)-- (E);
+	\end{tikzpicture}
+	\caption{\textbf{Illustration of the possible configuration of energy eigenstate tuplets.} Representing the effects of $Q$ and $\bar Q$ as arrows up and to the left and right, respectively, we can see that any tuplet with an odd number of states must be a ground state tuplet.\protect\footnotemark}
 	\label{fig:tuplets}
 \end{figure}
+\footnotetext{Is this graphic helpful?}
 
 This provides the opportunity to count ground states using the Fermi number
 \begin{align}
