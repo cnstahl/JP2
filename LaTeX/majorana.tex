@@ -226,12 +226,13 @@ Although no Majorana particles are known to exist, the Majorana algebra can desc
 \put(10,12){\footnotesize #2}
 \end{picture}}
 	
-\hbox to \textwidth {
+\hbox to .8\textwidth {
+\hspace{.1\textwidth}
 		
 \begin{subfig}{a)}
 \begin{picture}(170,30)(0,-8)
 \put(18,0){\fsite{$c_1$}{$c_2$}}
-	\put(8,0){\thicklines\line(1,0){20}}
+\put(8,0){\thicklines\line(1,0){20}}
 \put(75,0){\fsite{$c_3$}{$c_4$}}
 \put(65,0){\thicklines\line(1,0){20}}
 \put(104,0){\ldots}
@@ -240,7 +241,7 @@ Although no Majorana particles are known to exist, the Majorana algebra can desc
 \end{picture}
 \end{subfig}
 		
-\hfill
+\hspace{.1\textwidth}
 		
 \begin{subfig}{b)}
 \begin{picture}(170,50)(0,-8)
@@ -355,10 +356,6 @@ where $J_{ijk\l}$ are drawn from a normal distribution. The operators obey the a
 \{\psi^i,\psi^j\} = \delta^{ij}.
 \end{align}
 
-\subsection{Initial Calculations}
-
-\subsection{Large $N$ Limit}
-
 \subsection{Supersymmetry}\emph{}
 
 The discussion of the supersymmetric models comes from reference~\cite{fu16}. In the supersymmetric generalization, the Hamiltonian is written in terms of the supercharge
@@ -425,9 +422,17 @@ The operators $Q^2$ and $\bar Q^2$ are both 0. That implies that both $Q$ and $\
 \begin{align}
 [H,Q] = Q\bar QQ + \bar QQQ - QQ\bar Q + Q\bar QQ = 0.
 \end{align}
-This also means they preserve energy. This last fact suggests a convenient way of counting ground states.
+This also means they preserve energy. This last fact suggests a convenient way of counting ground states. \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-Consider a stationary state $\ket{\phi_E}$ with energy $E$. Consider also the states $\ket{q_E} = Q\ket{\phi_E}$ and $\ket{\bar q_E}= \bar Q \ket{\phi_E}$. These states will have the same energy eigenvalue $E$, if they exist. If $Q$ and $\bar Q$ annihilate $\ket{\psi_E}$, then $E=0$. If $\bar Q$ annihilates $\ket{\phi_E}$ but $Q$ does not, then 
+\section{$\cal{N}$ = 2 Ground States and Entropy}
+
+The $\cal N = 2$ supersymmetric model has ``UNBROKEN SYMMETRY (or \_\_\_\_\_\_\_\_)", which leads to nonzero entropy in subsystems of ground states, even at 0\footnote{numerals vs words?} temperature. The high number of ground states and long-range correlation are intimately tied to this entropy.
+
+\subsection{Counting Ground States} \emph{}
+
+A convenient way to bound the number of ground states from below is to partition the Hilbert space into energy eigenspaces with states connected by the supercharges, and show that any space with an odd number of states must be made of ground states. Consider a stationary state $\ket{\phi_E}$ with energy $E$. Consider also the states $\ket{q_E} = Q\ket{\phi_E}$ and $\ket{\bar q_E}= \bar Q \ket{\phi_E}$. These states will have the same energy eigenvalue $E$, if they exist. 
+
+The two simple cases are if $\ket{q}$ and or $\ket{\bar q}$ does not exist. If $Q$ and $\bar Q$ annihilate $\ket{\phi_E}$, then $E=0$. If $\bar Q$ annihilates $\ket{\phi_E}$ but $Q$ does not, then 
 \begin{align}
 H\ket{\phi_E} = (Q\bar{Q} + \bar QQ)\ket{\phi_E} = \bar QQ\ket{\phi_E} = E\ket{\phi_E}
 \end{align}
@@ -464,8 +469,8 @@ The previous analysis divides the space into tuplets of energy eigenstates with 
 	\draw [->]   (phi) -- (qbar);
 	\node (,)    at (8.5,.5){,};
 	\node (phi)  at (11,0) {$\ket{\phi_b}$};
-	\node (q)    at (10, 2) {0};
-	\node (qbar) at (12, 2) {$\ket{\bar q_b}$};
+	\node (q)    at (10, 2) {$\ket{q_b}$};
+	\node (qbar) at (12, 2) {0};
 	\node (E)    at (11, 4) {$E\ket{\phi_b}$};
 	\draw [->]   (phi) -- (q);
 	\draw [->]   (phi) -- (qbar);
@@ -480,27 +485,27 @@ This provides the opportunity to count ground states using the Fermi number
 \begin{align}
 F = \sum_i\bar{\psi_i}\psi^i,
 \end{align}
-which is even for bosonic states and odd for fermionic states. The operator 
+which is even for bosonic states and odd for fermionic states. For all such subspaces with non-zero energy, the Witten index 
 \begin{align}
-\Tr\left((-1)^F\right) \label{eqn:N2witten}
+W = \Tr\left((-1)^F\right) \label{eqn:N2witten}
 \end{align}
-has contributions only from the ground states, so the number of ground states will be equal to or greater than $|F|$. Similarly, the Witten index
+evaluates to 0. Then the trace over the whole space has contributions only from the ground states, so the number of ground states will be equal to or greater than $|W|$. Similarly, the \_\_something\_\_\footnote{What is this called? Wikipedia calls it the Witten index. Is this even important?}
 \begin{align}
 W = \Tr\left((-1)^F\e^{\beta H}\right)
 \end{align}
-is independent of temperature because $H$ is zero in the ground states. The Witten index is also independent of coupling, so it can be computed with $J=0$. Then the Witten index is just equation~\ref{eqn:N2witten}.
+is independent of temperature because $H$ is zero in the ground states. 
 
-Define the unitary operator 
+The Witten index is also independent of coupling, so it can be computed with $J=0$. Define the unitary operator 
 \begin{align}
-R^p = \e^{\frac{2\pi ipF}{3}},\quad R^3 = \mathbb{1}.
+R^p = \e^{\frac{2\pi irF}{\hat q}},\quad R^3 = \mathbb{1}.
 \end{align}
-$R$ commutes with $Q$ so that
+$R$ commutes with $Q$ so that $\Tr\left((-1)^FR^p\right)$ also only has contributions from the ground state. \_\_SOMEHOW\_\_,
 \begin{align}
-\Tr\left((-1)^FR^p\right)
+W_r = \Tr\left((-1)^FR^\frac{2\pi ir}{\hat q}\right) \equiv Z^{(N)},
 \end{align}
-also only has contributions from the ground state. Eventually,\footnote{How?} it can be shown that
+where $Z^{(M)}$ is the $M$-particle partition function. Since $W$ is independent of the coupling, it can be turned off, in which case the partition function is the product of one particle partition functions $\left(Z^{(1)}\right)^N$ so that 
 \begin{align}
-W = \left(1-\e^{\frac{2\pi ip}{3}}\right)^N = \e^{\frac{iN\pi}{den}}
+W = \left(1-\e^{\frac{2\pi ip}{3}}\right)^N
 \end{align}
 and the dimension of ground states is 
 \begin{align}
