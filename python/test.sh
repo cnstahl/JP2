@@ -10,7 +10,7 @@
 #SBATCH --output=res.txt
 #SBATCH --ntasks-per-node=1
 #SBATCH --nodes=1 
-#SBATCH  --mem=5000
-#SBATCH --time=24:00:00
+#SBATCH  --mem=40
+#SBATCH --time=0:01:00
 
-python entropy.py
+python test.py

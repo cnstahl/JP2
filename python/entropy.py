@@ -165,9 +165,9 @@ def density_mat(psi):
     return np.outer(psi, psi.conj())
 
 
-N = 10
+N = 12
 entropy = np.zeros(N+1)
-I = 10
+I = 1
 for i in range(I):
     print(i, "start")
     H = hamiltonian(N,1)
