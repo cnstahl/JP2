@@ -1,5 +1,5 @@
 #! /bin/bash
-
+   
 # mail alert at start, end and abortion of execution
 #SBATCH --mail-type=ALL
 
