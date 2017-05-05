@@ -2,19 +2,26 @@
 
 \usepackage[hyperfootnotes=false]{hyperref}
 \usepackage[margin=1in]{geometry}                                              
-\usepackage{amsmath,amsthm,amssymb}                                            
-\usepackage{graphicx}                                                          
-\graphicspath{{../data/}}
+\usepackage{amsmath,amsthm,amssymb} 
 \usepackage{titlesec}                                                   
 \usepackage{bm}
 \usepackage{cprotect}
+\usepackage{savetrees}
 \usepackage{ bbold }
 \usepackage{abstract}
+                                           
+\usepackage{graphicx}                                                          
+\graphicspath{{../data/}}
+
 \usepackage{biblatex}
 \bibliography{bib.bib}
-\usepackage{tikz}
-\usetikzlibrary{arrows,shapes,trees} 
 
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,trees,backgrounds} 
+\definecolor{mygray}{gray}{0.6}
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,breaklines=true}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Taken from Kitaev Unpaired fermions...
@@ -27,8 +34,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
        
-\usepackage{listings}
-\lstset{basicstyle=\ttfamily,breaklines=true}
 
 \titleformat{\subsection}[runin]
 {\normalfont\large\bfseries}{\thesubsection}{1em}{}
@@ -74,7 +79,7 @@
 
 \begin{document}
 
-\title{\textbf{Ground States and Entropy of the Supersymmetric SYK Model}}
+\title{\textbf{Ground States and Entropy of the Supersymmetric SYK Model\footnote{$\cal N$=2?}}}
 \author{Charles Stahl}
 
 \maketitle
@@ -83,7 +88,7 @@
 	This paper explores the ground states of a supersymmetric generalization of the Sachdev-Ye-Kitaev model, with $N$ interacting Majorana Fermions. The model consists of $N$ Majorana fermions interacting through a Hamiltonian that connects fermions in groups of 4. The supersymmetric model defines a supercharge that connects 3 fermions, with the Hamiltonian being the square of the supercharge. The number of ground states is large in this model, leading to extensive entropy. Numerical simulations of the number of ground states and entropy confirm the calculations for small $N$. 
 \end{abstract}
 
-\tableofcontents\footnote{Include or not?}
+\tableofcontents
 \newpage
 
 
@@ -197,11 +202,13 @@
 
 \section{Introduction}
 
-The Sachdev-Ye-Kitaev (SYK) model is a model of random uncorrelated interactions between $N$ fermions. Sachdev and Ye introduced a model in 1993 with pairwise interactions in~\cite{sachdev93}. The holographic connection of this model was discussed by Sachdev in 2010~\cite{sachdev10}. Kitaev generalized the model to interactions between 4 fermions, with Hamiltonian
+The Sachdev-Ye-Kitaev (SYK) model is a model of random uncorrelated interactions between $N$ fermions. Sachdev and Ye introduced a model in 1993 with pairwise interactions in~\cite{sachdev93}. In~\cite{kitaev15} Kitaev generalized the model to interactions between 4 fermions, with Hamiltonian
 \begin{align}
-H = \sum_{ijkl}\psi_i\psi_j\psi_k\psi_l
-\end{align}
-in~\cite{kitaev15}. For more discussion of the model see~\cite{mald16}.
+H = \sum_{ijkl}J_{ijkl}\psi_i\psi_j\psi_k\psi_l.
+\end{align} 
+In general, the models can have terms in the Hamiltonian connecting $\hat{q}$ fermions. 
+
+The holographic connection of this model was discussed by Sachdev in 2010~\cite{sachdev10}. The infinite range any-to-any interactions lead to non-zero entropy even at $T=0$. This has been confirmed for large $N$ numerically~\cite{Georges2001}. The extensive entropy is associated with the horizon of an extremal black hole. More generally the properties of the model correspond to properties of  Reissner-Nordstr\"om black holes. For more background on the model see~\cite{mald16}.
 
 The model is built of Majorana fermions, which are fermions which are their own antiparticles~\cite{elliott14}. Dirac fermions are solutions to the Dirac equation
 \begin{align}
@@ -256,12 +263,11 @@ Although no Majorana particles are known to exist, the Majorana algebra can desc
 \end{subfig}		
 }
 	
-\caption{\textbf{Separating Dirac fermions into Majorana fermions.}  The ovals show the physical particles, while the lines show pairings. In a) there are no unpaired Majorana fermions, but in b) both $c_1$ and $c_{2L}$ are unpaired. Image from~\cite{kitaev00}.\protect\footnotemark}
+\caption{\textbf{Separating Dirac fermions into Majorana fermions.}  The ovals show the physical particles, while the lines show pairings. In a) there are no unpaired Majorana fermions, but in b) both $c_1$ and $c_{2L}$ are unpaired. Image from~\cite{kitaev00}.}
 \label{fig:pairs}
 \end{figure}
-\footnotetext{Is this ok to use?}
 
-
+This paper analyses a supersymmetric generalization of the SYK model introduced in~\cite{fu16}, confirming predictions of the degeneracy of the ground state and the existence of entropy at $T=0$. Specifically it finds for a lower bound $D_{GS}\ge N\log\sqrt{3}$ on the number of ground states and entropy that also scales with $N$.\footnote{Should I have a longer intro?}
 
 
 
@@ -301,16 +307,16 @@ H = \sum_p\left(\om_pN_p+\th{2}\right),
 \end{align}
 meaning that acting with $a_p^\dag$ adds $\om_p$ to the energy of the state. Since there is no longer a single oscillator, the $a$ and $a^\dag$ operators are bosons. 
 
-The interpretation is that each raising operator $a_p$ adds a photon with energy $\om_p$, for which it is called the creation operator. Likewise, $a_p^\dag$ is called the annihilation operator. Then, $N_p$ counts the number of photons with energy $\om$. Since particle number is not conserved, the state space is now a  Fock Space $\mathfrak{F}$,
+The interpretation is that each raising operator $a_p$ adds a photon with energy $\om_p$, for which it is called the creation operator. Likewise, $a_p^\dag$ is called the annihilation operator. Then, $N_p$ counts the number of photons with energy $\om$. Since particle number is not conserved, the state space for each mode is now a  Fock Space $\mathfrak{F}$,
 \begin{align}
 \mathfrak{F} = \mathfrak{H}_0 \oplus \mathfrak{H}_1 \oplus \mathfrak{H}_2 
 \oplus \cdots
 \end{align}
-where $\mathfrak{H}_N$ is the subspace with $N$ particles. Actually, it a product of Fock spaces, one for each value of $p$.\footnote{Is this true?}
+where $\mathfrak{H}_N$ is the subspace with $N$ particles. The full space is a product of Fock spaces, one for each value of $p$.
 
 States with definite values of $N_p$ are stationary states, and can be specified by the number of particles in each mode $\{n_p\}$. Since the space is a product over $p$ of spaces for each mode, these states can be written as
 \begin{align}
-\ket{\{n_p\}} = \prod_pa_p^\dag\ket{0}.
+\ket{\{n_p\}} = \prod_p\ket{n_p} = \prod_p\frac{(a_p^\dag)^{n_p}}{n_p!}\ket{0}.
 \end{align}
 Since operators for different modes commute, we have
 \begin{align}
@@ -378,7 +384,7 @@ The Witten index $W = \Tr(-1)^F$ measures the difference in the number of bosoni
 
 \section{SYK Model} \label{sec:syk}
 
-All sums of operators are defined such that the operators are in canonical order.
+All sums of operators are defined such that the operators are in canonical order. The analysis of the supersymmetric models follows~\cite{fu16}.
 
 \subsection{Definition} \emph{}
 
@@ -390,18 +396,39 @@ where $J_{ijk\l}$ are drawn from a normal distribution. The operators obey the a
 \begin{align}
 \{\psi^i,\psi^j\} = \delta^{ij}.
 \end{align}
+This amounts to coupling between all $N$ fermions, in groups of 4. Figure~\ref{fig:model} illustrates these connections.
+
+\begin{figure}
+	\centering 
+	\begin{tikzpicture}[scale=1, transform shape]
+	  \tikzstyle{every node} = [circle, draw, fill=white]
+	  \node (1) at (0.2, 0.0) {$\psi^1$};
+	  \node (2) at (2.0, -0.2) {$\psi^2$};
+	  \node (5) at (4.8, 0.1) {$\psi^3$};
+	  \node (4) at (0.0, 1.5) {$\psi^4$};
+	  \node (3) at (2.2, 1.8) {$\psi^5$};
+	  \node (6) at (3.5, 0.7) {$\psi^6$};
+	  \node (7) at (4.8, 1.5) {$\psi^7$};
+	  \begin{scope}[on background layer]
+	  \foreach \from in {1,...,7}
+	    \foreach \to in {\from,...,7}
+	    \draw [dashed]  (\from) -- (\to);
+	  \foreach \from in {1,...,4}
+	    \foreach \to in {\from,...,4}
+	    \draw [line width=1pt]  (\from) -- (\to);
+	  \end{scope}
+	\end{tikzpicture}
+	\caption{\textbf{Illustration of the model.} Each node represents a fermion while each edge represents a connection through the Hamiltonian. Although edges imply pair-wise connections, each term in the Hamiltonian connects four at a time. For example, the $J_{1245}$ term is represented by the solid lines.}
+	\label{fig:model}
+\end{figure}
 
 \subsection{Supersymmetry}\emph{}
 
-The discussion of the supersymmetric models comes from reference~\cite{fu16}. In the supersymmetric generalization, the Hamiltonian is written in terms of the supercharge
+The discussion of the supersymmetric models comes from reference~\cite{fu16}. In the $\cal N=1$ supersymmetric generalization, the Hamiltonian is written in terms of the single supercharge
 \begin{align}
 Q = i\sum_{i<j<k}C_{ijk}\psi^i\psi^j\psi^k,
 \end{align}
-where $C_{ijk}$ are now drawn from a Gaussian with mean 0 and variance $2J/N^2$. Because the $\psi$ operators are antisymmetric, the other components of $C$ may be chosen so that $C$ is also antisymmetric. In this case 
-\begin{align}
-Q = \frac{i}{6}\sum_{ijk}C_{ijk}\psi^i\psi^j\psi^k,
-\end{align}
-with the indices no longer necessarily ordered.
+where $C_{ijk}$ are now drawn from a Gaussian with mean 0 and variance $2J/N^2$. This is a $\hat{q} = 3$ model, where $\hat{q}$ is now the number of particles in each term of the supercharge.
 
 The Hamiltonian is defined as
 \begin{align}
@@ -410,19 +437,27 @@ H &= Q^2 = - \sum_{i<j<k}C_{ijk}\psi^i\psi^j\psi^k\sum_{\l<m<n}C_{\l mn}\psi^\l
 \end{align}
 For those terms where $(i,j,k) = (\l,m,n)$, the sum becomes
 \begin{align}
-\sum_{i<j<k}C_{ijk}^2\psi^i\psi^j\psi^k\psi^i\psi^j\psi^k = \th{8} \sum_{i<j<k}
-	C_{ijk}^2 
+-\sum_{i<j<k} C_{ijk}^2 \psi^i\psi^j\psi^k \psi^i\psi^j\psi^k = \th{8} 
+	\sum_{i<j<k}C_{ijk}^2.
 \end{align}
-Eventually\footnote{I'm not able to derive this. What am I missing?} the Hamiltonian becomes
+For any term of the form $\psi^i\psi^j\psi^k\psi^i\psi^j\psi^\l = -\th{4}\psi^k\psi^\l$, there is one of the form $-\th{4}\psi^\l\psi^k=\th{4}\psi^l\psi^\l$ which cancels it. Therefore there are no quadratic terms in the Hamiltonian. Terms of the form $\psi^i\psi^j\psi^m\psi^k\psi^\l\psi^m = \th{2}\psi^i\psi^j\psi^k\psi^\l$ also match with their complements to form $\psi^k\psi^\l\psi^i\psi^j$, which in this case has the same sign as the former, leading to quartic terms
 \begin{align}
-H = E_0 + \sum_{i<j<k<\l}J_{ijk\l}\psi^i\psi^j\psi^kk\psi^\l, \label{eqn:N1def}
+-C_{ijm}C_{k\l m}\psi^i\psi^j\psi^k\psi^\l = -\th{8}C_{i[jm}C_{k\l]m} \psi^i \psi^j \psi^k\psi^\l,
+\end{align}
+with equality due to the antisymmetry of $C$ and the $\psi^i$. Lastly, any term with no matching $\psi$ also cancels with its complement, as in the quadratic case.
+
+The Hamiltonian becomes
+\begin{align}
+H = E_0 + \sum_{i<j<k<\l}J_{ijk\l}\psi^i\psi^j\psi^k\psi^\l, \label{eqn:N1def}
 \end{align}
 where
 \begin{align}
 E_0 = \sum_{i<j<k} C_{ijk}^2\;,\qquad J_{ijk\l} = -\th{8}\sum_{a} C_{a[ij}
-	C_{kl]a}.
+	C_{kl\l a}.
 \end{align}
-This shows that $E_0$ is positive, with expectation (over the values of $C_{ijk}$)
+The $J_{ijk\l}$ terms connect the $N$ fermions, 4 at a time. Figure~\ref{fig:model} can also be used to represent this model.
+
+This shows that $E_0$ is positive, with expectation (over the values of $C_{ijk}$)\footnote{There's still something not quite right here.}
 \begin{align}
 \ex{E_0} &= \sum_{i<j<k}\ex{C^2_{ijk}}\nn
 &= \th{6}N(N-1)(N-2)\frac{2J}{N^2}.
@@ -436,7 +471,7 @@ In $\cal N=2$ supersymmetry, two supercharges are necessary. To create these, de
 \{\psi^i,\psi^j\} = 0, \quad \{\bar{\psi_i},\bar{\psi_j}\} = 0, \quad
 	\{\psi^i,\bar{\psi_j}\} = \delta_j^i. \label{eqn:N2_ant}
 \end{align}
-The supercharges are 
+The supercharges, with $\hat{q}$ still the number of fermions per term, are
 \begin{align}
 Q &= i\sum_{i<j<k}C_{ijk}\psi^i\psi^j\psi^k,\quad
 \bar{Q} = i\sum_{i<j<k}\bar C^{ijk}\bar{\psi_i}\bar{\psi_j}\bar{\psi_k},
@@ -457,9 +492,9 @@ The operators $Q^2$ and $\bar Q^2$ are both 0. That implies that both $Q$ and $\
 \begin{align}
 [H,Q] = Q\bar QQ + \bar QQQ - QQ\bar Q + Q\bar QQ = 0.
 \end{align}
-This also means they preserve energy. This allows the methods of subsection~\ref{sub:susy} to be used to count ground states.
+This also means they generate a symmetry of the Hamiltonian. This allows the methods of subsection~\ref{sub:susy} to be used to count ground states.
 
-\section{$\cal{N}$ = 2 Ground States and Entropy\protect\footnote{Mention cohomology?}}
+\section{$\cal{N}$ = 2 Ground States and Entropy}
 
 The $\cal N = 2$ supersymmetric model has ``UNBROKEN SYMMETRY (or \_\_\_\_\_\_\_\_)", which leads to nonzero entropy in subsystems of ground states, even at zero temperature. The high number of ground states and long-range correlation are intimately tied to this entropy.
 
@@ -467,7 +502,7 @@ The $\cal N = 2$ supersymmetric model has ``UNBROKEN SYMMETRY (or \_\_\_\_\_\_\_
 
 A convenient way to bound the number of ground states from below is to partition the Hilbert space into energy eigenspaces with states connected by the supercharges, and show that any space with an odd number of states must be made of ground states. Consider a stationary state $\ket{\phi_E}$ with energy $E$. Consider also the states $\ket{q_E} = Q\ket{\phi_E}$ and $\ket{\bar q_E}= \bar Q \ket{\phi_E}$. These states will have the same energy eigenvalue $E$, if they exist. 
 
-The two simple cases are if $\ket{q}$ and or $\ket{\bar q}$ does not exist. If $Q$ and $\bar Q$ annihilate $\ket{\phi_E}$, then $E=0$. If $\bar Q$ annihilates $\ket{\phi_E}$ but $Q$ does not, then 
+The two simple cases are if $\ket{q}$ and/or $\ket{\bar q}$ does not exist. If $Q$ and $\bar Q$ both annihilate $\ket{\phi_E}$, then $E=0$. If $\bar Q$ annihilates $\ket{\phi_E}$ but $Q$ does not, then 
 \begin{align}
 H\ket{\phi_E} = (Q\bar{Q} + \bar QQ)\ket{\phi_E} = \bar QQ\ket{\phi_E} = E\ket{\phi_E}
 \end{align}
@@ -485,7 +520,7 @@ meaning
 \end{align}
 $\ket{\xi_E}$ must exist for $\ket{q_E}$ and $\ket{\bar q_e}$ to be distinct.
 
-The previous analysis divides the space into tuplets of energy eigenstates with at most 4 members. See figure~\ref{fig:tuplets}. All tuplets contain an even number of states, except for some of the ground state tuplets. All even tuplets contain an equal number of fermionic and bosonic states.
+The previous analysis divides the space into tuplets of energy eigenstates with at most 4 members. See figure~\ref{fig:tuplets}. All tuplets contain an even number of states, except for some of the ground state tuplets. All even tuplets contain an equal number of fermionic and bosonic states. This shows that the supersymmetry is unbroken, as described in subsection~\ref{sub:susy}.
 \begin{figure}
 	\centering 
 	\begin{tikzpicture}[scale=.9, transform shape]
@@ -509,7 +544,7 @@ The previous analysis divides the space into tuplets of energy eigenstates with 
 	\node (E)    at (11, 4) {$E\ket{\phi_b}$};
 	\draw [->]   (phi) -- (q);
 	\draw [->]   (phi) -- (qbar);
-	\draw [->]   (qbar)-- (E);
+	\draw [->]   (q)-- (E);
 	\end{tikzpicture}
 	\caption{\textbf{Illustration of the possible configuration of energy eigenstate tuplets.} Representing the effects of $Q$ and $\bar Q$ as arrows up and to the left and right, respectively, we can see that any tuplet with an odd number of states must be a ground state tuplet.\protect\footnotemark}
 	\label{fig:tuplets}
@@ -538,15 +573,15 @@ $R$ commutes with $Q$ so that $\Tr\left((-1)^FR^p\right)$ also only has contribu
 \begin{align}
 W_r = \Tr\left((-1)^FR^\frac{2\pi ir}{\hat q}\right) \equiv Z^{(N)},
 \end{align}
-where $Z^{(M)}$ is the $M$-particle partition function. Since $W$ is independent of the coupling, it can be turned off, in which case the partition function is the product of one particle partition functions $\left(Z^{(1)}\right)^N$ so that 
+where $Z^{(M)}$ is the $M$-particle partition function. Since $W$ is independent of the coupling, the Hamiltonian can be turned off, in which case the partition function is the product of one particle partition functions $\left(Z^{(1)}\right)^N$ so that 
 \begin{align}
 W = \left(1-\e^{\frac{2\pi ip}{3}}\right)^N = e^{i\pi N\left(\frac{r}{\hat q} - \th{2}\right)}\left(2\sin\frac{\pi r}{\hat q}\right)^N
 \end{align}
 and the number of ground states is 
 \begin{align}
-D_\text{GS} \ge \abs{W} = \left(2\sin\frac{\pi r}{\hat q}\right)^N.
+D_\text{GS} \ge \abs{W} = \left(2\sin\frac{\pi r}{\hat q}\right)^N. \label{eqn:dgs}
 \end{align}
-To provide the tightest bound on $D_\text{GS}$, choose $r = (\hat q+1)/2$, so that $D_\text{GS} \ge \sqrt{3}^N$, where the substitution $\hat q = 3$ has been made.\footnote{Why?}
+To provide the highest bound on $D_\text{GS}$, choose $r = (\hat q+1)/2$, so that $D_\text{GS} \ge \sqrt{3}^N$, where the substitution $\hat q = 3$ has been made.\footnote{Why?}
 
 Compare this to the total number of states $2^N$. It is clear that the number of ground states is extensive, as the number of degrees of freedom, the log of $D_\text{GS}$, scales linearly with $N$.
 
@@ -563,6 +598,31 @@ S = -\sum_ip_i\log p_i,\quad \rho = \sum_i p_i\ket{i}\bra{i},
 which mimics the classical form.
 
 The entropy of a pure state is always 0. However, subsystems of a pure state are mixed, and therefore have non-zero entropy. This entropy does not represent uncertainty, since the state of the whole system is known~\cite{janzing09}. Rather, it represents the \_\_classical information between subsystems\_\_.
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+	  \tikzstyle{every node} = [circle, draw=black!20, fill=white]
+	  \node (7) at (0.2, 0.0) {\textcolor{mygray}{$\psi^1$}};
+	  \node (5)[draw=black] at (2.0, -0.2) {{$\psi^2$}};
+  	  \node (1)[draw=black] at (4.8, 0.1) {$\psi^3$};
+  	  \node (6) at (0.0, 1.5) {\textcolor{mygray}{$\psi^4$}};
+	  \node (4)[draw=black] at (2.2, 1.8) {{$\psi^5$}};
+	  \node (2)[draw=black] at (3.5, 0.7) {$\psi^6$};
+	  \node (3)[draw=black] at (4.8, 1.5) {$\psi^7$};
+	  \begin{scope}[on background layer]
+	  \foreach \from in {1,...,7}
+	    \foreach \to in {\from,...,7}
+	    \draw [dashed, color=black!20]  (\from) -- (\to);
+	  \foreach \from in {1,...,5}
+	    \foreach \to in {\from,...,5}
+	    \draw [line width=1pt]  (\from) -- (\to);
+	  \end{scope}
+	  \draw (1.4, -.8) rectangle (5.4, 2.4);
+	\end{tikzpicture}
+	\caption{\textbf{Subsystem}}
+	\label{fig:subsys}
+\end{figure}
 
 Consider state $\ket{\phi}_\cal{A}$ on a system $\cal A$ that can be decomposed into subsystems $A$ an $B$.\footnote{system or space?} The state can in general be written as 
 \begin{align}
@@ -605,7 +665,7 @@ The matrix representations of $\psi^i, \bar \psi_i$ are then calculated componen
 \bar\psi_i &= \sum_{a,b}\ket{a}\bar\psi_{i,ab}\bra{b}\nn
 \bar\psi_{i,ab} &= \brakett{a}{\bar\psi_i}{b}.\label{eqn:comps}
 \end{align}
-These components may be calculated effectively using the pseudocode in figure~\ref{code:psibar}.\footnote{Should I explain the code more?}
+These components may be calculated effectively using the pseudocode in figure~\ref{code:psibar}.
 
 \begin{figure}[ht]
 	\begin{lstlisting}[language=python][gobble=2]
@@ -615,15 +675,15 @@ These components may be calculated effectively using the pseudocode in figure~\r
         if (m-n == 2^j) and (n & 2^j == 0): 
           psi[m,n] = (-1)^Fermi(n,j),
     return psi_bar
-		\end{lstlisting}
+	\end{lstlisting}
 	\cprotect\caption{\textbf{Code for generating $\bar \psi$ matrices,} where \verb|^| represents exponentiation, \verb|&| represents bitwise and \verb|Fermi(n,j)|, the reduced Fermi number, is the number of nonzero components in \verb|n| before the \verb|j|'th component. This handles anticommutation requirements. A similar structure can be used for building the $\psi$ matrices.}
 	\label{code:psibar}
 \end{figure}
 
 It is also possible to create the matrices recursively. The base case is $N=1$, for which the matrices are the raising and lowering matrices,
 \begin{align}
-\bar\psi_{0,(1)} = \begin{bmatrix} 0&0\\1&0 \end{bmatrix}, \qquad
-    \psi^0_{(1)} = \begin{bmatrix} 0&1\\0&0 \end{bmatrix}. \label{eqn:base}
+\bar\psi_{1,(1)} = \begin{bmatrix} 0&0\\1&0 \end{bmatrix}, \qquad
+    \psi^1_{(1)} = \begin{bmatrix} 0&1\\0&0 \end{bmatrix}. \label{eqn:base}
 \end{align}
 Then, to increase the dimension take the tensor product with the $2\times 2$ identity matrix $I$,
 \begin{align}
@@ -632,7 +692,7 @@ Then, to increase the dimension take the tensor product with the $2\times 2$ ide
 \end{align}
 This formula of course does not work when $i=N$. In this case the solution is still to use recursion, with the formula
 \begin{align}
-\bar\psi_{i,(N)} = \bar\psi_{i,(N-1)}\otimes\sigma_3,
+\bar\psi_{i,(N)} = \bar\psi_{i-1,(N-1)}\otimes\sigma_3,
 \end{align}
 with equation~\ref{eqn:base} again supplying the base case.
 
@@ -640,7 +700,7 @@ Although there are various representations of the group, the previous two constr
 
 \subsection{Ground States} \emph{}
 
-Counting ground states was implemented by counting the zero eigenvalues of a randomly-generated Hamiltonian. The number of ground states stayed above the bound, although the bound was not tight in some places. See figure~\ref{fig:gserr} for the ground states above the bound.\footnote{Would this graph be better as actual/predicted?}
+Counting ground states was implemented by counting the zero eigenvalues of a randomly-generated Hamiltonian. The number of ground states stayed above the bound in equation~\ref{eqn:dgs}, although the bound was not tight in some places. See figure~\ref{fig:gserr} for the number of ground states above the bound.
 
 \begin{figure}
 	\centering
@@ -649,11 +709,11 @@ Counting ground states was implemented by counting the zero eigenvalues of a ran
 	\label{fig:gserr}
 \end{figure}
 
-It is particularly interesting to note that the number of ground states is particularly high for even $N$. Even with randomly generated Hamiltonians, the relative number of ground states above the bound stays relatively constant near 0.33. 
+It is particularly interesting to note that the number of ground states is particularly high for even $N$. Even with randomly generated Hamiltonians, the relative number of ground states above the bound stays relatively constant near 0.33 in this case.
 
 \subsection{Ground State Entanglement Entropy}
 
-Once the number of ground states were calculated for a single Hamiltonian, the entropy of a subsystem\footnote{Terminology?} of the ground state could be calculated from the reduced density matrix of the subsystem. Starting with a ground state $\ket{\phi}$, the density matrix $\rho = \ket{\phi}\bra{\phi}$ can be calculated. The entropy $S = \Tr\rho\log\rho$ can be calculated as 
+Once the number of ground states were calculated for a single Hamiltonian, the entropy of a subsystem of the ground state could be calculated from the reduced density matrix of the subsystem. Starting with a ground state $\ket{\phi}$, the density matrix $\rho = \ket{\phi}\bra{\phi}$ can be calculated. The entropy $S = \Tr\rho\log\rho$ can be calculated as 
 \begin{align}
 S = \sum \lambda\log\lambda,
 \end{align}
