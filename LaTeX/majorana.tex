@@ -294,46 +294,48 @@ After introducing a ground state $\ket{0}$ such that $a\ket{0} = 0$, the number 
 
 The Hamiltonian for electromagnetism can be written as
 \begin{align}
-H = \sum_p \left(P_p^2 + \om_p^2x_p^2\right)
+H = \sum_k \left(P_k^2 + \om_k^2x_k^2\right)
 \end{align}
-with the proper choice of $x$ and $P$. Given a collection of modes $p$ with frequencies $\om_p$ and creation and annihilation operators $a_p^\dag$ and $a_p$, the commutation relations become 
+with the proper choice of $x$ and $P$. Given a collection of modes $k$ with frequencies $\om_k$ and creation and annihilation operators $a_k^\dag$ and $a_k$, the commutation relations become 
 \begin{align}
-[a_p, a_{p'}] = 0,\quad [a^\dag_p, a^\dag_{p'}]=0, \quad[a_p,a^\dag_{p'}] = 
-	\delta_{p,p'},
+[a_k, a_{k'}] = 0,\quad [a^\dag_k, a^\dag_{k'}]=0, \quad[a_k,a^\dag_{k'}] = 
+	\delta_{k,k'},
 \end{align}
 and the Hamiltonian becomes
 \begin{align}
-H = \sum_p\left(\om_pN_p+\th{2}\right),
+H = \sum_k\left(\om_kN_k+\th{2}\right),
 \end{align}
-meaning that acting with $a_p^\dag$ adds $\om_p$ to the energy of the state. Since there is no longer a single oscillator, the $a$ and $a^\dag$ operators are bosons. 
+meaning that acting with $a_k^\dag$ adds $\om_k$ to the energy of the state. Since there is no longer a single oscillator, the $a$ and $a^\dag$ operators are bosons. 
 
-The interpretation is that each raising operator $a_p$ adds a photon with energy $\om_p$, for which it is called the creation operator. Likewise, $a_p^\dag$ is called the annihilation operator. Then, $N_p$ counts the number of photons with energy $\om$. Since particle number is not conserved, the state space for each mode is now a  Fock Space $\mathfrak{F}$,
+The interpretation is that each raising operator $a_k$ adds a photon with energy $\om_k$, for which it is called the creation operator. Likewise, $a_k^\dag$ is called the annihilation operator. Then, $N_k$ counts the number of photons with energy $\om$. Since particle number is not conserved, the state space for each mode is now a  Fock Space $\mathfrak{F}$,
 \begin{align}
 \mathfrak{F} = \mathfrak{H}_0 \oplus \mathfrak{H}_1 \oplus \mathfrak{H}_2 
 \oplus \cdots
 \end{align}
-where $\mathfrak{H}_N$ is the subspace with $N$ particles. The full space is a product of Fock spaces, one for each value of $p$.
+where $\mathfrak{H}_N$ is the subspace with $N$ particles. The full space is a product of Fock spaces, one for each value of $k$.
 
-States with definite values of $N_p$ are stationary states, and can be specified by the number of particles in each mode $\{n_p\}$. Since the space is a product over $p$ of spaces for each mode, these states can be written as
+States with definite values of $N_k$ are stationary states, and can be specified by the number of particles in each mode $\{n_k\}$. Since the space is a product over $k$ of spaces for each mode, these states can be written as
 \begin{align}
-\ket{\{n_p\}} = \prod_p\ket{n_p} = \prod_p\frac{(a_p^\dag)^{n_p}}{n_p!}\ket{0}.
+\ket{\{n_k\}} = \prod_k\ket{n_k} = \prod_k\frac{(a_k^\dag)^{n_k}}{n_k!}\ket{0}.
 \end{align}
 Since operators for different modes commute, we have
 \begin{align}
-\ket{p_1p_2} = a^\dag_{p_1}a^\dag_{p_2}\ket{0} = a^\dag_{p_2} a^\dag_{p_1} \ket{0} = \ket{p_1p_2},
+\ket{k_1k_2} = a^\dag_{k_1}a^\dag_{k_2}\ket{0} = a^\dag_{k_2} a^\dag_{k_1} \ket{0} = \ket{k_1k_2},
 \end{align}
 which is to say that the states are symmetric.
 
 Fermionic operators obey the anticommutation relations
 \begin{align}
-\{b_p, b_{p'}\} = 0,\quad \{b^\dag_p, b^\dag_{p'}\} = 0,\quad \{b_p, b^\dag_{p'}\} = \delta_{p,p'}.
+\{b_k, b_{k'}\} = 0,\quad \{b^\dag_k, b^\dag_{k'}\} = 0,\quad \{b_k, b^\dag_{k'}\} = \delta_{k,k'}.
 \end{align}
 The analysis of the Fock space matches that for bosonic operators, except the states are are antisymmetric because
 \begin{align}
-\ket{p_1p_2} = b^\dag_{p_1}...
+\ket{k_1k_2} = b^\dag_{k_1}b^\dag_{k_2}\ket{0} = -b^\dag_{k_2}b^\dag_{k_1} 
+	\ket{0} = -\ket{k_2k_1}.
 \end{align}
+This suggests the convention of writing states in order of increasing $k$.
 
-Unlike in the case of bosons, there cannot be an arbitrary number of fermions in a mode, but rather at most one. This can be seen by trying to raise a non-empty state: $b_p^\dag b^\dag_p\ket{0} = 0$. The operators maintain their interpretation as creation and annihilation operators, though.\footnote{What is the connection between anti-commutation and antiparticles?}
+Unlike in the case of bosons, there cannot be an arbitrary number of fermions in a mode, but rather at most one. This can be seen by trying to raise a non-empty state: $b_k^\dag b^\dag_k\ket{0} = 0$. The operators maintain their interpretation as creation and annihilation operators, though.
 
 \subsection{Majorana Fermions} \emph{}
 
@@ -343,13 +345,13 @@ The algebra of Majorana fermions is closely related to that of normal (Dirac) fe
 \end{align}
 satisfying
 \begin{align}
-\acom{\psi_i}{\psi_j} = \delta_{ij},\quad \psi^\dag=\psi.
+\acom{\psi_i}{\psi_j} = \delta_{ij},\quad \psi_i^\dag=\psi_i.
 \end{align}
 This leads to antisymmetric states, like the Dirac fermion, but allows for no antiparticles, since the creation and annihilation operators are the same.\footnote{I still don't understand this. How do I not understand this?}
 
 \subsection{Supersymmetry} \emph{} \label{sub:susy}
 
-Consider a Hamiltonian with a bosonic and fermionic oscillators
+The supersymmetric oscillator consists of a bosonic and fermionic oscillator
 \begin{align}
 H = \left(p^2+\frac{x^2}{4}\right) + \th{2}\left[\psi, \psi^\dag\right],
 \end{align}
@@ -496,7 +498,7 @@ This also means they generate a symmetry of the Hamiltonian. This allows the met
 
 \section{$\cal{N}$ = 2 Ground States and Entropy}
 
-The $\cal N = 2$ supersymmetric model has ``UNBROKEN SYMMETRY (or \_\_\_\_\_\_\_\_)", which leads to nonzero entropy in subsystems of ground states, even at zero temperature. The high number of ground states and long-range correlation are intimately tied to this entropy.
+The long-range order and large number of ground states in the $\cal N = 2$ supersymmetric model lead to nonzero entropy in subsystems of ground states, even at zero temperature. The high number of ground states and long-range correlation are intimately tied to this entropy.
 
 \subsection{Counting Ground States} \emph{}
 
