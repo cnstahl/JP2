@@ -6,7 +6,7 @@
 \usepackage{titlesec}                                                   
 \usepackage{bm}
 \usepackage{cprotect}
-\usepackage{savetrees}
+%\usepackage{savetrees}
 \usepackage{ bbold }
 \usepackage{abstract}
                                            
@@ -200,7 +200,7 @@
 %\end{align}
 %where $N$ is the number of operators. 
 
-\section{Introduction}
+\section{Introduction} \label{sec:intro}
 
 The Sachdev-Ye-Kitaev (SYK) model is a model of random uncorrelated interactions between $N$ fermions. Sachdev and Ye introduced a model in 1993 with pairwise interactions in~\cite{sachdev93}. In~\cite{kitaev15} Kitaev generalized the model to interactions between 4 fermions, with Hamiltonian
 \begin{align}
@@ -267,15 +267,15 @@ Although no Majorana particles are known to exist, the Majorana algebra can desc
 \label{fig:pairs}
 \end{figure}
 
-This paper analyses a supersymmetric generalization of the SYK model introduced in~\cite{fu16}, confirming predictions of the degeneracy of the ground state and the existence of entropy at $T=0$. Specifically it finds for a lower bound $D_{GS}\ge N\log\sqrt{3}$ on the number of ground states and entropy that also scales with $N$.\footnote{Should I have a longer intro?}
+This paper analyses a supersymmetric generalization of the SYK model introduced in~\cite{fu16}, confirming predictions of the degeneracy of the ground state and the existence of entropy at $T=0$. Specifically it finds for a lower bound $D_{GS}\ge N\log\sqrt{3}$ on the number of ground states and entropy that also scales with $N$.\footnote{Should I have a longer intro?} 
 
 
 
-\section{Supersymmetry and Oscillators}
+\section{Supersymmetry and Oscillators} \label{sec:osc}
 
 One starting point for discussing supersymmetry is through the formalism of harmonic oscillators for bosons and fermions. This also allows for the introduction of the commutation and anticommutation relations for bosons and fermions.\footnote{I spent a lot of time debating how to start talking about creation and annihilation. How should I?}
 
-\subsection{Bosonic and Fermionic Oscillators} \emph{}
+\subsection{Bosonic and Fermionic Oscillators} \emph{} \label{sub:bf_osc}
 
 Consider a single harmonic oscillator 
 \begin{align}
@@ -335,9 +335,9 @@ The analysis of the Fock space matches that for bosonic operators, except the st
 \end{align}
 This suggests the convention of writing states in order of increasing $k$.
 
-Unlike in the case of bosons, there cannot be an arbitrary number of fermions in a mode, but rather at most one. This can be seen by trying to raise a non-empty state: $b_k^\dag b^\dag_k\ket{0} = 0$. The operators maintain their interpretation as creation and annihilation operators, though.
+Unlike in the case of bosons, there cannot be an arbitrary number of fermions in a mode, but rather at most one. This can be seen by trying to raise a non-empty state: $b_k^\dag b^\dag_k\ket{0} = 0$. In relativistic mechanics, the fact that the Dirac field is complex leads to the existence of antiparticles. The creation operators for antiparticles are created from the annihilation operators for particles with negative frequencies.\footnote{Is this correct?} The Majorana basis decomposes the complex field into two real fields.
 
-\subsection{Majorana Fermions} \emph{}
+\subsection{Majorana Fermions} \emph{} \label{sub:majorana}
 
 The algebra of Majorana fermions is closely related to that of normal (Dirac) fermions. Consider a single Dirac fermion with creation and annihilation operators $b^\dag$ and $b$. One can define new operators
 \begin{align}
@@ -347,17 +347,17 @@ satisfying
 \begin{align}
 \acom{\psi_i}{\psi_j} = \delta_{ij},\quad \psi_i^\dag=\psi_i.
 \end{align}
-This leads to antisymmetric states, like the Dirac fermion, but allows for no antiparticles, since the creation and annihilation operators are the same.\footnote{I still don't understand this. How do I not understand this?}
+This leads to antisymmetric states, like the Dirac fermion, but allows for no antiparticles, since the creation and annihilation operators are the same.\footnote{Is this right?} 
 
 \subsection{Supersymmetry} \emph{} \label{sub:susy}
 
-The supersymmetric oscillator consists of a bosonic and fermionic oscillator
+The last oscillator to introduce is the supersymmetric oscillator, which consists of a bosonic and fermionic oscillator
 \begin{align}
-H = \left(p^2+\frac{x^2}{4}\right) + \th{2}\left[\psi, \psi^\dag\right],
+H = \left(p^2+\frac{x^2}{4}\right) - \th{2}\left[\psi, \psi^\dag\right],
 \end{align}
 where the $\psi$ and $\psi^\dag$ are fermionic operators. Defining bosonic operators and number operators
 \begin{align}
-a = \frac{x}{2}+ip,\quad N_b = a^\dag a,\quad N_f = \frac{1-\comm{\psi}{ \psi^\dag}}{2},
+a = \frac{x}{2}+ip,\quad N_b = a^\dag a,\quad N_f = \frac{1-\comm{\psi}{ \psi^\dag}}{2} = \psi^\dag \psi,
 \end{align}
 the Hamiltonian becomes
 \begin{align}
@@ -367,28 +367,29 @@ where $N_b = 0,1,2,3...$ and $N_f = 0,1$. $N_f$ is also called $F$, the fermion 
  
 By introducing a supercharge 
 \begin{align}
-Q = a\psi^\dag = \psi^\dag a,\quad Q^\dag = a^\dag\psi,
+Q = a\psi^\dag = \psi^\dag a,\quad Q^\dag = a^\dag\psi,\quad Q^2 ={ Q^\dag}^2 
+	= 0,
 \end{align}
 the Hamiltonian can be written as 
 \begin{align}
-H = \acom{Q}{Q^\dag}.
+H &= \acom{Q}{Q^\dag} = \left(Q+Q^\dag \right)^2.
 \end{align}
-The affect of $Q$ is to replace one boson with one fermion, and vice versa.\footnote{Use $Q-Q^\dag$ to do this?} Since the Hamiltonian is just the sum of the number operators, the supercharges do not affect the energy, i.e. $\comm{H}{Q} = 0$.
+The affect of $Q$ is to replace one boson with one fermion, and vice versa.\footnote{Use $Q-Q^\dag$ to do this?} Since the Hamiltonian is just the sum of the number operators, the supercharges do not affect the energy, i.e. $\comm{H}{Q} = 0$. Supersymmetry is this symmetry between bosons and fermions.
 
-The supercharges also replace fermion operators with boson operators,\footnote{Do they? Commutator?}
+The supercharges also replace fermion operators with boson operators,
 \begin{align}
-Q^\dag\psi^\dag Q = a^\dag a \psi\psi^\dag \psi =\_\_\_\_\_
+\comm{Q+Q^\dag }{\psi^\dag} = 
 \end{align}
 
-Since both supercharges involve some annihilation operator, they both must annihilate the vacuum. Therefore the energy of the ground state must be 0. All other energy eigenstates $\ket{\alpha_E}$ exist in pairs of bosonic an fermionic states. For an explanation of this see subsection~\ref{sub:N2}.
+Since both supercharges involve some annihilation operator, they both must annihilate the vacuum. Therefore the energy of the ground state must be 0. All other energy eigenstates $\ket{\alpha_E}$ exist in pairs of bosonic an fermionic states because of the supersymmetry. For further explanation of this see subsection~\ref{sub:N2susy}.
 
-The Witten index $W = \Tr(-1)^F$ measures the difference in the number of bosonic and fermionic states. However, since all states except those with $E=0$ are paired, $W$ counts the number of unpaired ground states with $E=0$, and is therefore a lower limit on the number of ground states. If $W\ne0$, the supersymmetry is unbroken.
+The Witten index $W = \Tr(-1)^F$ measures the difference in the number of bosonic and fermionic states. However, since all states except those with $E=0$ are paired, $W$ counts the number of unpaired ground states with $E=0$, and is therefore a lower limit on the number of ground states. If $W\ne0$, the supersymmetry is unbroken, while it may or may not be broken otherwise. $W$ will be used in subsection~\ref{sub:N2susy} to count the ground states of a supersymmetric SYK model.
 
 \section{SYK Model} \label{sec:syk}
 
-All sums of operators are defined such that the operators are in canonical order. The analysis of the supersymmetric models follows~\cite{fu16}.
+In the following discussion, all sums of operators are defined such that the operators are in canonical order. The analysis of the supersymmetric models follows~\cite{fu16}.
 
-\subsection{Definition} \emph{}
+\subsection{Definition} \emph{} \label{sub:syk_def}
 
 The SYK model is defined as having a Hamiltonian
 \begin{align}
@@ -424,7 +425,7 @@ This amounts to coupling between all $N$ fermions, in groups of 4. Figure~\ref{f
 	\label{fig:model}
 \end{figure}
 
-\subsection{Supersymmetry}\emph{}
+\subsection{$\cal{N}=1$ Supersymmetry}\emph{} \label{sub:N1susy}
 
 The discussion of the supersymmetric models comes from reference~\cite{fu16}. In the $\cal N=1$ supersymmetric generalization, the Hamiltonian is written in terms of the single supercharge
 \begin{align}
@@ -466,9 +467,9 @@ This shows that $E_0$ is positive, with expectation (over the values of $C_{ijk}
 \end{align}
 In the large $N$ limit this becomes $E_0 = NJ/3$.\footnote{This contradicts the Fu paper's assertion that $E_0\to 0$ for large $N$. What am I missing?}
 
-\subsection{$\cal{N}=2$ Supersymmetry, Ground States}\emph{} \label{sub:N2}
+\subsection{$\cal{N}=2$ Supersymmetry}\emph{} \label{sub:N2susy}
 
-In $\cal N=2$ supersymmetry, two supercharges are necessary. To create these, define a new set of fermions that consists of $\psi^i$ and their conjugates $\bar{\psi_i}$. These obey the relations 
+In $\cal N=2$ supersymmetry, two supercharges are necessary. To create these, define a new set of fermions\footnote{Majorana or Dirac?!} that consists of $\psi^i$ and their conjugates $\bar{\psi_i}$. These obey the relations 
 \begin{align}
 \{\psi^i,\psi^j\} = 0, \quad \{\bar{\psi_i},\bar{\psi_j}\} = 0, \quad
 	\{\psi^i,\bar{\psi_j}\} = \delta_j^i. \label{eqn:N2_ant}
@@ -496,11 +497,11 @@ The operators $Q^2$ and $\bar Q^2$ are both 0. That implies that both $Q$ and $\
 \end{align}
 This also means they generate a symmetry of the Hamiltonian. This allows the methods of subsection~\ref{sub:susy} to be used to count ground states.
 
-\section{$\cal{N}$ = 2 Ground States and Entropy}
+\section{$\cal{N}$ = 2 Ground States and Entropy} \label{sec:N2gs_ent}
 
 The long-range order and large number of ground states in the $\cal N = 2$ supersymmetric model lead to nonzero entropy in subsystems of ground states, even at zero temperature. The high number of ground states and long-range correlation are intimately tied to this entropy.
 
-\subsection{Counting Ground States} \emph{}
+\subsection{Counting Ground States} \emph{}\label{sub:count_gs}
 
 A convenient way to bound the number of ground states from below is to partition the Hilbert space into energy eigenspaces with states connected by the supercharges, and show that any space with an odd number of states must be made of ground states. Consider a stationary state $\ket{\phi_E}$ with energy $E$. Consider also the states $\ket{q_E} = Q\ket{\phi_E}$ and $\ket{\bar q_E}= \bar Q \ket{\phi_E}$. These states will have the same energy eigenvalue $E$, if they exist. 
 
@@ -508,25 +509,12 @@ The two simple cases are if $\ket{q}$ and/or $\ket{\bar q}$ does not exist. If $
 \begin{align}
 H\ket{\phi_E} = (Q\bar{Q} + \bar QQ)\ket{\phi_E} = \bar QQ\ket{\phi_E} = E\ket{\phi_E}
 \end{align}
-and the state $\ket{f_E} = \bar QQ\ket{\phi_E}$ is just $\ket{\phi_E}$, $E>0$. The same analysis applies if $Q$ annihilates but $\bar Q$ does not.
+and the state $\ket{f_E} = \bar QQ\ket{\phi_E}$ is just $\ket{\phi_E}$, $E>0$. The same analysis applies if $Q$ annihilates but $\bar Q$ does not. These cases are illustrated in figure~\ref{fig:tuplets1}.
 
-If both $\ket{q_E}$ and $\ket{\bar q_E}$ exist and $E>0$, then
-\begin{align}
-H\ket{\phi_E} = E\ket{\phi_E} = (Q\bar Q + \bar QQ)\ket{\phi_E} = \ket{f_E} + 
-	\ket{f'_E},
-\end{align}
-meaning 
-\begin{align}
-\ket{f_E} = \alpha\ket{\phi_E} + \beta\ket{\xi_E},\qquad \ket{f'_E} = 
-	(1-\alpha)\ket{\phi_E} - \beta\ket{\xi_E}.
-\end{align}
-$\ket{\xi_E}$ must exist for $\ket{q_E}$ and $\ket{\bar q_e}$ to be distinct.
-
-The previous analysis divides the space into tuplets of energy eigenstates with at most 4 members. See figure~\ref{fig:tuplets}. All tuplets contain an even number of states, except for some of the ground state tuplets. All even tuplets contain an equal number of fermionic and bosonic states. This shows that the supersymmetry is unbroken, as described in subsection~\ref{sub:susy}.
 \begin{figure}
 	\centering 
 	\begin{tikzpicture}[scale=.9, transform shape]
-	\tikzstyle{every node} = [circle]
+	\tikzstyle{every node} = [rectangle]
 	\node (phi)  at (1,0) {$\ket{\phi_E}$};
 	\node (q)    at (0, 2) {$Q\ket{\phi_E}$};
 	\node (qbar) at (2, 2) {$\bar Q\ket{\phi_E}$};
@@ -543,51 +531,86 @@ The previous analysis divides the space into tuplets of energy eigenstates with 
 	\node (phi)  at (11,0) {$\ket{\phi_b}$};
 	\node (q)    at (10, 2) {$\ket{q_b}$};
 	\node (qbar) at (12, 2) {0};
-	\node (E)    at (11, 4) {$E\ket{\phi_b}$};
+	\node (E)    at (11, 4) {$\ket{f_{b}} = E_b\ket{\phi_b}$};
 	\draw [->]   (phi) -- (q);
 	\draw [->]   (phi) -- (qbar);
 	\draw [->]   (q)-- (E);
 	\end{tikzpicture}
-	\caption{\textbf{Illustration of the possible configuration of energy eigenstate tuplets.} Representing the effects of $Q$ and $\bar Q$ as arrows up and to the left and right, respectively, we can see that any tuplet with an odd number of states must be a ground state tuplet.\protect\footnotemark}
-	\label{fig:tuplets}
+	\caption{\textbf{Energy Eigenstate Tuplets} with either $Q$ or $\bar{Q}$ annihilating the states. Arrows up and to the left and right represent the effects of $Q$ and $\bar Q$, respectively. $\ket{\phi_a}$ must be a ground state. If $E_b\ne0$, then $\ket{f_{b}}=\ket{\phi_b}$ and the tuplet contains only two states.}
+	\label{fig:tuplets1}
 \end{figure}
-\footnotetext{Is this graphic helpful?}
+
+If both $\ket{q_E}$ and $\ket{\bar q_E}$ exist and $E>0$, then
+\begin{align}
+H\ket{\phi_E} = E\ket{\phi_E} = (Q\bar Q + \bar QQ)\ket{\phi_E} = \ket{f_E} + 
+	\ket{f'_E},
+\end{align}
+meaning 
+\begin{align}
+\ket{f_E} = \alpha\ket{\phi_E} + \beta\ket{\xi_E},\qquad \ket{f'_E} = 
+	(1-\alpha)\ket{\phi_E} - \beta\ket{\xi_E}.
+\end{align}
+$\ket{q_E}$ and $\ket{\bar q_e}$ must be distinct, so $\ket{\xi_E}$ must exist. Therefore this tuplet also contains four states. Figure~\ref{fig:tuplets2} illustrates this case.
+
+\begin{figure}
+	\centering 
+	\begin{tikzpicture}[scale=.9, transform shape]
+	\tikzstyle{every node} = [rectangle]
+	\node (phi)  at (1,0) {$\ket{\phi_E}$};
+	\node (q)    at (0, 2) {$Q\ket{\phi_E}$};
+	\node (qbar) at (2, 2) {$\bar Q\ket{\phi_E}$};
+	\draw [->]   (phi) -- (q);
+	\draw [->]   (phi) -- (qbar);
+	\fill (3.5,.5) circle (1pt);
+	\fill (3.5,1.5) circle (1pt);
+	\node (phi)  at (7, 0) {$\ket{\phi_c}$};
+	\node (q)    at (5, 2) {$\ket{q_c}$};
+	\node (qbar) at (9, 2) {$\ket{\bar{q}_c}$};
+	\node (f)    at (6, 4) {$\ket{f_c}$};
+	\node (fpr)  at (8, 4) {$\ket{f_c'}$};
+	\draw [->]   (phi)  -- (q);
+	\draw [->]   (phi)  -- (qbar);
+	\draw [->]   (q)    -- (f);
+	\draw [->]   (qbar) -- (fpr);
+	\end{tikzpicture}
+	\caption{\textbf{Energy Eigenstate Tuplets} with neither $Q$ nor $\bar{Q}$ annihilating the states. Since $\ket{f_c}$ and $\ket{f_c'}$ must be distinct (otherwise $\acom{Q}{\bar{Q}}\ket{\phi_c}=Q^2\ket{\phi_c} = 0$), they each must be linear combinations of $\ket{\phi_c}$ with another state $\ket{\xi_c}$.}
+	\label{fig:tuplets2}
+\end{figure}
+
+The previous analysis divides the space into tuplets of energy eigenstates with at most 4 members. All tuplets contain an even number of states, except for the ground state tuplets. All even tuplets contain an equal number of fermionic and bosonic states because the supercharges interchange bosonic states with fermionic states. This shows that the supersymmetry is unbroken, as described in subsection~\ref{sub:susy}.
 
 This provides the opportunity to count ground states using the Fermi number
 \begin{align}
 F = \sum_i\bar{\psi_i}\psi^i,
 \end{align}
-which is even for bosonic states and odd for fermionic states. For all such subspaces with non-zero energy, the Witten index 
+which is even for bosonic states and odd for fermionic states. For all paired subspaces with non-zero energy, the Witten index 
 \begin{align}
-W = \Tr\left((-1)^F\right) \label{eqn:N2witten}
+W = \Tr\left((-1)^F\right) 
+	\label{eqn:N2witten}
 \end{align}
-evaluates to 0. Then the trace over the whole space has contributions only from the ground states, so the number of ground states will be equal to or greater than $|W|$. Similarly, the \_\_something\_\_\footnote{What is this called? Wikipedia calls it the Witten index. Is this even important?}
-\begin{align}
-W = \Tr\left((-1)^F\e^{\beta H}\right)
-\end{align}
-is independent of temperature because $H$ is zero in the ground states. 
+evaluates to 0. Then the trace over the whole space has contributions only from the ground states, so the number of ground states will be equal to or greater than $|W|$. As a result, the modified Witten index $\Tr\left((-1)^F\e^{\beta H}\right)$\footnote{Is this even important?} is independent of temperature $1/\beta$ because $H$ is zero in the ground states. 
 
 The Witten index is also independent of coupling, so it can be computed with $J=0$. Define the unitary operator 
 \begin{align}
-R^p = \e^{\frac{2\pi irF}{\hat q}},\quad R^3 = \mathbb{1}.
+R^p = \e^{\frac{2\pi ipF}{\hat q}},\quad R^3 = \mathbb{1}.
 \end{align}
-$R$ commutes with $Q$ so that $\Tr\left((-1)^FR^p\right)$ also only has contributions from the ground state. \_\_SOMEHOW\_\_,
+$R$ commutes with $Q$\footnote{Is it the translation generated by $Q$?} so that $\Tr\left((-1)^FR^p\right)$ also only has contributions from the ground state. \_\_SOMEHOW\_\_,
 \begin{align}
-W_r = \Tr\left((-1)^FR^\frac{2\pi ir}{\hat q}\right) \equiv Z^{(N)},
+W_p = \Tr\left((-1)^FR^\frac{2\pi ip}{\hat q}\right) \equiv Z^{(N)},
 \end{align}
 where $Z^{(M)}$ is the $M$-particle partition function. Since $W$ is independent of the coupling, the Hamiltonian can be turned off, in which case the partition function is the product of one particle partition functions $\left(Z^{(1)}\right)^N$ so that 
 \begin{align}
-W = \left(1-\e^{\frac{2\pi ip}{3}}\right)^N = e^{i\pi N\left(\frac{r}{\hat q} - \th{2}\right)}\left(2\sin\frac{\pi r}{\hat q}\right)^N
+W = \left(1-\e^{\frac{2\pi ip}{3}}\right)^N = e^{i\pi N\left(\frac{p}{\hat q} - \th{2}\right)}\left(2\sin\frac{\pi p}{\hat q}\right)^N
 \end{align}
 and the number of ground states is 
 \begin{align}
-D_\text{GS} \ge \abs{W} = \left(2\sin\frac{\pi r}{\hat q}\right)^N. \label{eqn:dgs}
+D_\text{GS} \ge \abs{W} = \left(2\sin\frac{\pi p}{\hat q}\right)^N. \label{eqn:dgs}
 \end{align}
-To provide the highest bound on $D_\text{GS}$, choose $r = (\hat q+1)/2$, so that $D_\text{GS} \ge \sqrt{3}^N$, where the substitution $\hat q = 3$ has been made.\footnote{Why?}
+To provide the highest bound on $D_\text{GS}$, choose $p = (\hat q+1)/2$, so that $D_\text{GS} \ge \sqrt{3}^N$, where $\hat q = 3$ for the supercharge in equation~\ref{eqn:N2charge}.
 
 Compare this to the total number of states $2^N$. It is clear that the number of ground states is extensive, as the number of degrees of freedom, the log of $D_\text{GS}$, scales linearly with $N$.
 
-\subsection{Ground State Entanglement Entropy} \emph{}
+\subsection{Ground State Entanglement Entropy} \emph{} \label{sub:entangle}
 
 The large number of ground states has an interesting effect on the entanglement entropy of a subsystem of a ground state. Classically, entropy measures uncertainty about an event or state. The nearest quantum mechanical analogue is Von Neumann entropy
 \begin{align}
@@ -645,11 +668,11 @@ A general ground state in the $\cal N=2$ SYK model can be written as
 \ket{\phi_0} = \sum_ic_i\ket{i_A}\ket{i_B}\footnote{notation?}
 \end{align}
 
-\section{Numerical Results}
+\section{Numerical Results} \label{sec:numeric}
 
 Computations on the $\cal N=2$ model were completed in Python using Numpy~\cite{vander11}.
 
-\subsection{Building Matrices}\emph{}
+\subsection{Building Matrices}\emph{} \label{sub:build_mat}
 
 The simplest way to compute large-N functions on a computer is to use a matrix representation for the group. This can be done by viewing the $\bar \psi$ and $\psi$ operators as raising and lowering operators, respectively. Consider the case of $N$ fermions. Write the state as an $N$-dimensional binary vector \footnote{I want to include this because I spent a lot of time on it. Is that ok?}
 \begin{align}
@@ -700,7 +723,7 @@ with equation~\ref{eqn:base} again supplying the base case.
 
 Although there are various representations of the group, the previous two constructions lead to the same representation. 
 
-\subsection{Ground States} \emph{}
+\subsection{Ground States} \emph{} \label{sub:num_gs}
 
 Counting ground states was implemented by counting the zero eigenvalues of a randomly-generated Hamiltonian. The number of ground states stayed above the bound in equation~\ref{eqn:dgs}, although the bound was not tight in some places. See figure~\ref{fig:gserr} for the number of ground states above the bound.
 
@@ -713,7 +736,7 @@ Counting ground states was implemented by counting the zero eigenvalues of a ran
 
 It is particularly interesting to note that the number of ground states is particularly high for even $N$. Even with randomly generated Hamiltonians, the relative number of ground states above the bound stays relatively constant near 0.33 in this case.
 
-\subsection{Ground State Entanglement Entropy}
+\subsection{Ground State Entanglement Entropy}\emph{} \label{sub:num_ent}
 
 Once the number of ground states were calculated for a single Hamiltonian, the entropy of a subsystem of the ground state could be calculated from the reduced density matrix of the subsystem. Starting with a ground state $\ket{\phi}$, the density matrix $\rho = \ket{\phi}\bra{\phi}$ can be calculated. The entropy $S = \Tr\rho\log\rho$ can be calculated as 
 \begin{align}
@@ -748,7 +771,7 @@ Close to equipartition, the entropy is smaller. Figure~\ref{fig:maxentropy} show
 	\label{fig:maxentropy}
 \end{figure}
 
-\section{Conclusion}
+\section{Conclusion} \label{sec:concl}
 
 Interesting future work for this project could include running similar calculations for the $\cal N=1$ model and running calculations for higher $N$. The $\cal N=1$ calculations would not be very different to set up, but would have different results because of the difference in the theories, especially due to the broken supersymmetry at small $N$. Calculations for larger $N$ could be made efficient by exploring alternative ways to create the $\psi$ matrices, or writing code in a different language.
 

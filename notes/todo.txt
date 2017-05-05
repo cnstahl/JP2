@@ -1,8 +1,16 @@
 Correct Majorana 
-Holographic connection 
 majorana neutrinos 
 entropy of complementary spaces 
-two psis are a boson
+Q as susy generators in syk 
+  two psis are a boson
 Redo q wire graphic?
-Savetrees?
 Entropy - supersyk p 4
+check susy on paper 
+
+Formatting
+  Savetrees?
+
+Ask Verlinde 
+  commutation bullshit
+  Dirac fermions in N=2?
+  \bar vs \dag
