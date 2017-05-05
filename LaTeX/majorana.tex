@@ -220,22 +220,30 @@ Although no Majorana particles are known to exist, the Majorana algebra can desc
 \begin{figure}[ht]
 	
 \sbox{\TempBox}{
-\begin{picture}(0,0)
+\begin{picture}(0,0)(0,0)
 \put(0,0){\oval(32,16)}
 \put(-10,0){\circle*{4}}
 \put(10,0){\circle*{4}}
 \end{picture}}
 	
-\newcommand\fsite[2]{%
-\begin{picture}(0,0)
+\newcommand\fsite[2]{
+\begin{picture}(0,0)(8,0)
 \put(0,0){\usebox{\TempBox}}
-\put(-16,12){\footnotesize #1}
-\put(10,12){\footnotesize #2}
+\put(-15,12){\footnotesize #1}
+\put(15,12){\footnotesize #2}
 \end{picture}}
+
+\hbox to 1\textwidth {
+%\hspace{.1\textwidth}
+
+%\begin{subfig}{a}
+%	\begin{picture}(100,30)(0,0)
+%	\put(0, 0){\fsite{$c_1$}{$c_2$}}
+%	\put(-10 ,0){\thicklines\line(1,0){20}}
+%	\put(0, 0){\circle*{4}}
+%	\end{picture}
+%\end{subfig}
 	
-\hbox to .8\textwidth {
-\hspace{.1\textwidth}
-		
 \begin{subfig}{a)}
 \begin{picture}(170,30)(0,-8)
 \put(18,0){\fsite{$c_1$}{$c_2$}}
@@ -248,10 +256,10 @@ Although no Majorana particles are known to exist, the Majorana algebra can desc
 \end{picture}
 \end{subfig}
 		
-\hspace{.1\textwidth}
+%\hspace{.05\textwidth}
 		
 \begin{subfig}{b)}
-\begin{picture}(170,50)(0,-8)
+\begin{picture}(170,30)(0,-8)
 \put(18,0){\fsite{$c_1$}{$c_2$}}
 \put(28,0){\thicklines\line(1,0){37}}
 \put(75,0){\fsite{$c_3$}{$c_4$}}
@@ -474,7 +482,7 @@ In $\cal N=2$ supersymmetry, two supercharges are necessary. To create these, de
 \{\psi^i,\psi^j\} = 0, \quad \{\bar{\psi_i},\bar{\psi_j}\} = 0, \quad
 	\{\psi^i,\bar{\psi_j}\} = \delta_j^i. \label{eqn:N2_ant}
 \end{align}
-The supercharges, with $\hat{q}$ still the number of fermions per term, are
+The supercharges, with $\hat{q}=3$ still the number of fermions per term, are
 \begin{align}
 Q &= i\sum_{i<j<k}C_{ijk}\psi^i\psi^j\psi^k,\quad
 \bar{Q} = i\sum_{i<j<k}\bar C^{ijk}\bar{\psi_i}\bar{\psi_j}\bar{\psi_k},
@@ -602,7 +610,7 @@ where $Z^{(M)}$ is the $M$-particle partition function. Since $W$ is independent
 \begin{align}
 W = \left(1-\e^{\frac{2\pi ip}{3}}\right)^N = e^{i\pi N\left(\frac{p}{\hat q} - \th{2}\right)}\left(2\sin\frac{\pi p}{\hat q}\right)^N
 \end{align}
-and the number of ground states is 
+and the degeneracy of the ground state is 
 \begin{align}
 D_\text{GS} \ge \abs{W} = \left(2\sin\frac{\pi p}{\hat q}\right)^N. \label{eqn:dgs}
 \end{align}
