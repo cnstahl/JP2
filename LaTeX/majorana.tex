@@ -216,9 +216,9 @@ The model is built of Majorana fermions, which are fermions which are their own 
 \end{align}
 which are 4-component spinors. Two degrees of freedom are due to the choice of helicity, while the other two differentiate fermions from antifermions. The Majorana basis allows the equation to be separated into two independent coupled systems. Each of these is then a Majorana fermion. 
 
-Although no Majorana particles are known to exist, the Majorana algebra can describe emergent quasiparticles in solid-state physics. Since the electron is a Dirac fermion, it is equivalently two interacting Majorana fermions. If these can be separated, the resultant quasiparticles are Majorana fermions. One way of doing this is on a one dimensional quantum ``wire." Majorana fermion pairs are separated and paired with fermions from adjacent electrons. See figure~\ref{fig:pairs} for a graphical description. This process is described in detail in~\cite{kitaev00}.
+No particles are known to be Majorana fermions, but the status of neutrinos is unknown currently~\cite{elliott14}. The Majorana algebra can however describe emergent quasiparticles in solid-state physics. Since the electron is a Dirac fermion, it is equivalently two interacting Majorana fermions. If these can be separated, the resultant quasiparticles are Majorana fermions. One way of doing this is on a one dimensional quantum ``wire." Majorana fermion pairs are separated and paired with fermions from adjacent electrons. See figure~\ref{fig:pairs} for a graphical description. This process is described in detail in~\cite{kitaev00}.
 \begin{figure}[ht]
-	
+
 \sbox{\TempBox}{
 \begin{picture}(0,0)(0,0)
 \put(0,0){\oval(32,16)}
@@ -233,7 +233,8 @@ Although no Majorana particles are known to exist, the Majorana algebra can desc
 \put(15,12){\footnotesize #2}
 \end{picture}}
 
-\hbox to 1\textwidth {
+\centering
+\hbox to \textwidth {
 %\hspace{.1\textwidth}
 
 %\begin{subfig}{a}
@@ -271,17 +272,16 @@ Although no Majorana particles are known to exist, the Majorana algebra can desc
 \end{subfig}		
 }
 	
-\caption{\textbf{Separating Dirac fermions into Majorana fermions.}  The ovals show the physical particles, while the lines show pairings. In a) there are no unpaired Majorana fermions, but in b) both $c_1$ and $c_{2L}$ are unpaired. Image from~\cite{kitaev00}.}
+\caption{\textbf{Separating Dirac fermions into Majorana fermions.}  The ovals show the physical particles, while the lines show pairings. In a) there are no unpaired Majorana fermions, but in b) both $c_1$ and $c_{2L}$ are unpaired. Image generated using code from~\cite{kitaev00}.}
 \label{fig:pairs}
 \end{figure}
 
-This paper analyses a supersymmetric generalization of the SYK model introduced in~\cite{fu16}, confirming predictions of the degeneracy of the ground state and the existence of entropy at $T=0$. Specifically it finds for a lower bound $D_{GS}\ge N\log\sqrt{3}$ on the number of ground states and entropy that also scales with $N$.\footnote{Should I have a longer intro?} 
-
+This paper analyses a supersymmetric generalization of the SYK model introduced in~\cite{fu16}, confirming predictions of the degeneracy of the ground state and the existence of entropy at $T=0$. Specifically it finds for a lower bound $D_{GS}\ge N\log\sqrt{3}$ on the number of ground states and entropy that also scales with $N$.\footnote{Should I have a longer intro?} In section~\ref{sec:osc} I introduce Majorana fermions and supersymmetry through harmonic oscillators. In section~\ref{sec:syk} I define the SYK mode and its supersymmetric generalizations. In section~\ref{sec:N2gs_ent} I present calculation of ground state degeneracy and entropy, and section~\ref{sec:numeric} includes numeric calculations of these values.
 
 
 \section{Supersymmetry and Oscillators} \label{sec:osc}
 
-One starting point for discussing supersymmetry is through the formalism of harmonic oscillators for bosons and fermions. This also allows for the introduction of the commutation and anticommutation relations for bosons and fermions.\footnote{I spent a lot of time debating how to start talking about creation and annihilation. How should I?}
+One starting point for discussing supersymmetry is through the formalism of harmonic oscillators for bosons and fermions. This also allows for the introduction of the commutation and anticommutation relations for bosons and fermions.
 
 \subsection{Bosonic and Fermionic Oscillators} \emph{} \label{sub:bf_osc}
 
@@ -355,7 +355,7 @@ satisfying
 \begin{align}
 \acom{\psi_i}{\psi_j} = \delta_{ij},\quad \psi_i^\dag=\psi_i.
 \end{align}
-This leads to antisymmetric states, like the Dirac fermion, but allows for no antiparticles, since the creation and annihilation operators are the same.\footnote{Is this right?} 
+This leads to antisymmetric states, like the Dirac fermion, but allows for no antiparticles, since the creation and annihilation operators are the same.\footnote{Is this right? Is it important?} 
 
 \subsection{Supersymmetry} \emph{} \label{sub:susy}
 
@@ -382,7 +382,7 @@ the Hamiltonian can be written as
 \begin{align}
 H &= \acom{Q}{Q^\dag} = \left(Q+Q^\dag \right)^2.
 \end{align}
-The affect of $Q$ is to replace one boson with one fermion, and vice versa.\footnote{Use $Q-Q^\dag$ to do this?} Since the Hamiltonian is just the sum of the number operators, the supercharges do not affect the energy, i.e. $\comm{H}{Q} = 0$. Supersymmetry is this symmetry between bosons and fermions.
+The affect of $Q$ is to replace one boson with one fermion, and vice versa.\footnote{Use $Q+Q^\dag$ to do this?} Since the Hamiltonian is just the sum of the number operators, the supercharges do not affect the energy, i.e. $\comm{H}{Q} = 0$. Supersymmetry is this symmetry between bosons and fermions.
 
 The supercharges also replace fermion operators with boson operators,
 \begin{align}
@@ -439,7 +439,14 @@ The discussion of the supersymmetric models comes from reference~\cite{fu16}. In
 \begin{align}
 Q = i\sum_{i<j<k}C_{ijk}\psi^i\psi^j\psi^k,
 \end{align}
-where $C_{ijk}$ are now drawn from a Gaussian with mean 0 and variance $2J/N^2$. This is a $\hat{q} = 3$ model, where $\hat{q}$ is now the number of particles in each term of the supercharge.
+where $C_{ijk}$ are now drawn from a Gaussian with mean 0 and variance $2J/N^2$. This is a $\hat{q} = 3$ model, where $\hat{q}$ is now the number of particles in each term of the supercharge. 
+
+It might seem strange to define a supercharge when there are no bosonic operators. However, bilinear operators $\psi^i\psi^j$ behave like bosons because they do not change the fermion number. Operators 
+\begin{align}
+b^i = \acom{Q}{\psi^i} = \sum_{i<j<k}C_{ijk}\psi^j\psi^k, \quad \acom{Q}{b^i} 
+	= 2Q\psi^iQ \label{eqn:N1bosons}.
+\end{align}
+can be interpreted as the bosonic operators.\footnote{I don't think this is right.}
 
 The Hamiltonian is defined as
 \begin{align}
@@ -477,7 +484,7 @@ In the large $N$ limit this becomes $E_0 = NJ/3$.\footnote{This contradicts the 
 
 \subsection{$\cal{N}=2$ Supersymmetry}\emph{} \label{sub:N2susy}
 
-In $\cal N=2$ supersymmetry, two supercharges are necessary. To create these, define a new set of fermions\footnote{Majorana or Dirac?!} that consists of $\psi^i$ and their conjugates $\bar{\psi_i}$. These obey the relations 
+In $\cal N=2$ supersymmetry, two supercharges are necessary. To create these, define a new set of fermions\footnote{Majorana or Dirac fermions?} that consists of $\psi^i$ and their conjugates $\bar{\psi_i}$. These obey the relations 
 \begin{align}
 \{\psi^i,\psi^j\} = 0, \quad \{\bar{\psi_i},\bar{\psi_j}\} = 0, \quad
 	\{\psi^i,\bar{\psi_j}\} = \delta_j^i. \label{eqn:N2_ant}
@@ -492,10 +499,13 @@ where the $C_{ijk}$ are complex numbers drawn from a 0-centered Gaussian such th
 \begin{align}
 \ex{C_{ijk}\bar C^{ijk}} = \frac{2J}{N^2}.
 \end{align} 
-The Hamiltonian is defined as 
+The bosonic operators are defined as\footnote{Should this be antcommutation?}
 \begin{align}
-H &= \{Q, \bar Q\} = \cdots\nn
-&= E_0 + \sum_{ijk\l}J_{ij}^{k\l}\psi^i\psi^j\bar{\psi_k}\bar{\psi_\l}.
+\bar{b}^i = \comm{Q}{\bar{\psi}_i}
+\end{align}
+An analysis similar to that in the previous subsection shows the Hamiltonian $H = \acom{Q}{\bar{Q}}$ can be written as
+\begin{align}
+H = E_0 + \sum_{ijk\l}J_{ij}^{k\l}\psi^i\psi^j\bar{\psi_k}\bar{\psi_\l}.
 \end{align}
 Like in the $\cal N=1$ case, the components of $J$ are no longer independent. 
 
@@ -596,19 +606,19 @@ which is even for bosonic states and odd for fermionic states. For all paired su
 W = \Tr\left((-1)^F\right) 
 	\label{eqn:N2witten}
 \end{align}
-evaluates to 0. Then the trace over the whole space has contributions only from the ground states, so the number of ground states will be equal to or greater than $|W|$. As a result, the modified Witten index $\Tr\left((-1)^F\e^{\beta H}\right)$\footnote{Is this even important?} is independent of temperature $1/\beta$ because $H$ is zero in the ground states. 
+evaluates to 0. Then the trace over the whole space has contributions only from the ground states, so the number of ground states will be equal to or greater than $|W|$. As a result, the modified Witten index $\Tr\left((-1)^F\e^{\beta H}\right)$ is independent of temperature $1/\beta$ because $H$ is zero in the ground states. 
 
-The Witten index is also independent of coupling, so it can be computed with $J=0$. Define the unitary operator 
+Define the unitary operator 
 \begin{align}
 R^p = \e^{\frac{2\pi ipF}{\hat q}},\quad R^3 = \mathbb{1}.
 \end{align}
-$R$ commutes with $Q$\footnote{Is it the translation generated by $Q$?} so that $\Tr\left((-1)^FR^p\right)$ also only has contributions from the ground state. \_\_SOMEHOW\_\_,
+$R$ commutes with $Q$ so that $\Tr\left((-1)^FR^p\right)$ also only has contributions from the ground state. This defines a modified Witten index
 \begin{align}
-W_p = \Tr\left((-1)^FR^\frac{2\pi ip}{\hat q}\right) \equiv Z^{(N)},
+W_p = \Tr\left((-1)^FR^\frac{2\pi ip}{\hat q}\right).
 \end{align}
-where $Z^{(M)}$ is the $M$-particle partition function. Since $W$ is independent of the coupling, the Hamiltonian can be turned off, in which case the partition function is the product of one particle partition functions $\left(Z^{(1)}\right)^N$ so that 
+Since $W$ is independent of the coupling, the Hamiltonian can be turned off, in which case the index is just the product of the indexes over all particles $\left(Z^{(1)}\right)^N$ so that 
 \begin{align}
-W = \left(1-\e^{\frac{2\pi ip}{3}}\right)^N = e^{i\pi N\left(\frac{p}{\hat q} - \th{2}\right)}\left(2\sin\frac{\pi p}{\hat q}\right)^N
+W_p = \left(1-\e^{\frac{2\pi ip}{3}}\right)^N = e^{i\pi N\left(\frac{p}{\hat q} - \th{2}\right)}\left(2\sin\frac{\pi p}{\hat q}\right)^N
 \end{align}
 and the degeneracy of the ground state is 
 \begin{align}
@@ -630,7 +640,7 @@ S = -\sum_ip_i\log p_i,\quad \rho = \sum_i p_i\ket{i}\bra{i},
 \end{align}
 which mimics the classical form.
 
-The entropy of a pure state is always 0. However, subsystems of a pure state are mixed, and therefore have non-zero entropy. This entropy does not represent uncertainty, since the state of the whole system is known~\cite{janzing09}. Rather, it represents the \_\_classical information between subsystems\_\_.
+The entropy of a pure state is always 0. However, subsystems of a pure state are mixed, and therefore have non-zero entropy. This entropy does not represent uncertainty, since the state of the whole system is known. Rather, it represents the classical information one system can gain about the other through a local measurement~\cite{janzing09}.
 
 \begin{figure}
 	\centering
@@ -653,15 +663,15 @@ The entropy of a pure state is always 0. However, subsystems of a pure state are
 	  \end{scope}
 	  \draw (1.4, -.8) rectangle (5.4, 2.4);
 	\end{tikzpicture}
-	\caption{\textbf{Subsystem}}
+	\caption{\textbf{Subsystem of the Model.} If fermions 1 and 4 are traced out, the resulting density matrix describes the relationships between the others.}
 	\label{fig:subsys}
 \end{figure}
 
-Consider state $\ket{\phi}_\cal{A}$ on a system $\cal A$ that can be decomposed into subsystems $A$ an $B$.\footnote{system or space?} The state can in general be written as 
+Consider state $\ket{\phi}_\cal{A}$ on a system $\cal A$ that can be decomposed into subsystems $A$ an $B$. The state can in general be written as 
 \begin{align}
 \ket{\phi}_\cal{A} = \sum_jc_j\ket{\phi_j}_A\ket{\phi_j}_B,
 \end{align}
-where the $\ket{\phi_j}$ are orthogonal in each subsystem. Since the reduced density matrices\footnote{Should I introduce reduced density matrices? This i a general question.} are
+where the $\ket{\phi_j}$ are orthogonal in each subsystem. Then $j$ can only run over the dimension $m$ of the smaller subspace. Since the reduced density matrices $\rho_A = \Tr_B\rho_{\cal A}$ are
 \begin{align}
 \rho_A = \sum_jp_j\ket{\phi_j}_A\bra{\phi_j}_A, \quad \rho_B = \sum_jp_j\ket{\phi_j}_B\bra{\phi_j}_B; \quad p_j = |c_j|^2,
 \end{align}
@@ -673,8 +683,15 @@ where $\cal H$ is the classical Shannon entropy with $p_j$ interpreted as classi
 
 A general ground state in the $\cal N=2$ SYK model can be written as 
 \begin{align}
-\ket{\phi_0} = \sum_ic_i\ket{i_A}\ket{i_B}\footnote{notation?}
+\ket{\phi_0} = \sum_ic_i\ket{i}_A\ket{i}_B. \label{eqn:mixed}
 \end{align}
+If the smaller of the two subsystems has $m$ particles, the sum in~\ref{eqn:mixed} can contain at most $2^m$ terms, the maximum number of states in the smaller subsystem. Maximum entropy is achieved when the coefficients are equal, so 
+\begin{align}
+S_\text{max} = \sum_{i=1}^{2^m}\th{2^m}\log 2^m = m\log(2).\label{eqn:thermal}
+\end{align}
+This is a general bound on the bipartite entanglement entropy of any system.
+
+At $T=0$, the entropy should be $S = \log D_\text{GS} = N\log\sqrt{3} $~\cite{fu16}.\footnote{Is this the bipartite entanglement entropy or something else?}
 
 \section{Numerical Results} \label{sec:numeric}
 
@@ -682,9 +699,9 @@ Computations on the $\cal N=2$ model were completed in Python using Numpy~\cite{
 
 \subsection{Building Matrices}\emph{} \label{sub:build_mat}
 
-The simplest way to compute large-N functions on a computer is to use a matrix representation for the group. This can be done by viewing the $\bar \psi$ and $\psi$ operators as raising and lowering operators, respectively. Consider the case of $N$ fermions. Write the state as an $N$-dimensional binary vector \footnote{I want to include this because I spent a lot of time on it. Is that ok?}
+The simplest way to compute large-N functions on a computer is to use a matrix representation for the group. This can be done by viewing the $\bar \psi$ and $\psi$ operators as raising and lowering operators, respectively. Consider the case of $N$ fermions. Write the state as an $N$-dimensional binary vector
 \begin{align}
-\ket{m} = \ket{m_1m_2\dots m_i\dots m_{N-1}m_N}, \quad\sum_nm_n2^{n-1} =
+\ket{m} = \ket{m_1m_2\dots m_i\dots m_{N-1}m_N}, \quad\sum_im_i2^{i-1} =
 	m.\label{eqn:2Nstate}
 \end{align}
 The vacuum state is $\ket{0}$. A populated state can be written as
@@ -693,7 +710,7 @@ The vacuum state is $\ket{0}$. A populated state can be written as
 \end{align}
 which enforces the canonical ordering through anticommutation relations. 
 
-The matrix representations of $\psi^i, \bar \psi_i$ are then calculated component-wise using an $2^N$ by $2^N$ matrix.
+The matrix representations of $\psi^i, \bar \psi_i$ are then calculated component-wise as a $2^N$ by $2^N$ matrix.
 \begin{align}
 \bar\psi_i &= \sum_{a,b}\ket{a}\bar\psi_{i,ab}\bra{b}\nn
 \bar\psi_{i,ab} &= \brakett{a}{\bar\psi_i}{b}.\label{eqn:comps}
@@ -729,7 +746,7 @@ This formula of course does not work when $i=N$. In this case the solution is st
 \end{align}
 with equation~\ref{eqn:base} again supplying the base case.
 
-Although there are various representations of the group, the previous two constructions lead to the same representation. 
+Although there are various representations of the group, the previous two constructions lead to the same representation. The analysis in this paper used the former method because of its relative simplicity.
 
 \subsection{Ground States} \emph{} \label{sub:num_gs}
 
@@ -752,16 +769,9 @@ S = \sum \lambda\log\lambda,
 \end{align}
 where $\lambda$ are the eigenvalues. 
 
-As predicted, the entropy rises and drops linearly as more particles are traces over. Since the entropy does not depend on the coupling, a single computation of the entropy should be sufficient.\footnote{Right?} However, due to small numerical errors, it is helpful to perform multiple calculations and average the entropies. 
+As predicted, the entropy rises and drops linearly as more particles are traces over. Since the ground states depend on the coupling, it is necessary to perform multiple calculations and average the entropies. 
 
-To see the symmetric linear dependence of the entropy on size of subspace, see figure~\ref{fig:N11pred_ent}. The solid line shows the entropy of a thermal state.\footnote{Correct term?} Figure~\ref{fig:allentropy} shows entropy of the reduced density matrices for $N = 1,2,3...11$. When one partition is smaller than the other, the $M\log2$\footnote{$M$ or $m$?} bound is close to tight. 
-
-\begin{figure}
-	\centering
-	\includegraphics[width=.5\textwidth]{N11pred_ent}
-	\caption{\textbf{Entropy for $N=11$.} The $x$ axis is $M$, the number of particles traced out. The solid line shows the value of entropy calculated from $S=m\log2$, where $m = \min(M,N-M)$ is the number of particles in the smaller subspace. }
-	\label{fig:N11pred_ent}
-\end{figure}
+To see the symmetric linear dependence of the entropy on size of subspace, see figure~\ref{fig:N11pred_ent}. The solid line shows the entropy of a thermal state as defined in equation~\ref{eqn:thermal}. Figure~\ref{fig:allentropy} shows entropy of the reduced density matrices for $N = 1,2,3...11$. When one partition is smaller than the other, the $m\log2$ bound is close to tight. 
 
 \begin{figure}
 	\centering
