@@ -484,15 +484,15 @@ In the large $N$ limit this becomes $E_0 = NJ/3$.\footnote{This contradicts the 
 
 \subsection{$\cal{N}=2$ Supersymmetry}\emph{} \label{sub:N2susy}
 
-In $\cal N=2$ supersymmetry, two supercharges are necessary. To create these, define a new set of fermions\footnote{Majorana or Dirac fermions?} that consists of $\psi^i$ and their conjugates $\bar{\psi_i}$. These obey the relations 
+In $\cal N=2$ supersymmetry, two supercharges are necessary. To create these, define a new set of fermions\footnote{Majorana or Dirac fermions?} that consists of $\psi^i$ and their conjugates $\psi^\dag_i$. These obey the relations 
 \begin{align}
-\{\psi^i,\psi^j\} = 0, \quad \{\bar{\psi_i},\bar{\psi_j}\} = 0, \quad
-	\{\psi^i,\bar{\psi_j}\} = \delta_j^i. \label{eqn:N2_ant}
+\{\psi^i,\psi^j\} = 0, \quad \{\psi^\dag_i,\psi^\dag_j\} = 0, \quad
+	\{\psi^i,\psi^\dag_j\} = \delta_j^i. \label{eqn:N2_ant}
 \end{align}
 The supercharges, with $\hat{q}=3$ still the number of fermions per term, are
 \begin{align}
 Q &= i\sum_{i<j<k}C_{ijk}\psi^i\psi^j\psi^k,\quad
-\bar{Q} = i\sum_{i<j<k}\bar C^{ijk}\bar{\psi_i}\bar{\psi_j}\bar{\psi_k},
+Q^\dag = i\sum_{i<j<k}\bar C^{ijk}\psi^\dag_i\psi^\dag_jk,
 	\label{eqn:N2charge}
 \end{align}
 where the $C_{ijk}$ are complex numbers drawn from a 0-centered Gaussian such that
@@ -501,17 +501,17 @@ where the $C_{ijk}$ are complex numbers drawn from a 0-centered Gaussian such th
 \end{align} 
 The bosonic operators are defined as\footnote{Should this be antcommutation?}
 \begin{align}
-\bar{b}^i = \comm{Q}{\bar{\psi}_i}
+b^\dag_i = \comm{Q}{\psi^\dag_i}
 \end{align}
-An analysis similar to that in the previous subsection shows the Hamiltonian $H = \acom{Q}{\bar{Q}}$ can be written as
+An analysis similar to that in the previous subsection shows the Hamiltonian $H = \acom{Q}{Q^\dag}$ can be written as
 \begin{align}
-H = E_0 + \sum_{ijk\l}J_{ij}^{k\l}\psi^i\psi^j\bar{\psi_k}\bar{\psi_\l}.
+H = E_0 + \sum_{ijk\l}J_{ij}^{k\l}\psi^i\psi^j\psi^\dag_k\psi^\dag_\l.
 \end{align}
 Like in the $\cal N=1$ case, the components of $J$ are no longer independent. 
 
-The operators $Q^2$ and $\bar Q^2$ are both 0. That implies that both $Q$ and $\bar Q$ are conserved, as for example
+The operators $Q^2$ and ${Q^\dag}^2$ are both 0. That implies that both $Q$ and $Q^\dag$ are conserved, as for example
 \begin{align}
-[H,Q] = Q\bar QQ + \bar QQQ - QQ\bar Q + Q\bar QQ = 0.
+[H,Q] = QQ^\dag Q + Q^\dag QQ - QQQ^\dag + QQ^\dag Q = 0.
 \end{align}
 This also means they generate a symmetry of the Hamiltonian. This allows the methods of subsection~\ref{sub:susy} to be used to count ground states.
 
@@ -521,13 +521,13 @@ The long-range order and large number of ground states in the $\cal N = 2$ super
 
 \subsection{Counting Ground States} \emph{}\label{sub:count_gs}
 
-A convenient way to bound the number of ground states from below is to partition the Hilbert space into energy eigenspaces with states connected by the supercharges, and show that any space with an odd number of states must be made of ground states. Consider a stationary state $\ket{\phi_E}$ with energy $E$. Consider also the states $\ket{q_E} = Q\ket{\phi_E}$ and $\ket{\bar q_E}= \bar Q \ket{\phi_E}$. These states will have the same energy eigenvalue $E$, if they exist. 
+A convenient way to bound the number of ground states from below is to partition the Hilbert space into energy eigenspaces with states connected by the supercharges, and show that any space with an odd number of states must be made of ground states. Consider a stationary state $\ket{\phi_E}$ with energy $E$. Consider also the states $\ket{q_E} = Q\ket{\phi_E}$ and $\ket{q^\dag_E}= Q^\dag \ket{\phi_E}$. These states will have the same energy eigenvalue $E$, if they exist. 
 
-The two simple cases are if $\ket{q}$ and/or $\ket{\bar q}$ does not exist. If $Q$ and $\bar Q$ both annihilate $\ket{\phi_E}$, then $E=0$. If $\bar Q$ annihilates $\ket{\phi_E}$ but $Q$ does not, then 
+The two simple cases are if $\ket{q}$ and/or $\ket{q^\dag}$ does not exist. If $Q$ and $Q^\dag$ both annihilate $\ket{\phi_E}$, then $E=0$. If $Q^\dag$ annihilates $\ket{\phi_E}$ but $Q$ does not, then 
 \begin{align}
-H\ket{\phi_E} = (Q\bar{Q} + \bar QQ)\ket{\phi_E} = \bar QQ\ket{\phi_E} = E\ket{\phi_E}
+H\ket{\phi_E} = (QQ^\dag + Q^\dag Q)\ket{\phi_E} = Q^\dag Q\ket{\phi_E} = E\ket{\phi_E}
 \end{align}
-and the state $\ket{f_E} = \bar QQ\ket{\phi_E}$ is just $\ket{\phi_E}$, $E>0$. The same analysis applies if $Q$ annihilates but $\bar Q$ does not. These cases are illustrated in figure~\ref{fig:tuplets1}.
+and the state $\ket{f_E} = Q^\dag Q\ket{\phi_E}$ is just $\ket{\phi_E}$, $E>0$. The same analysis applies if $Q$ annihilates but $Q^\dag$ does not. These cases are illustrated in figure~\ref{fig:tuplets1}.
 
 \begin{figure}
 	\centering 
@@ -535,7 +535,7 @@ and the state $\ket{f_E} = \bar QQ\ket{\phi_E}$ is just $\ket{\phi_E}$, $E>0$. T
 	\tikzstyle{every node} = [rectangle]
 	\node (phi)  at (1,0) {$\ket{\phi_E}$};
 	\node (q)    at (0, 2) {$Q\ket{\phi_E}$};
-	\node (qbar) at (2, 2) {$\bar Q\ket{\phi_E}$};
+	\node (qbar) at (2, 2) {$Q^\dag\ket{\phi_E}$};
 	\draw [->]   (phi) -- (q);
 	\draw [->]   (phi) -- (qbar);
 	\fill (3.5,.5) circle (1pt);
@@ -554,13 +554,13 @@ and the state $\ket{f_E} = \bar QQ\ket{\phi_E}$ is just $\ket{\phi_E}$, $E>0$. T
 	\draw [->]   (phi) -- (qbar);
 	\draw [->]   (q)-- (E);
 	\end{tikzpicture}
-	\caption{\textbf{Energy Eigenstate Tuplets} with either $Q$ or $\bar{Q}$ annihilating the states. Arrows up and to the left and right represent the effects of $Q$ and $\bar Q$, respectively. $\ket{\phi_a}$ must be a ground state. If $E_b\ne0$, then $\ket{f_{b}}=\ket{\phi_b}$ and the tuplet contains only two states.}
+	\caption{\textbf{Energy Eigenstate Tuplets} with either $Q$ or $Q^\dag$ annihilating the states. Arrows up and to the left and right represent the effects of $Q$ and $Q^\dag$, respectively. $\ket{\phi_a}$ must be a ground state. If $E_b\ne0$, then $\ket{f_{b}}=\ket{\phi_b}$ and the tuplet contains only two states.}
 	\label{fig:tuplets1}
 \end{figure}
 
-If both $\ket{q_E}$ and $\ket{\bar q_E}$ exist and $E>0$, then
+If both $\ket{q_E}$ and $\ket{q^\dag_E}$ exist and $E>0$, then
 \begin{align}
-H\ket{\phi_E} = E\ket{\phi_E} = (Q\bar Q + \bar QQ)\ket{\phi_E} = \ket{f_E} + 
+H\ket{\phi_E} = E\ket{\phi_E} = (QQ^\dag + Q^\dag Q)\ket{\phi_E} = \ket{f_E} + 
 	\ket{f'_E},
 \end{align}
 meaning 
@@ -568,7 +568,7 @@ meaning
 \ket{f_E} = \alpha\ket{\phi_E} + \beta\ket{\xi_E},\qquad \ket{f'_E} = 
 	(1-\alpha)\ket{\phi_E} - \beta\ket{\xi_E}.
 \end{align}
-$\ket{q_E}$ and $\ket{\bar q_e}$ must be distinct, so $\ket{\xi_E}$ must exist. Therefore this tuplet also contains four states. Figure~\ref{fig:tuplets2} illustrates this case.
+$\ket{q_E}$ and $\ket{q^\dag_e}$ must be distinct, so $\ket{\xi_E}$ must exist. Therefore this tuplet also contains four states. Figure~\ref{fig:tuplets2} illustrates this case.
 
 \begin{figure}
 	\centering 
@@ -576,14 +576,14 @@ $\ket{q_E}$ and $\ket{\bar q_e}$ must be distinct, so $\ket{\xi_E}$ must exist. 
 	\tikzstyle{every node} = [rectangle]
 	\node (phi)  at (1,0) {$\ket{\phi_E}$};
 	\node (q)    at (0, 2) {$Q\ket{\phi_E}$};
-	\node (qbar) at (2, 2) {$\bar Q\ket{\phi_E}$};
+	\node (qbar) at (2, 2) {$Q^\dag\ket{\phi_E}$};
 	\draw [->]   (phi) -- (q);
 	\draw [->]   (phi) -- (qbar);
 	\fill (3.5,.5) circle (1pt);
 	\fill (3.5,1.5) circle (1pt);
 	\node (phi)  at (7, 0) {$\ket{\phi_c}$};
 	\node (q)    at (5, 2) {$\ket{q_c}$};
-	\node (qbar) at (9, 2) {$\ket{\bar{q}_c}$};
+	\node (qbar) at (9, 2) {$\ket{q^\dag_c}$};
 	\node (f)    at (6, 4) {$\ket{f_c}$};
 	\node (fpr)  at (8, 4) {$\ket{f_c'}$};
 	\draw [->]   (phi)  -- (q);
@@ -591,7 +591,7 @@ $\ket{q_E}$ and $\ket{\bar q_e}$ must be distinct, so $\ket{\xi_E}$ must exist. 
 	\draw [->]   (q)    -- (f);
 	\draw [->]   (qbar) -- (fpr);
 	\end{tikzpicture}
-	\caption{\textbf{Energy Eigenstate Tuplets} with neither $Q$ nor $\bar{Q}$ annihilating the states. Since $\ket{f_c}$ and $\ket{f_c'}$ must be distinct (otherwise $\acom{Q}{\bar{Q}}\ket{\phi_c}=Q^2\ket{\phi_c} = 0$), they each must be linear combinations of $\ket{\phi_c}$ with another state $\ket{\xi_c}$.}
+	\caption{\textbf{Energy Eigenstate Tuplets} with neither $Q$ nor $Q^\dag$ annihilating the states. Since $\ket{f_c}$ and $\ket{f_c'}$ must be distinct (otherwise $\acom{Q}{Q^\dag}\ket{\phi_c}=Q^2\ket{\phi_c} = 0$), they each must be linear combinations of $\ket{\phi_c}$ with another state $\ket{\xi_c}$.}
 	\label{fig:tuplets2}
 \end{figure}
 
@@ -599,7 +599,7 @@ The previous analysis divides the space into tuplets of energy eigenstates with 
 
 This provides the opportunity to count ground states using the Fermi number
 \begin{align}
-F = \sum_i\bar{\psi_i}\psi^i,
+F = \sum_i\psi^\dag_i\psi^i,
 \end{align}
 which is even for bosonic states and odd for fermionic states. For all paired subspaces with non-zero energy, the Witten index 
 \begin{align}
@@ -699,21 +699,21 @@ Computations on the $\cal N=2$ model were completed in Python using Numpy~\cite{
 
 \subsection{Building Matrices}\emph{} \label{sub:build_mat}
 
-The simplest way to compute large-N functions on a computer is to use a matrix representation for the group. This can be done by viewing the $\bar \psi$ and $\psi$ operators as raising and lowering operators, respectively. Consider the case of $N$ fermions. Write the state as an $N$-dimensional binary vector
+The simplest way to compute large-N functions on a computer is to use a matrix representation for the group. This can be done by viewing the $\psi^\dag$ and $\psi$ operators as raising and lowering operators, respectively. Consider the case of $N$ fermions. Write the state as an $N$-dimensional binary vector
 \begin{align}
 \ket{m} = \ket{m_1m_2\dots m_i\dots m_{N-1}m_N}, \quad\sum_im_i2^{i-1} =
 	m.\label{eqn:2Nstate}
 \end{align}
 The vacuum state is $\ket{0}$. A populated state can be written as
 \begin{align}
-\ket{110\dots 0} = \bar\psi_1\bar{\psi_2}\ket{0} =-\bar\psi_2\bar\psi_1\ket{0},
+\ket{110\dots 0} = \psi^\dag_1\psi^\dag_2 \ket{0} =-\psi^\dag_2\psi^\dag_1\ket{0},
 \end{align}
 which enforces the canonical ordering through anticommutation relations. 
 
-The matrix representations of $\psi^i, \bar \psi_i$ are then calculated component-wise as a $2^N$ by $2^N$ matrix.
+The matrix representations of $\psi^i, \psi^\dag_i$ are then calculated component-wise as a $2^N$ by $2^N$ matrix.
 \begin{align}
-\bar\psi_i &= \sum_{a,b}\ket{a}\bar\psi_{i,ab}\bra{b}\nn
-\bar\psi_{i,ab} &= \brakett{a}{\bar\psi_i}{b}.\label{eqn:comps}
+\psi^\dag_i &= \sum_{a,b}\ket{a}\psi^\dag_{i,ab}\bra{b}\nn
+\psi^\dag_{i,ab} &= \brakett{a}{\psi^\dag_i}{b}.\label{eqn:comps}
 \end{align}
 These components may be calculated effectively using the pseudocode in figure~\ref{code:psibar}.
 
@@ -726,23 +726,23 @@ These components may be calculated effectively using the pseudocode in figure~\r
           psi[m,n] = (-1)^Fermi(n,j),
     return psi_bar
 	\end{lstlisting}
-	\cprotect\caption{\textbf{Code for generating $\bar \psi$ matrices,} where \verb|^| represents exponentiation, \verb|&| represents bitwise and \verb|Fermi(n,j)|, the reduced Fermi number, is the number of nonzero components in \verb|n| before the \verb|j|'th component. This handles anticommutation requirements. A similar structure can be used for building the $\psi$ matrices.}
+	\cprotect\caption{\textbf{Code for generating $\psi^\dag$ matrices,} where \verb|^| represents exponentiation, \verb|&| represents bitwise and \verb|Fermi(n,j)|, the reduced Fermi number, is the number of nonzero components in \verb|n| before the \verb|j|'th component. This handles anticommutation requirements. A similar structure can be used for building the $\psi$ matrices.}
 	\label{code:psibar}
 \end{figure}
 
 It is also possible to create the matrices recursively. The base case is $N=1$, for which the matrices are the raising and lowering matrices,
 \begin{align}
-\bar\psi_{1,(1)} = \begin{bmatrix} 0&0\\1&0 \end{bmatrix}, \qquad
+\psi^\dag_{1,(1)} = \begin{bmatrix} 0&0\\1&0 \end{bmatrix}, \qquad
     \psi^1_{(1)} = \begin{bmatrix} 0&1\\0&0 \end{bmatrix}. \label{eqn:base}
 \end{align}
 Then, to increase the dimension take the tensor product with the $2\times 2$ identity matrix $I$,
 \begin{align}
-\bar\psi_{i,(N)} = I\otimes\bar\psi_{i,(N-1)},\quad \psi^i_{(N)} = I\otimes 
+\psi^\dag_{i,(N)} = I\otimes\psi^\dag_{i,(N-1)},\quad \psi^i_{(N)} = I\otimes 
 	\psi^i_{(N-1)}.
 \end{align}
 This formula of course does not work when $i=N$. In this case the solution is still to use recursion, with the formula
 \begin{align}
-\bar\psi_{i,(N)} = \bar\psi_{i-1,(N-1)}\otimes\sigma_3,
+\psi^\dag_{i,(N)} = \psi^\dag_{i-1,(N-1)}\otimes\sigma_3,
 \end{align}
 with equation~\ref{eqn:base} again supplying the base case.
 
