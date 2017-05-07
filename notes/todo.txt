@@ -1,6 +1,5 @@
 check susy on paper 
 add linear plot of D_GS 
-Dirac Fermions in N=2 
 Comments in conclusion 
 Plot of hamiltonian 
 Formatting

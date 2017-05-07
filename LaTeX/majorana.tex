@@ -484,7 +484,7 @@ In the large $N$ limit this becomes $E_0 = NJ/3$.\footnote{This contradicts the 
 
 \subsection{$\cal{N}=2$ Supersymmetry}\emph{} \label{sub:N2susy}
 
-In $\cal N=2$ supersymmetry, two supercharges are necessary. To create these, define a new set of fermions\footnote{Majorana or Dirac fermions?} that consists of $\psi^i$ and their conjugates $\psi^\dag_i$. These obey the relations 
+In $\cal N=2$ supersymmetry, two supercharges are necessary. To create these, define a new set of fermions, now complex, that consists of $\psi^i$ and their conjugates $\psi^\dag_i$. These obey the relations 
 \begin{align}
 \{\psi^i,\psi^j\} = 0, \quad \{\psi^\dag_i,\psi^\dag_j\} = 0, \quad
 	\{\psi^i,\psi^\dag_j\} = \delta_j^i. \label{eqn:N2_ant}
@@ -754,8 +754,9 @@ Counting ground states was implemented by counting the zero eigenvalues of a ran
 
 \begin{figure}
 	\centering
-	\includegraphics[width=.5\textwidth]{gserr}
-	\caption{\textbf{Looseness of bound on number of ground states.} 0 represents the bound being tight while 1 would mean twice as many ground states as the bound. Since the number of ground states is an integer, these values were calculated as $\text{ceil}(\sqrt{3}^N)$.}
+	\includegraphics[width=.49\textwidth]{gscount}
+	\includegraphics[width=.49\textwidth]{gserr}
+	\caption{\textbf{Tightness of bound on number of ground states.} The plot on the left shows the degeneracy of the ground states calculated numerically, along with the bound $D_\text{GS} \ge \sqrt{3}^N$. The right plot shows the looseness of the bound, where 0 represents the bound being tight while 1 would mean twice as many ground states as the bound. Since the number of ground states is an integer, these values were calculated as $\text{ceil}(\sqrt{3}^N)$.}
 	\label{fig:gserr}
 \end{figure}
 
