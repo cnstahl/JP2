@@ -287,22 +287,22 @@ One starting point for discussing supersymmetry is through the formalism of harm
 
 Consider a single harmonic oscillator 
 \begin{align}
-H = p^2 +\om^2 x^2,\quad \comm{x}{p} = \frac{i}{2} \label{eqn:harmosc}
+H = p^2 +\frac{\om^2 x^2}{4},\quad \comm{x}{p} = i, \label{eqn:harmosc}
 \end{align}
 with raising and lowering operators
 \begin{align}
-a = \sqrt{\om}x+\frac{i}{\sqrt{\om}}p,\quad a^\dag = \sqrt{\om}x+\frac{i}{
-	\sqrt{\om}}p,\quad \comm{a}{a^\dag } = 1.
+a = \frac{\sqrt{\om}x}{2}+\frac{i}{\sqrt{\om}}p,\quad a^\dag = \frac{\sqrt{\om 
+	}x}{2}-\frac{i}{\sqrt{\om}}p,\quad \comm{a}{a^\dag } = 1.
 \end{align}
 The Hamiltonian can then be written as 
 \begin{align}
-H = \om a^\dag a + \th{2} \equiv \om N + \th{2}.
+H = \om a^\dag a + \frac{\om}{2} \equiv \om \left(N + \th{2}\right).
 \end{align}
 After introducing a ground state $\ket{0}$ such that $a\ket{0} = 0$, the number operator $N$ counts the number of times the raising operator has been applied to a state. This shows that the raising and lowering operators add and remove energy from the system, respectively. 
 
 The Hamiltonian for electromagnetism can be written as
 \begin{align}
-H = \sum_k \left(P_k^2 + \om_k^2x_k^2\right)
+H = \sum_k \left(P_k^2 + \frac{\om_k^2x_k^2}{4}\right)
 \end{align}
 with the proper choice of $x$ and $P$. Given a collection of modes $k$ with frequencies $\om_k$ and creation and annihilation operators $a_k^\dag$ and $a_k$, the commutation relations become 
 \begin{align}
@@ -311,7 +311,7 @@ with the proper choice of $x$ and $P$. Given a collection of modes $k$ with freq
 \end{align}
 and the Hamiltonian becomes
 \begin{align}
-H = \sum_k\left(\om_kN_k+\th{2}\right),
+H = \sum_k\om_k\left(N_k+\th{2}\right),
 \end{align}
 meaning that acting with $a_k^\dag$ adds $\om_k$ to the energy of the state. Since there is no longer a single oscillator, the $a$ and $a^\dag$ operators are bosons. 
 
@@ -361,15 +361,15 @@ This leads to antisymmetric states, like the Dirac fermion, but allows for no an
 
 The last oscillator to introduce is the supersymmetric oscillator, which consists of a bosonic and fermionic oscillator
 \begin{align}
-H = \left(p^2+\frac{x^2}{4}\right) - \th{2}\left[\psi, \psi^\dag\right],
+H = \left(p^2+\frac{\om^2 x^2}{4}\right) - \om\left[\psi, \psi^\dag\right],
 \end{align}
 where the $\psi$ and $\psi^\dag$ are fermionic operators. Defining bosonic operators and number operators
 \begin{align}
-a = \frac{x}{2}+ip,\quad N_b = a^\dag a,\quad N_f = \frac{1-\comm{\psi}{ \psi^\dag}}{2} = \psi^\dag \psi,
+a = \sqrt{\om}x+\frac{i}{\sqrt{\om}}p,\quad N_b = a^\dag a,\quad N_f = \frac{1-\comm{\psi}{ \psi^\dag}}{2} = \psi^\dag \psi,
 \end{align}
 the Hamiltonian becomes
 \begin{align}
-H = N_b + N_f,
+H = \om \left(N_b + N_f\right),
 \end{align}
 where $N_b = 0,1,2,3...$ and $N_f = 0,1$. $N_f$ is also called $F$, the fermion number. States can then be specified as $\ket{n_b,n_f}$. States with even $n_f$ are bosonic, while states with odd $n_f$ are fermionic.
  
@@ -507,7 +507,15 @@ An analysis similar to that in the previous subsection shows the Hamiltonian $H 
 \begin{align}
 H = E_0 + \sum_{ijk\l}J_{ij}^{k\l}\psi^i\psi^j\psi^\dag_k\psi^\dag_\l.
 \end{align}
-Like in the $\cal N=1$ case, the components of $J$ are no longer independent. 
+Like in the $\cal N=1$ case, the components of $J$ are no longer independent.
+\begin{figure}
+	\centering
+	\includegraphics[width=.49\textwidth]{hamil5}
+	\includegraphics[width=.49\textwidth]{hamil10}
+	\caption{\textbf{Plots of Hamiltonians,} where darker colors represent larger magnitude elements. For $N=5$, it is possible to see that $H$ only connects states with equal Fermi numbers. For example see the second row, corresponding to $i=1,2,4,8,16$. }
+	\label{fig:hamplot}.
+\end{figure}
+Since $H$ consists of an equal number of raising and lowering operators, it preserves $F$, the Fermi number. Figure~\ref{fig:hamplot} shows this behavior.
 
 The operators $Q^2$ and ${Q^\dag}^2$ are both 0. That implies that both $Q$ and $Q^\dag$ are conserved, as for example
 \begin{align}

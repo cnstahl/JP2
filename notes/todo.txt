@@ -1,7 +1,7 @@
 check susy on paper 
-add linear plot of D_GS 
 Comments in conclusion 
 Plot of hamiltonian 
+  less white space 
 Formatting
   Savetrees? 
   ToC? 
@@ -26,3 +26,4 @@ Ask Verlinde
   —
   Extensive: D_GS or DoF scale with N? 
   —
+  Are the Hamiltonian plots nice?
