@@ -2,23 +2,16 @@ check susy on paper
 Comments in conclusion 
 Plot of hamiltonian 
   less white space 
-Formatting
-  Savetrees? 
-  ToC? 
 SO much work on entropy section 
 
 Ask Verlinde 
   commutation bullshit
-  —
-  personal pronouns?
   —
   Action of supercharge on psis
   —
   plot of hamiltonian?
   —
   What is the entropy in Fu? (p 29)
-  —
-  Include ToC? 
   —
   Are the new figures good? 
   —
@@ -27,3 +20,6 @@ Ask Verlinde
   Extensive: D_GS or DoF scale with N? 
   —
   Are the Hamiltonian plots nice?
+  —
+  We vs. I vs. this paper
+  —

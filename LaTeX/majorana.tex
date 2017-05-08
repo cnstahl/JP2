@@ -6,7 +6,7 @@
 \usepackage{titlesec}                                                   
 \usepackage{bm}
 \usepackage{cprotect}
-%\usepackage{savetrees}
+\usepackage[all=normal, title=tight]{savetrees}
 \usepackage{ bbold }
 \usepackage{abstract}
                                            
@@ -800,7 +800,13 @@ Close to equipartition, the entropy is smaller. Figure~\ref{fig:maxentropy} show
 
 \section{Conclusion} \label{sec:concl}
 
-Interesting future work for this project could include running similar calculations for the $\cal N=1$ model and running calculations for higher $N$. The $\cal N=1$ calculations would not be very different to set up, but would have different results because of the difference in the theories, especially due to the broken supersymmetry at small $N$. Calculations for larger $N$ could be made efficient by exploring alternative ways to create the $\psi$ matrices, or writing code in a different language.
+This paper introduced and discussed the supersymmetric SYK model, by first presenting supersymmetry and the SYK model separately, then the supersymmetric generalizations of the model from~\cite{fu16}. It confirmed calculations that both the ground state degeneracy and entropy are extensive, scaling with the number of particles. 
+
+The number of ground states is consistently above the bound $\sqrt{3}^N$. In fact, for even $N$ the bound is exceeded by about $1/3$ consistently for $N<13$. These extra states \_\_presumably\_\_ come from some added symmetry introduced at even $N$.
+
+The entropy \_\_\_\_.
+
+Interesting future work for this project could include running similar calculations for the $\cal N=1$ model and running calculations for higher $N$. The $\cal N=1$ calculations would not be very different to set up, but would have different results because of the difference in the theories, especially due to the broken supersymmetry at small $N$. Calculations for larger $N$ could be made efficient by exploring alternative ways to create the $\psi$ matrices, or writing the code in a faster language.
 
 Another aspect to explore is the holographic dual of these results.
 
