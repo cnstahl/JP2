@@ -79,7 +79,7 @@
 
 \begin{document}
 
-\title{\textbf{Ground States and Entropy of the Supersymmetric SYK Model\footnote{$\cal N$=2?}}}
+\title{\textbf{Ground States and Entropy of the Supersymmetric SYK Model}}
 \author{Charles Stahl}
 
 \maketitle
@@ -208,9 +208,9 @@ H = \sum_{ijkl}J_{ijkl}\psi_i\psi_j\psi_k\psi_l.
 \end{align} 
 In general, the models can have terms in the Hamiltonian connecting $\hat{q}$ fermions. 
 
-The holographic connection of this model was discussed by Sachdev in 2010~\cite{sachdev10}. The infinite range any-to-any interactions lead to non-zero entropy even at $T=0$. This has been confirmed for large $N$ numerically~\cite{Georges2001}. The extensive entropy is associated with the horizon of an extremal black hole. More generally the properties of the model correspond to properties of  Reissner-Nordstr\"om black holes. For more background on the model see~\cite{mald16}.
+The holographic connection of this model was discussed by Sachdev in 2010~\cite{sachdev10}. The infinite range any-to-any interactions lead to non-zero entropy even at $T=0$. This has been confirmed for large $N$ numerically~\cite{Georges2001}. The extensive entropy is associated with the horizon of an extremal black hole in Anti-de Sitter space (AdS/CFT correspondence)~\cite{fu16}. For more background on the model see~\cite{mald16}.
 
-The model is built of Majorana fermions, which are fermions which are their own antiparticles~\cite{elliott14}. Dirac fermions are solutions to the Dirac equation
+The model is built of Majorana fermions, which are their own antiparticles~\cite{elliott14}. Dirac fermions are solutions to the Dirac equation
 \begin{align}
 (\gamma^\mu\partial_\mu - m)\Phi = 0,
 \end{align}
@@ -276,7 +276,9 @@ No particles are known to be Majorana fermions, but the status of neutrinos is u
 \label{fig:pairs}
 \end{figure}
 
-This paper analyses a supersymmetric generalization of the SYK model introduced in~\cite{fu16}, confirming predictions of the degeneracy of the ground state and the existence of entropy at $T=0$. Specifically it finds for a lower bound $D_{GS}\ge N\log\sqrt{3}$ on the number of ground states and entropy that also scales with $N$.\footnote{Should I have a longer intro?} In section~\ref{sec:osc} I introduce Majorana fermions and supersymmetry through harmonic oscillators. In section~\ref{sec:syk} I define the SYK mode and its supersymmetric generalizations. In section~\ref{sec:N2gs_ent} I present calculation of ground state degeneracy and entropy, and section~\ref{sec:numeric} includes numeric calculations of these values.
+This paper analyses a supersymmetric generalization of the SYK model introduced in~\cite{fu16}, confirming predictions of the degeneracy of the ground state and the existence of entropy at $T=0$. Specifically it finds for a lower bound $D_\text{GS}\ge N\log\sqrt{3}$ on the number of ground states and entropy that also scales with $N$.
+
+In section~\ref{sec:osc} I introduce Majorana fermions and supersymmetry through harmonic oscillators. In section~\ref{sec:syk} I define the SYK mode and its supersymmetric generalizations, using the operators defined in the previous section. In section~\ref{sec:N2gs_ent} I present calculation of ground state degeneracy and entropy, and section~\ref{sec:numeric} includes numeric calculations of these values.
 
 
 \section{Supersymmetry and Oscillators} \label{sec:osc}
@@ -449,12 +451,12 @@ Q = i\sum_{i<j<k}C_{ijk}\psi^i\psi^j\psi^k,
 \end{align}
 where $C_{ijk}$ are now drawn from a Gaussian with mean 0 and variance $2J/N^2$. This is a $\hat{q} = 3$ model, where $\hat{q}$ is now the number of particles in each term of the supercharge. 
 
-It might seem strange to define a supercharge when there are no bosonic operators. However, bilinear operators $\psi^i\psi^j$ behave like bosons because they do not change the fermion number. Operators 
+It might seem strange to define a supercharge when there are no bosonic operators. However, bilinear operators $\psi^i\psi^j$ behave like bosons because they do not change the fermion number. Operators $b^i$, where
 \begin{align}
-b^i = \acom{Q}{\psi^i} = \sum_{i<j<k}C_{ijk}\psi^j\psi^k, \quad \acom{Q}{b^i} 
-	= 2Q\psi^iQ \label{eqn:N1bosons}.
+b^i = \acom{Q}{\psi^i} = \sum_{j<k}C_{ijk}\psi^j\psi^k, \quad \comm{Q}{b^i} 
+	= \comm{H}{\psi^i} = \partial_t\psi_i, \label{eqn:N1bosons}
 \end{align}
-can be interpreted as the bosonic operators.\footnote{I don't think this is right.}
+can be interpreted as the bosonic operators. The commutation and anticommutation relations match those from subsection~\ref{sub:susy}.
 
 The Hamiltonian is defined as
 \begin{align}
@@ -483,12 +485,7 @@ E_0 = \sum_{i<j<k} C_{ijk}^2\;,\qquad J_{ijk\l} = -\th{8}\sum_{a} C_{a[ij}
 \end{align}
 The $J_{ijk\l}$ terms connect the $N$ fermions, 4 at a time. Figure~\ref{fig:model} can also be used to represent this model.
 
-This shows that $E_0$ is positive, with expectation (over the values of $C_{ijk}$)\footnote{There's still something not quite right here.}
-\begin{align}
-\ex{E_0} &= \sum_{i<j<k}\ex{C^2_{ijk}}\nn
-&= \th{6}N(N-1)(N-2)\frac{2J}{N^2}.
-\end{align}
-In the large $N$ limit this becomes $E_0 = NJ/3$.\footnote{This contradicts the Fu paper's assertion that $E_0\to 0$ for large $N$. What am I missing?}
+The supersymmetry of this model is broken, because $Q$ does not in fact annihilate the vacuum. Therefore there is no reason the ground state must have 0 energy. However, the ground state energy scales as $\e^{-\alpha N}$ where $\alpha$ is a constant~\cite{mald16}. The result of this is that the supersymmetry is not broken for large $N$. However, the supersymmetry can be kept intact even for small $N$ by considering the $\cal N=2$ model.
 
 \subsection{$\cal{N}=2$ Supersymmetry}\emph{} \label{sub:N2susy}
 
@@ -656,7 +653,7 @@ S = -\sum_{ij}\braket{j}{i}p_i\braket{i}{j} = -\sum_ip_i\log p_i,
 \end{align}
 which mimics the classical form.
 
-The entropy of a pure state is always 0. However, subsystems of a pure state are mixed, and therefore have non-zero entropy. This entropy does not represent uncertainty, since the state of the whole system is known. Rather, it represents the classical information between the two states~\cite{janzing09}. 
+The entropy of a pure state is always 0. However, subsystems of a pure state are mixed, and therefore have non-zero entropy. This entropy does not represent uncertainty, since the state of the whole system is known. Rather, it represents the classical mutual information between the two states, or the maximum amount of information that can be gained about one by local measurements on the other, without classical information transfer~\cite{janzing09}. This suggests an analogy with black holes, as information cannot classically pass an event horizon~\cite{ryu06}.
 
 \begin{figure}
 	\centering
@@ -701,13 +698,13 @@ A general ground state in the $\cal N=2$ SYK model can be written as
 \begin{align}
 \ket{\phi_0} = \sum_ic_i\ket{i}_A\ket{i}_B. \label{eqn:mixed}
 \end{align}
-If the smaller of the two subsystems has $m$ particles, the sum in~\ref{eqn:mixed} can contain at most $2^m$ terms, the maximum number of states in the smaller subsystem. Maximum entropy is achieved when the coefficients $c_i$ are equal, so 
+If the smaller of the two subsystems has $m$ qbits\footnote{Terminology.}, the sum in~\ref{eqn:mixed} can contain at most $2^m$ terms, the maximum number of states in the smaller subsystem. Maximum entropy is achieved when the coefficients $c_i$ are equal, so 
 \begin{align}
 S_\text{max} = \sum_{i=1}^{2^m}\th{2^m}\log 2^m = m\log(2).\label{eqn:thermal}
 \end{align}
 This is a general bound on the bipartite entanglement entropy of any system.
 
-At $T=0$, the entropy should be $S = \log D_\text{GS} = N\log\sqrt{3} $~\cite{fu16}.\footnote{Is this the bipartite entanglement entropy or something else?}
+Another type of entropy is the ground state entropy, defined as $S_\text{GS} = \log D_\text{GS}$. To understand the connection to entanglement entropy, consider a system entangled with its environment. If the system is known to be in a ground state, the maximum entanglement entropy possible is $\log D_\text{GS} = S_\text{GS}$.
 
 \section{Numerical Results} \label{sec:numeric}
 
@@ -776,17 +773,17 @@ Counting ground states was implemented by counting the zero eigenvalues of a ran
 	\label{fig:gserr}
 \end{figure}
 
-It is particularly interesting to note that the number of ground states is particularly high for even $N$. Even with randomly generated Hamiltonians, the relative number of ground states above the bound stays relatively constant near 0.33 in this case. \_\_Why?\_\_
+It is interesting to note that the number of ground states is particularly high for even $N$. Even with randomly generated Hamiltonians, the relative number of ground states above the bound stays about constant near 0.33 in this case.
 
 \subsection{Ground State Entanglement Entropy}\emph{} \label{sub:num_ent}
 
-Once the number of ground states were calculated for a single Hamiltonian, the entropy of a subsystem of the ground state could be calculated from the reduced density matrix of the subsystem. Starting with a ground state $\ket{\phi}$, the density matrix $\rho = \ket{\phi}\bra{\phi}$ can be calculated. The entropy $S = \Tr\rho\log\rho$ can be calculated as 
+Once the ground states were calculated for a single Hamiltonian, the entropy of a subsystem of the ground state could be calculated from the reduced density matrix of the subsystem. Starting with a ground state $\ket{\phi}$, the density matrix $\rho = \ket{\phi}\bra{\phi}$ can be calculated. The entropy $S = \Tr\rho\log\rho$ can be calculated as 
 \begin{align}
-S = \sum \lambda\log\lambda,
+S = \sum _ip_i\log p_i,
 \end{align}
-where $\lambda$ are the eigenvalues. 
+where $p_i$ are again the eigenvalues of $\rho$. 
 
-As predicted, the entropy rises and drops linearly as more particles are traces over. Since the ground states depend on the coupling, it is necessary to perform multiple calculations and average the entropies. 
+As predicted, the entropy initially rises and then drops linearly as more particles are traced over. Since the ground states depend on the random coupling, it is necessary to perform multiple calculations and average the entropies. 
 
 Figure~\ref{fig:allentropy} shows entropy of the reduced density matrices for $N = 1,2,3...11$. The solid line shows the entropy of a thermal state as defined in equation~\ref{eqn:thermal}. When one partition is smaller than the other, the $m\log2$ bound is close to tight. 
 
@@ -794,23 +791,23 @@ Figure~\ref{fig:allentropy} shows entropy of the reduced density matrices for $N
 	\centering
 	\includegraphics[width=.49\textwidth]{allentropy}
 	\includegraphics[width= .49\textwidth]{maxentropy}
-	\caption{\textbf{Entanglement Entropy.} On the left, each curve shows the entropy for a given $N$ at various $M$. The straight line bounds the entropy as $m\log2$. The right plot shows the maximum entropy achieved for $0<N\le12$, along with the bounds $N\log\sqrt{3}$ and $\log\sqrt{2}$.}
+	\caption{\textbf{Entanglement Entropy.} On the left, each curve shows the entropy for a given $N$ at various $M$. The straight line bounds the entropy as $m\log2$. The right plot shows the maximum entropy achieved for $0<N\le12$, along with the bound $N\log\sqrt{2}$.}
 	\label{fig:allentropy}
 \end{figure}
 
-Close to equipartition, the entropy is smaller. Figure~\ref{fig:allentropy} also shows the maximum entropy as a function of $N$.
+Close to equipartition, the entropy is smaller. Figure~\ref{fig:allentropy} also shows the maximum entropy as a function of $N$. Since maximum entropy occurs when $m = M = N/2$, this maximum value is bounded by $S_\text{max} \le N\sqrt{2}$.
 
 \section{Conclusion} \label{sec:concl}
 
 This paper introduced and discussed the supersymmetric SYK model, by first presenting supersymmetry and the SYK model separately, then the supersymmetric generalizations of the model from~\cite{fu16}. It confirmed calculations that both the ground state degeneracy and entropy are extensive, scaling with the number of particles. 
 
-The number of ground states is consistently above the bound $\sqrt{3}^N$. In fact, for even $N$ the bound is exceeded by about $1/3$ consistently for $N<13$. These extra states \_\_presumably\_\_ come from some added symmetry introduced at even $N$.
+The number of ground states is consistently above the bound $\sqrt{3}^N$. In fact, for even $N$ the bound is exceeded by about $1/3$ consistently for $N<13$. These extra states presumably come from some added symmetry introduced at even $N$. Study of the source of this symmetry could be an interesting future path. 
 
-The entropy \_\_\_\_.
+At small $M$, the entanglement entropy is nearly maximal for a general ground state. This is not surprising, although the number of ground states could have implied a smaller upper bound on the entanglement entropy. 
 
-Interesting future work for this project could include running similar calculations for the $\cal N=1$ model and running calculations for higher $N$. The $\cal N=1$ calculations would not be very different to set up, but would have different results because of the difference in the theories, especially due to the broken supersymmetry at small $N$. Calculations for larger $N$ could be made efficient by exploring alternative ways to create the $\psi$ matrices, or writing the code in a faster language.
+Interesting future work for this project could include running similar calculations for the $\cal N=1$ model and running the calculations for higher $N$. The $\cal N=1$ calculations would not be very different to set up, but would have different results because of the difference in the theories, especially due to the broken supersymmetry at small $N$. Calculations for larger $N$ could be made efficient by exploring alternative ways to create the $\psi$ matrices, or writing the code in a faster language.
 
-Another aspect to explore is the holographic dual of these results.
+Another aspect to explore is the holographic dual of these results. The large ground state entropy and entanglement entropy should translate to large entropy in the AdS black hole.
 
 \printbibliography
 

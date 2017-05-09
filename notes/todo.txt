@@ -1,6 +1,9 @@
 check susy on paper 
+check for imaginary units 
 Comments in conclusion 
 SO much work on entropy section 
+Make sure m is introduced correctly 
+Broken symmetry in N=1 
 
 Ask Verlinde 
   plot of hamiltonian?
