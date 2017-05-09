@@ -1,7 +1,7 @@
 \documentclass[12pt]{article} % 
 
 \usepackage[hyperfootnotes=false]{hyperref}
-\usepackage[margin=1in]{geometry}                                              
+\usepackage[margin=1in]{geometry}                                      
 \usepackage{amsmath,amsthm,amssymb} 
 \usepackage{titlesec}                                                   
 \usepackage{bm}
@@ -18,7 +18,7 @@
 
 \usepackage{tikz}
 \usetikzlibrary{arrows,shapes,trees,backgrounds} 
-\definecolor{mygray}{gray}{0.6}
+\definecolor{mygray}{gray}{.4}
 
 \usepackage{listings}
 \lstset{basicstyle=\ttfamily,breaklines=true}
@@ -334,22 +334,22 @@ which is to say that the states are symmetric.
 
 Fermionic operators obey the anticommutation relations
 \begin{align}
-\{b_k, b_{k'}\} = 0,\quad \{b^\dag_k, b^\dag_{k'}\} = 0,\quad \{b_k, b^\dag_{k'}\} = \delta_{k,k'}.
+\{c_k, c_{k'}\} = 0,\quad \{c^\dag_k, c^\dag_{k'}\} = 0,\quad \{c_k, c^\dag_{k'}\} = \delta_{k,k'}.
 \end{align}
 The analysis of the Fock space matches that for bosonic operators, except the states are are antisymmetric because
 \begin{align}
-\ket{k_1k_2} = b^\dag_{k_1}b^\dag_{k_2}\ket{0} = -b^\dag_{k_2}b^\dag_{k_1} 
+\ket{k_1k_2} = c^\dag_{k_1}c^\dag_{k_2}\ket{0} = -c^\dag_{k_2}c^\dag_{k_1} 
 	\ket{0} = -\ket{k_2k_1}.
 \end{align}
 This suggests the convention of writing states in order of increasing $k$.
 
-Unlike in the case of bosons, there cannot be an arbitrary number of fermions in a mode, but rather at most one. This can be seen by trying to raise a non-empty state: $b_k^\dag b^\dag_k\ket{0} = 0$. In relativistic mechanics, the fact that the Dirac field is complex leads to the existence of antiparticles. The creation operators for antiparticles are created from the annihilation operators for particles with negative frequencies.\footnote{Is this correct?} The Majorana basis decomposes the complex field into two real fields.
+Unlike in the case of bosons, there cannot be an arbitrary number of fermions in a mode, but rather at most one. This can be seen by trying to raise a non-empty state: $c_k^\dag c^\dag_k\ket{0} = 0$. In relativistic mechanics, the fact that the Dirac field is complex leads to the existence of antiparticles. The creation operators for antiparticles are created from the annihilation operators for particles with negative frequencies.\footnote{Is this correct?} The Majorana basis decomposes the complex field into two real fields.
 
 \subsection{Majorana Fermions} \emph{} \label{sub:majorana}
 
-The algebra of Majorana fermions is closely related to that of normal (Dirac) fermions. Consider a single Dirac fermion with creation and annihilation operators $b^\dag$ and $b$. One can define new operators
+The algebra of Majorana fermions is closely related to that of normal (Dirac) fermions. Consider a single Dirac fermion with creation and annihilation operators $c^\dag$ and $c$. One can define new operators
 \begin{align}
-\psi_1 = \th{\sqrt{2}}(b+b^\dag ),\quad \psi_2 = \frac{i}{\sqrt{2}}(b-b^\dag)
+\psi_1 = \th{\sqrt{2}}(c+c^\dag ),\quad \psi_2 = \frac{i}{\sqrt{2}}(c-c^\dag)
 \end{align}
 satisfying
 \begin{align}
@@ -361,22 +361,22 @@ This leads to antisymmetric states, like the Dirac fermion, but allows for no an
 
 The last oscillator to introduce is the supersymmetric oscillator, which consists of a bosonic and fermionic oscillator
 \begin{align}
-H = \left(p^2+\frac{\om^2 x^2}{4}\right) - \om\left[\psi, \psi^\dag\right],
+H = \left(p^2+\frac{\om^2 x^2}{4}\right) + \om\left[\psi^\dag, \psi\right],
 \end{align}
 where the $\psi$ and $\psi^\dag$ are fermionic operators. Defining bosonic operators and number operators
 \begin{align}
-a = \sqrt{\om}x+\frac{i}{\sqrt{\om}}p,\quad N_b = a^\dag a,\quad N_f = \frac{1-\comm{\psi}{ \psi^\dag}}{2} = \psi^\dag \psi,
+a = \sqrt{\om}x+\frac{i}{\sqrt{\om}}p,\quad N_b = a^\dag a,\quad N_f = \frac{1+\comm{\psi^\dag}{ \psi}}{2} = \psi^\dag \psi,
 \end{align}
 the Hamiltonian becomes
 \begin{align}
 H = \om \left(N_b + N_f\right),
 \end{align}
-where $N_b = 0,1,2,3...$ and $N_f = 0,1$. $N_f$ is also called $F$, the fermion number. States can then be specified as $\ket{n_b,n_f}$. States with even $n_f$ are bosonic, while states with odd $n_f$ are fermionic.
+where $N_b = 0,1,2,3...$ and $N_f = 0,1$. $N_f$ is also called $F$, the fermion number. States can then be specified as $\ket{n_b,n_f}$. States with $n_f=0$ are bosonic, while states with $n_f=1$ are fermionic. For systems with multiple fermion modes this is extended to fermionic states having odd $n_f$ and bosonic states having even $n_f$.
  
 By introducing a supercharge 
 \begin{align}
-Q = a\psi^\dag = \psi^\dag a,\quad Q^\dag = a^\dag\psi,\quad Q^2 ={ Q^\dag}^2 
-	= 0,
+Q = \sqrt{\om}a\psi^\dag = \sqrt{\om}\psi^\dag a,\quad Q^\dag = \sqrt{\om} 
+	a^\dag\psi ,\quad Q^2 ={ Q^\dag}^2 = 0,
 \end{align}
 the Hamiltonian can be written as 
 \begin{align}
@@ -386,8 +386,16 @@ The affect of $Q$ is to replace one boson with one fermion, and vice versa.\foot
 
 The supercharges also replace fermion operators with boson operators,
 \begin{align}
-\comm{Q+Q^\dag }{\psi^\dag} = 
+\acom{Q}{\psi^\dag} = \acom{Q^\dag}{\psi} &= 0,\quad \acom{Q}{\psi} = 
+	\sqrt{\om} a,\quad \acom{Q^\dag}{\psi^\dag} = \sqrt{\om} a^\dag,\nn
+\comm{Q}{a} = \comm{Q^\dag}{a^\dag} &= 0,\quad \comm{Q^\dag}{a} = 
+	-\sqrt{\om}\psi, \quad \comm{Q}{a^\dag} = \sqrt{\om}\psi^\dag.
 \end{align}
+Acting with both supercharges is equivalent to commutation with the Hamiltonian
+\begin{align}
+\comm{Q}{\acom{Q^\dag}{\psi^\dag}} = \comm{H}{\psi^\dag} = \om \psi^\dag = \partial_t\psi^\dag,
+\end{align}
+where the last equality applies to the Heisenberg picture. 
 
 Since both supercharges involve some annihilation operator, they both must annihilate the vacuum. Therefore the energy of the ground state must be 0. All other energy eigenstates $\ket{\alpha_E}$ exist in pairs of bosonic an fermionic states because of the supersymmetry. For further explanation of this see subsection~\ref{sub:N2susy}.
 
@@ -513,7 +521,7 @@ Like in the $\cal N=1$ case, the components of $J$ are no longer independent.
 	\includegraphics[width=.49\textwidth]{hamil5}
 	\includegraphics[width=.49\textwidth]{hamil10}
 	\caption{\textbf{Plots of Hamiltonians,} where darker colors represent larger magnitude elements. For $N=5$, it is possible to see that $H$ only connects states with equal Fermi numbers. For example see the second row, corresponding to $i=1,2,4,8,16$. }
-	\label{fig:hamplot}.
+	\label{fig:hamplot}
 \end{figure}
 Since $H$ consists of an equal number of raising and lowering operators, it preserves $F$, the Fermi number. Figure~\ref{fig:hamplot} shows this behavior.
 
@@ -638,22 +646,22 @@ Compare this to the total number of states $2^N$. It is clear that the number of
 
 \subsection{Ground State Entanglement Entropy} \emph{} \label{sub:entangle}
 
-The large number of ground states has an interesting effect on the entanglement entropy of a subsystem of a ground state. Classically, entropy measures uncertainty about an event or state. The nearest quantum mechanical analogue is Von Neumann entropy
+The large number of ground states has an interesting effect on the entanglement entropy of a subsystem of a ground state. Classically, entropy $\cal H = -\sum_ip_i\log p_i$ measures uncertainty about an event or state, where $p_i$ are the probabilities of distinct events or states. $\cal H$ ranges from 0 for certain events, to $\log m$ if there are $m$ possibilities with equal probabilities. The nearest quantum mechanical analogue is Von Neumann entropy
 \begin{align}
 S = -\Tr(\rho\log\rho).\label{eqn:vnent}
 \end{align}
-Written in the eigenbasis of $\rho$, this becomes 
+In the eigenbasis of $\rho$, where $\rho = \sum_i p_i\ket{i}\bra{i}$,
 \begin{align}
-S = -\sum_ip_i\log p_i,\quad \rho = \sum_i p_i\ket{i}\bra{i},
+S = -\sum_{ij}\braket{j}{i}p_i\braket{i}{j} = -\sum_ip_i\log p_i,
 \end{align}
 which mimics the classical form.
 
-The entropy of a pure state is always 0. However, subsystems of a pure state are mixed, and therefore have non-zero entropy. This entropy does not represent uncertainty, since the state of the whole system is known. Rather, it represents the classical information one system can gain about the other through a local measurement~\cite{janzing09}.
+The entropy of a pure state is always 0. However, subsystems of a pure state are mixed, and therefore have non-zero entropy. This entropy does not represent uncertainty, since the state of the whole system is known. Rather, it represents the classical information between the two states~\cite{janzing09}. 
 
 \begin{figure}
 	\centering
 	\begin{tikzpicture}
-	  \tikzstyle{every node} = [circle, draw=black!20, fill=white]
+	  \tikzstyle{every node} = [circle, draw=mygray, fill=white]
 	  \node (7) at (0.2, 0.0) {\textcolor{mygray}{$\psi^1$}};
 	  \node (5)[draw=black] at (2.0, -0.2) {{$\psi^2$}};
   	  \node (1)[draw=black] at (4.8, 0.1) {$\psi^3$};
@@ -664,7 +672,7 @@ The entropy of a pure state is always 0. However, subsystems of a pure state are
 	  \begin{scope}[on background layer]
 	  \foreach \from in {1,...,7}
 	    \foreach \to in {\from,...,7}
-	    \draw [dashed, color=black!20]  (\from) -- (\to);
+	    \draw [dashed, color=mygray]  (\from) -- (\to);
 	  \foreach \from in {1,...,5}
 	    \foreach \to in {\from,...,5}
 	    \draw [line width=1pt]  (\from) -- (\to);
@@ -675,7 +683,7 @@ The entropy of a pure state is always 0. However, subsystems of a pure state are
 	\label{fig:subsys}
 \end{figure}
 
-Consider state $\ket{\phi}_\cal{A}$ on a system $\cal A$ that can be decomposed into subsystems $A$ an $B$. The state can in general be written as 
+Consider state $\ket{\phi}_\cal{A}$ on a system $\cal A$ that can be decomposed into subsystems $A$ and $B$. The state can in general be written as 
 \begin{align}
 \ket{\phi}_\cal{A} = \sum_jc_j\ket{\phi_j}_A\ket{\phi_j}_B,
 \end{align}
@@ -683,17 +691,17 @@ where the $\ket{\phi_j}$ are orthogonal in each subsystem. Then $j$ can only run
 \begin{align}
 \rho_A = \sum_jp_j\ket{\phi_j}_A\bra{\phi_j}_A, \quad \rho_B = \sum_jp_j\ket{\phi_j}_B\bra{\phi_j}_B; \quad p_j = |c_j|^2,
 \end{align}
-It is clear that the entropies of entanglement are equal for each subsystem. In fact, they satisfy 
+it is clear that the entropies of entanglement are equal for each subsystem. In fact, they satisfy 
 \begin{align}
 S(\rho) = S(\rho_B) = \cal{H}(p_j),
 \end{align}
-where $\cal H$ is the classical Shannon entropy with $p_j$ interpreted as classical probabilities. 
+where $\cal H$ is the classical entropy with $p_j$ interpreted as classical probabilities. 
 
 A general ground state in the $\cal N=2$ SYK model can be written as 
 \begin{align}
 \ket{\phi_0} = \sum_ic_i\ket{i}_A\ket{i}_B. \label{eqn:mixed}
 \end{align}
-If the smaller of the two subsystems has $m$ particles, the sum in~\ref{eqn:mixed} can contain at most $2^m$ terms, the maximum number of states in the smaller subsystem. Maximum entropy is achieved when the coefficients are equal, so 
+If the smaller of the two subsystems has $m$ particles, the sum in~\ref{eqn:mixed} can contain at most $2^m$ terms, the maximum number of states in the smaller subsystem. Maximum entropy is achieved when the coefficients $c_i$ are equal, so 
 \begin{align}
 S_\text{max} = \sum_{i=1}^{2^m}\th{2^m}\log 2^m = m\log(2).\label{eqn:thermal}
 \end{align}
@@ -768,7 +776,7 @@ Counting ground states was implemented by counting the zero eigenvalues of a ran
 	\label{fig:gserr}
 \end{figure}
 
-It is particularly interesting to note that the number of ground states is particularly high for even $N$. Even with randomly generated Hamiltonians, the relative number of ground states above the bound stays relatively constant near 0.33 in this case.
+It is particularly interesting to note that the number of ground states is particularly high for even $N$. Even with randomly generated Hamiltonians, the relative number of ground states above the bound stays relatively constant near 0.33 in this case. \_\_Why?\_\_
 
 \subsection{Ground State Entanglement Entropy}\emph{} \label{sub:num_ent}
 
@@ -780,23 +788,17 @@ where $\lambda$ are the eigenvalues.
 
 As predicted, the entropy rises and drops linearly as more particles are traces over. Since the ground states depend on the coupling, it is necessary to perform multiple calculations and average the entropies. 
 
-To see the symmetric linear dependence of the entropy on size of subspace, see figure~\ref{fig:N11pred_ent}. The solid line shows the entropy of a thermal state as defined in equation~\ref{eqn:thermal}. Figure~\ref{fig:allentropy} shows entropy of the reduced density matrices for $N = 1,2,3...11$. When one partition is smaller than the other, the $m\log2$ bound is close to tight. 
+Figure~\ref{fig:allentropy} shows entropy of the reduced density matrices for $N = 1,2,3...11$. The solid line shows the entropy of a thermal state as defined in equation~\ref{eqn:thermal}. When one partition is smaller than the other, the $m\log2$ bound is close to tight. 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=.5\textwidth]{allentropy}
-	\caption{\textbf{Entanglement Entropy.} Each curve shows the entropy for a given $N$ at various $M$. The straight line bounds the entropy as $m\log2$.}
+	\includegraphics[width=.49\textwidth]{allentropy}
+	\includegraphics[width= .49\textwidth]{maxentropy}
+	\caption{\textbf{Entanglement Entropy.} On the left, each curve shows the entropy for a given $N$ at various $M$. The straight line bounds the entropy as $m\log2$. The right plot shows the maximum entropy achieved for $0<N\le12$, along with the bounds $N\log\sqrt{3}$ and $\log\sqrt{2}$.}
 	\label{fig:allentropy}
 \end{figure}
 
-Close to equipartition, the entropy is smaller. Figure~\ref{fig:maxentropy} shows the maximum entropy as a function of $N$.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=.5\textwidth]{maxentropy}
-	\caption{\textbf{Maximum Entropy.} }
-	\label{fig:maxentropy}
-\end{figure}
+Close to equipartition, the entropy is smaller. Figure~\ref{fig:allentropy} also shows the maximum entropy as a function of $N$.
 
 \section{Conclusion} \label{sec:concl}
 
