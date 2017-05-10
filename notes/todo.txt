@@ -1,22 +1,2 @@
-check susy on paper 
-check for imaginary units 
-Comments in conclusion 
-SO much work on entropy section 
-Make sure m is introduced correctly 
-Broken symmetry in N=1 
 
-Ask Verlinde 
-  plot of hamiltonian?
-  — yes
-  What is the entropy in Fu? (p 29)
-  — 
-  Are the new figures good? 
-  — yes
-  Symmetry, group, generator, algebra, charge? 
-  —
-  Extensive: D_GS or DoF scale with N? 
-  — 
-  Are the Hamiltonian plots nice?
-  — yes
-  We vs. I vs. this paper
-  — Don’t use I, ‘we’ makes sense when with the reader, or use ‘the section’ 
+Tense 
